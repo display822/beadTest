@@ -1,0 +1,19 @@
+<resources>
+
+    <!--dialog-->
+    <style name="current_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>//无标题
+        <item name="android:windowBackground">@color/color_transparency</item>//背景
+        <item name="android:backgroundDimAmount">0.0</item>//activity颜色深度
+        <item name="android:backgroundDimEnabled">false</item>//activity不变暗
+    </style>
+    <!--进度条-->
+    <style name="mProgress_circle" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/rotate_loading</item>
+        <item name="android:minWidth">25dp</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:maxWidth">60dp</item>
+        <item name="android:maxHeight">60dp</item>
+    </style>
+</resources>
+

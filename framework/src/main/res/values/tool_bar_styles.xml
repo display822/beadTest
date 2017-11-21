@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!--toolbar-->
+    <style name="AppTheme.toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--无actionBar-->
+        <item name="windowActionBar">false</item>
+        <!--无标题-->
+        <item name="windowNoTitle">true</item>
+        <!--状态栏背景-->
+        <item name="colorPrimaryDark">@color/toolbar</item>
+        <!--toolBar背景-->
+        <item name="colorPrimary">@color/toolbar</item>
+        <!--项目文字颜色-->
+        <item name="android:textColor">@color/color_424242</item>
+        <!--项目文字大小-->
+        <item name="android:textSize">14sp</item>
+        <!--主界面背景-->
+        <item name="android:windowBackground">@color/color_f5f5f5</item>
+        <!--导航条背景-->
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/toolbar</item>
+        <!--菜单小三角颜色-->
+        <item name="android:textColorSecondary">@color/toolbar</item>
+        <!--各控制元件的预设颜色 (switch,check) sdk>=21-->
+        <item name="android:colorAccent" tools:targetApi="lollipop">@color/toolbar</item>
+    </style>
+
+    <!--toolbar标题样式-->
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <!--toolbar菜单样式-->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/color_FFFFFF</item>
+        <item name="android:selectableItemBackground">@color/color_FFFFFF</item>
+        <item name="android:actionMenuTextAppearance">@style/ToolbarMenuTextSize</item>
+    </style>
+
+    <style name="ToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--toolbar弹出菜单样式-->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">@color/color_FFFFFF</item>
+        <item name="android:textColor">@color/color_FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:actionOverflowMenuStyle" tools:targetApi="lollipop">
+            @style/OverflowMenuStyle
+        </item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="android:overlapAnchor" tools:targetApi="lollipop">false</item>
+    </style>
+</resources>
+

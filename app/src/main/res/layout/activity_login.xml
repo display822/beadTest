@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="pwdLoginListener"
+            type="OnClickListener" />
+
+        <variable
+            name="codeLoginListener"
+            type="OnClickListener" />
+
+        <variable
+            name="clearPhoneListener"
+            type="OnClickListener" />
+
+        <variable
+            name="LoginListener"
+            type="OnClickListener" />
+
+        <variable
+            name="findPwdListener"
+            type="OnClickListener" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/layout_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_FFFFFF"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_code_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{codeLoginListener}"
+                android:padding="15dp"
+                android:text="@string/login_by_code" />
+
+            <TextView
+                android:id="@+id/tv_pwd_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{pwdLoginListener}"
+                android:padding="15dp"
+                android:text="@string/login_by_pwd" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_FFFFFF">
+
+            <ImageView
+                android:id="@+id/img_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_login_check_line" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_login"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:hint="@string/please_input_phone"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:padding="10dp"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/img_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_margin="10dp"
+                    android:onClick="@{clearPhoneListener}"
+                    android:src="@drawable/ic_close" />
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/et_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_login"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_suo"
+                android:hint="@string/password_tip"
+                android:inputType="textPassword"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_login_short"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_yanzm"
+                    android:hint="@string/please_input_verify_code"
+                    android:padding="10dp"
+                    android:textSize="14sp" />
+
+                <com.beadwallet.widget.TimeButton
+                    android:id="@+id/tb_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_login_verify"
+                    android:gravity="center"
+                    android:textColor="@color/color_FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_last_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forget_pwd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{findPwdListener}"
+                    android:text="@string/click_with_find"
+                    android:textColor="@color/color_30cad9" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_btn"
+                android:gravity="center"
+                android:onClick="@{LoginListener}"
+                android:text="@string/login"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_check_side"
+                    android:checked="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/i_read" />
+
+                <TextView
+                    android:id="@+id/tv_login_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_30cad9"
+                    android:text="@string/register_agreement" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

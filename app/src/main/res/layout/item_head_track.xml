@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_f5f5f5"
+    android:paddingStart="5dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="10dp"
+    >
+
+    <TextView
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_more"
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

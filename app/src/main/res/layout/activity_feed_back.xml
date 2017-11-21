@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_FFFFFF"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/ic_blue"
+                    android:text="@string/feed_back_question_type"
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_apply_borrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_radio_btn_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="80dp"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/apply_type"
+                        android:textColor="@color/check_gray_white" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/shape_radio_btn_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="80dp"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/experience_type"
+                        android:textColor="@color/check_gray_white" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/shape_radio_btn_blue"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:minWidth="80dp"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/other_type"
+                        android:textColor="@color/check_gray_white" />
+
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_corner5_white"
+                    android:ellipsize="end"
+                    android:hint="@string/please_input_phone1"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_2a2a2a"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_corner5_white"
+                    android:gravity="start"
+                    android:hint="@string/feed_back_question_tip"
+                    android:lineSpacingMultiplier="1.1"
+                    android:maxLength="250"
+                    android:minHeight="140dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_2a2a2a"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_corner5_btn_blue"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/submit"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

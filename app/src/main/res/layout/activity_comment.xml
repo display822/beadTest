@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/layout_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srlDisableContentWhenRefresh="true"
+                    app:srlEnableAutoLoadmore="true">
+
+                    <include layout="@layout/layout_refresh" />
+
+                    <ListView
+                        android:id="@+id/rl_comment"
+                        android:layout_width="match_parent"
+                        android:divider="@null"
+                        android:layout_height="match_parent" />
+
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+                <android.support.v7.widget.ViewStubCompat
+                    android:id="@+id/viewStub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout="@layout/layout_empty_or_net_error"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_comment_bottom"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <EditText
+                    android:id="@+id/et_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLength="200"
+                    android:padding="5dp"
+                    android:lineSpacingMultiplier="1.1"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/bg_comment_input"
+                    android:hint="" />
+
+                <TextView
+                    android:id="@+id/tv_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_comment_send"
+                    android:gravity="center"
+                    android:maxLength="200"
+                    android:text="发送"
+                    android:textColor="@color/color_FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="loading">加载中…</string>
+    <string name="download">正在下载中…</string>
+    <string name="know">我知道了</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="hint">提示</string>
+    <string name="cent">%1$d%%</string>
+
+</resources>

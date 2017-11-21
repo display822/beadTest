@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="click1"
+            type="OnClickListener" />
+
+        <variable
+            name="click2"
+            type="OnClickListener" />
+
+        <variable
+            name="click3"
+            type="OnClickListener" />
+
+        <variable
+            name="click4"
+            type="OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/banner"
+            style="@style/BannerDefaultStyle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:banner_pointTopBottomMargin="15dp"
+            app:banner_placeholderDrawable="@drawable/ic_find_banner" />
+
+        <LinearLayout
+            android:id="@+id/ll_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/shape_default_bg"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_forum_icon1"
+                android:gravity="center"
+                android:onClick="@{click1}"
+                android:text="行业资讯" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_forum_icon2"
+                android:gravity="center"
+                android:onClick="@{click2}"
+                android:text="贷款知识" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_forum_icon3"
+                android:gravity="center"
+                android:onClick="@{click3}"
+                android:text="用卡常识" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_forum_icon4"
+                android:gravity="center"
+                android:onClick="@{click4}"
+                android:text="防骗课堂" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="- 资讯精选 -"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

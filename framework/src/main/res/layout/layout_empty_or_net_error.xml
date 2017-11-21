@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/rl_empty_or_net_error"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawablePadding="15dp"
+        android:drawableTop="@drawable/ic_empty"
+        android:gravity="center"
+        android:text="空空如也"
+        android:textColor="@color/color_666666"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_net_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_net_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="30dp"
+            android:drawableTop="@drawable/ic_net_error"
+            android:gravity="center"
+            android:text="网络出错了，点击按钮重新加载"
+            android:textColor="@color/color_666666" />
+
+        <TextView
+            android:id="@+id/tv_reload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_corner5_btn"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="重新加载"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

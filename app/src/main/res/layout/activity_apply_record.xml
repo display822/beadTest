@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="applyClick"
+            type="OnClickListener" />
+
+        <variable
+            name="browseClick"
+            type="OnClickListener" />
+
+        <variable
+            name="isApply"
+            type="java.lang.Boolean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_toolbar" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srlDisableContentWhenRefresh="true"
+                app:srlEnableAutoLoadmore="true">
+
+                <include layout="@layout/layout_refresh" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rl_apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            <android.support.v7.widget.ViewStubCompat
+                android:id="@+id/viewStub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout="@layout/layout_empty_or_net_error"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

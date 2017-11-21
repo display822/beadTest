@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="work_year">
+        <!--<item>工作年限/工龄</item>-->
+        <item>一年以内</item>
+        <item>1–3年</item>
+        <item>3–5年</item>
+        <item>5–10年</item>
+        <item>10年以上</item>
+    </string-array>
+    <string-array name="free_time">
+        <!--<item>请选择方便接电话时间</item>-->
+        <item>8:00 – 10:00</item>
+        <item>10:00 – 12:00</item>
+        <item>12:00 – 14:00</item>
+        <item>14:00 – 16:00</item>
+        <item>16:00 – 18:00</item>
+        <item>18:00 – 20:00</item>
+        <item>20:00 – 22:00</item>
+    </string-array>
+    <string-array name="industrys">
+        <!--<item>所属行业</item>-->
+        <item>金融</item>
+        <item>房地产/建筑</item>
+        <item>互联网/计算机</item>
+        <item>通讯</item>
+        <item>服务/教育培训</item>
+        <item>政府机关/非盈利机构</item>
+        <item>制造业</item>
+        <item>零售</item>
+        <item>广告业</item>
+        <item>贸易</item>
+        <item>医疗</item>
+        <item>物流/运输</item>
+    </string-array>
+
+    <string-array name="url">
+        <item>正式</item>
+        <item>126</item>
+        <item>43</item>
+    </string-array>
+    <string-array name="aliyun">
+        <item>阿里云正式</item>
+        <item>阿里云测试</item>
+    </string-array>
+</resources>
