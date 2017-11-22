@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -12,7 +13,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.skn.framework.base.BaseFragment;
@@ -158,7 +161,23 @@ public class HomeFragment extends BaseFragment {
                     public void onSuccess(List<BannerEntity> bannerEntities) {
                         if (bannerEntities != null && bannerEntities.size() > 0)
                             binding.banner.setData(bannerEntities, null);
+
                         binding.banner.setAdapter(new BannerAdapter());
+                        binding.banner.getViewPager().setPageMargin(25);
+
+                        if(bannerEntities != null && bannerEntities.size() > 0){
+                            List<ImageView> imgs = new ArrayList<ImageView>();
+                            for(BannerEntity b : bannerEntities){
+                                ImageView iv = new ImageView(getActivity());
+                                iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                                Glide.with(getActivity()).load(b.getTitleImg()).into(iv);
+                                imgs.add(iv);
+                            }
+
+                            binding.banner1.setPageMargin(25);
+                            binding.banner1.setAdapter(new MyAdapter(imgs));
+                        }
+
                         closeRefresh(1);
                     }
 
@@ -177,6 +196,36 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+    class MyAdapter extends PagerAdapter{
+
+        List<ImageView> datas;
+
+        public MyAdapter(List<ImageView> imgs){
+            datas = imgs;
+        }
+
+        @Override
+        public int getCount() {
+            return datas!=null ? datas.size(): 0;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+
+            container.addView(datas.get(position));
+            return datas.get(position);
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView(datas.get(position));
+        }
+    }
 
     //跑马灯效果
     private void initBorrowRecord() {

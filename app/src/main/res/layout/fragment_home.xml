@@ -56,8 +56,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipChildren="false"
                 android:orientation="vertical">
 
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/banner1"
+                    android:layout_width="match_parent"
+                    android:clipChildren="false"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/banner_item"
+                    android:layout_height="120dp">
+
+                </android.support.v4.view.ViewPager>
 
                 <cn.bingoogolapple.bgabanner.BGABanner
                     android:id="@+id/banner"
