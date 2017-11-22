@@ -34,7 +34,6 @@ import com.beadwallet.entity.StarProductEntity;
 import com.beadwallet.util.StatisticsUtil;
 import com.beadwallet.util.UrlService;
 import com.example.skn.framework.util.ToolBarUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class HomeFragment extends BaseFragment {
         StatisticsUtil.homePage(mActivity);
         ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
         ToolBarUtil.getInstance(mActivity)
-                .setTitle("水珠钱包")
+                .setTitle(mActivity.getString(R.string.app_name))
                 .isShow(false)
                 .build();
         binding.refresh.autoRefresh();
@@ -79,7 +78,7 @@ public class HomeFragment extends BaseFragment {
         if (!hidden) {
             ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
             ToolBarUtil.getInstance(mActivity)
-                    .setTitle("水珠钱包")
+                    .setTitle(mActivity.getString(R.string.app_name))
                     .isShow(false)
                     .build();
         }

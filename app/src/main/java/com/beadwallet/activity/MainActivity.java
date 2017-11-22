@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         UserInfo.initUserInfo();
         setContentView(R.layout.activity_main);
         toolbar = ToolBarUtil.getInstance(mActivity)
-                .setTitle("水珠钱包")
+                .setTitle(getString(R.string.app_name))
                 .isShow(false)
                 .build();
         rgMain = (RadioGroup) findViewById(R.id.rg_main);
