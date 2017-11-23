@@ -3,6 +3,7 @@ package com.beadwallet.adapter;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,8 @@ public class HomeInformationAdapter extends RecyclerView.Adapter<HomeInformation
     public void onBindViewHolder(HomeInformationViewHolder holder, int position) {
         HomeInformationEntity homeInformationEntity = data.get(position);
         holder.binding.setData(homeInformationEntity);
+
+        holder.binding.textView.setText(DateFormat.format("yyyy-MM-dd",data.get(position).getCreateTime()));
         Glide.with(holder.binding.iv.getContext()).load(homeInformationEntity.getImg())
                 .placeholder(R.drawable.ic_home_infoprefer).error(R.drawable.ic_home_infoprefer).into(holder.binding.iv);
         holder.binding.getRoot().setOnClickListener(new OnNoDoubleClickListener() {
