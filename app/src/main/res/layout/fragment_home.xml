@@ -162,16 +162,14 @@
                     android:background="@color/color_f1f1f1"/>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:gravity="center_vertical"
+                    android:layout_height="35dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_gravity="center_vertical"
                         android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/borrow_tip" />
 
                     <com.beadwallet.widget.VerticalMarqueeTextView
@@ -179,6 +177,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
                         />
 
                 </LinearLayout>
@@ -192,7 +191,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/color_333333"
-                    android:layout_marginTop="15dp"
                     android:background="@color/color_f1f1f1"
                     />
 
@@ -204,7 +202,6 @@
                     android:background="@color/color_f1f1f1"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
-                    android:paddingTop="5dp"
                     android:orientation="vertical">
 
                 </LinearLayout>
@@ -221,7 +218,7 @@
                     />
 
 
-                <!-- 咨询精选-->
+                <!-- 资讯精选-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -237,7 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
-                        android:text="咨询精选"
+                        android:text="资讯精选"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/color_333333"
                         />
