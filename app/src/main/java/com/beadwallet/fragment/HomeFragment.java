@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.beadwallet.adapter.GalleryAdapter;
+import com.beadwallet.widget.DepthPageTransformer;
 import com.bumptech.glide.Glide;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
@@ -159,14 +161,9 @@ public class HomeFragment extends BaseFragment {
                 .subscribe(new RequestCallBack<List<BannerEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<BannerEntity> bannerEntities) {
-                        if (bannerEntities != null && bannerEntities.size() > 0)
-                            binding.banner.setData(bannerEntities, null);
-
-                        binding.banner.setAdapter(new BannerAdapter());
-                        binding.banner.getViewPager().setPageMargin(25);
 
                         if(bannerEntities != null && bannerEntities.size() > 0){
-                            List<ImageView> imgs = new ArrayList<ImageView>();
+                            List<ImageView> imgs = new ArrayList<>();
                             for(BannerEntity b : bannerEntities){
                                 ImageView iv = new ImageView(getActivity());
                                 iv.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -175,7 +172,10 @@ public class HomeFragment extends BaseFragment {
                             }
 
                             binding.banner1.setPageMargin(25);
-                            binding.banner1.setAdapter(new MyAdapter(imgs));
+                            binding.banner1.setOffscreenPageLimit(2);
+                            binding.banner1.setAdapter(new GalleryAdapter(imgs));
+                            binding.banner1.setPageTransformer(true, new DepthPageTransformer());
+
                         }
 
                         closeRefresh(1);
@@ -187,44 +187,10 @@ public class HomeFragment extends BaseFragment {
                     }
                 });
 
-        binding.banner.setDelegate((banner, itemView, model, position)
-                -> {
-            StatisticsUtil.visitCount(mActivity, StatisticsUtil.banner, (position + 1) + "");
-//            BaseWebViewActivity.show(mActivity, ((BannerEntity) model).getUrl(), "水珠钱包");
-            AppUtil.startWeb(mActivity, ((BannerEntity) model).getUrl());
-        });
-
-    }
-
-    class MyAdapter extends PagerAdapter{
-
-        List<ImageView> datas;
-
-        public MyAdapter(List<ImageView> imgs){
-            datas = imgs;
-        }
-
-        @Override
-        public int getCount() {
-            return datas!=null ? datas.size(): 0;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
-            container.addView(datas.get(position));
-            return datas.get(position);
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView(datas.get(position));
-        }
+            //统计
+            //StatisticsUtil.visitCount(mActivity, StatisticsUtil.banner, (position + 1) + "");
+            //点击事件
+            //AppUtil.startWeb(mActivity, ((BannerEntity) model).getUrl());
     }
 
     //跑马灯效果
