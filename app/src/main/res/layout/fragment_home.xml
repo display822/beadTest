@@ -73,338 +73,200 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_default_bg"
+                        android:gravity="center"
+                        android:onClick="@{limitClick}"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        tools:ignore="NestedWeights">
+
+                        <ImageView
+                            android:id="@+id/img2_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/high_limit" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv2_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="额度高" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="人气产品"
+                                android:textColor="@color/color_666666"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 利率低 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_default_bg"
+                        android:gravity="center"
+                        android:onClick="@{rateClick}"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        tools:ignore="NestedWeights">
+
+                        <ImageView
+                            android:id="@+id/img3_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/low_rate" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv3_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="利率低" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="借款神器"
+                                android:textColor="@color/color_666666"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/color_f1f1f1"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_notice" />
+                        android:src="@drawable/borrow_tip" />
 
                     <com.beadwallet.widget.VerticalMarqueeTextView
-                        android:layout_gravity="center_vertical"
                         android:id="@+id/text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical" />
+                        android:layout_marginLeft="10dp"
+                        />
+
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp">
 
-                    <cn.bingoogolapple.bgabanner.BGABanner
-                        android:id="@+id/product"
-                        style="@style/BannerDefaultStyle"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="- 精 / 选 / 推 / 荐 -"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_333333"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/color_f1f1f1"
+                    />
+
+
+                <LinearLayout
+                    android:id="@+id/product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_f1f1f1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="- 新 / 手 / 必 / 读 -"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@color/color_f1f1f1"
+                    android:textColor="@color/color_333333"
+                    />
+
+
+                <!-- 咨询精选-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/main_color"
+                        />
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <LinearLayout
-                        android:id="@+id/ll_dot"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_height="wrap_content"/>
-
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="- 水珠精选 -" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_default_bg"
-                        android:gravity="center"
-                        android:onClick="@{borrowClick}"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_borrow" />
-
-                        <TextView
-                            android:id="@+id/tv1_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="我要借款" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="首次借款用户享好礼"
-                            android:textColor="@color/color_666666"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_default_bg"
-                            android:gravity="center"
-                            android:onClick="@{limitClick}"
-                            android:orientation="horizontal"
-                            android:padding="10dp"
-                            tools:ignore="NestedWeights">
-
-                            <ImageView
-                                android:id="@+id/img2_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="20dp"
-                                android:src="@drawable/ic_limit" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tv2_2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="额度高" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="轻松完成借款"
-                                    android:textColor="@color/color_666666"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_default_bg"
-                            android:gravity="center"
-                            android:onClick="@{rateClick}"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <ImageView
-                                android:id="@+id/img3_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="20dp"
-                                android:src="@drawable/ic_rate" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tv3_2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="利率低" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="借款的神器"
-                                    android:textColor="@color/color_666666"
-                                    android:textSize="12sp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
+                        android:textSize="15sp"
+                        android:text="咨询精选"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/color_333333"
+                        />
                 </LinearLayout>
-
-                <LinearLayout
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_default_bg"
-                        android:gravity="center"
-                        android:onClick="@{periodClick}"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/img4_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_period" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv4_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="周期长" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="借款更自由"
-                                android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_default_bg"
-                        android:gravity="center"
-                        android:onClick="@{hotClick}"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/img5_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_hot" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv5_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="热门" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="人气产品推荐"
-                                android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="- 咨询精选 -" />
-
+                    android:layout_height="0.5dp"
+                    android:background="@color/color_f1f1f1"
+                    />
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_information"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <LinearLayout
+                <!-- 全部咨询-->
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="36dp"
+                    android:text="全部资讯 》"
+                    android:textSize="12sp"
+                    android:onClick="@{informationClick}"
+                    android:textColor="@color/color_999999"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_information"
-                        android:gravity="center_vertical"
-                        android:onClick="@{informationClick}"
-                        android:orientation="vertical"
-                        android:paddingEnd="10dp"
-                        android:paddingStart="20dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="资讯"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="现金贷行业资讯"
-                            android:textColor="@color/color_999999" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/ic_community"
-                        android:gravity="center_vertical"
-                        android:onClick="@{communityClick}"
-                        android:orientation="vertical"
-                        android:paddingEnd="10dp"
-                        android:paddingStart="20dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="论坛"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="小贷玩家聚集地"
-                            android:textColor="@color/color_999999" />
-                    </LinearLayout>
-                </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/color_f1f1f1"/>
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>

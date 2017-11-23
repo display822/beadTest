@@ -167,7 +167,7 @@ public class HomeFragment extends BaseFragment {
                             for(BannerEntity b : bannerEntities){
                                 ImageView iv = new ImageView(getActivity());
                                 iv.setScaleType(ImageView.ScaleType.FIT_XY);
-                                Glide.with(getActivity()).load(b.getTitleImg()).into(iv);
+                                Glide.with(mActivity).load(b.getTitleImg()).into(iv);
                                 imgs.add(iv);
                             }
 
@@ -225,46 +225,23 @@ public class HomeFragment extends BaseFragment {
                 .subscribe(new RequestCallBack<List<StarProductEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<StarProductEntity> starProductEntities) {
-                        List<View> viewList = new ArrayList<>();
-                        HomeFragment.this.binding.llDot.removeAllViews();
+                        if(starProductEntities != null && starProductEntities.size() >0)
+                            binding.product.removeAllViews();
+
                         for (StarProductEntity item : starProductEntities) {
                             LayoutInflater inflater = LayoutInflater.from(mActivity);
-                            DefaultProductBinding binding = DataBindingUtil.inflate(inflater, R.layout.default_product, null, false);
-                            binding.setData(item);
-                            binding.tvInfo.setText(item.getLend_speed() + "放款 | 参考费率" + item.getDaily_interest_rate() + "%");
-                            binding.setApplyClick(view -> {
+                            DefaultProductBinding starbinding = DataBindingUtil.inflate(inflater, R.layout.default_product, null, false);
+                            starbinding.setData(item);
+                            starbinding.tvInfo.setText(item.getLend_speed() + "放款 ·月费率" + item.getDaily_interest_rate() + "%");
+                            starbinding.setApplyClick(view -> {
                                 StatisticsUtil.visitCount(mActivity, StatisticsUtil.starPlatform, item.getId());
                                 LoansDetailsActivity.startActivity(mActivity, item.getId());
                             });
-                            viewList.add(binding.getRoot());
-                            View dotView = new View(mActivity);
-                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12, 12);
-                            layoutParams.setMargins(0, 0, 10, 0);
-                            dotView.setLayoutParams(layoutParams);
-                            dotView.setBackgroundResource(R.drawable.select_theme_dot);
-                            HomeFragment.this.binding.llDot.addView(dotView);
+
+                            //添加到linearlayout
+                            binding.product.addView(starbinding.getRoot());
                         }
-                        binding.llDot.getChildAt(0).setSelected(true);
-                        binding.product.setData(viewList);
-                        binding.product.setAutoPlayInterval(10000);
-                        binding.product.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                            @Override
-                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                            }
-
-                            @Override
-                            public void onPageSelected(int position) {
-                                for (int i = 0; i < viewList.size(); i++) {
-                                    binding.llDot.getChildAt(i).setSelected(position == i);
-                                }
-                            }
-
-                            @Override
-                            public void onPageScrollStateChanged(int state) {
-
-                            }
-                        });
                         closeRefresh(3);
                     }
 
@@ -283,7 +260,7 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onSuccess(List<HomeInformationEntity> homeInformationEntities) {
                         if (homeInformationEntities != null && homeInformationEntities.size() > 0) {
-                            binding.rvInformation.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.HORIZONTAL, false));
+                            binding.rvInformation.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
                             binding.rvInformation.setAdapter(new HomeInformationAdapter(homeInformationEntities, mActivity));
                         }
                         closeRefresh(4);

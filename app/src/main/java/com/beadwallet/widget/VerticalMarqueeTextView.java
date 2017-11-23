@@ -106,7 +106,7 @@ public class VerticalMarqueeTextView extends LinearLayout {
             int index = strs.get(i).lastIndexOf("请");
             SpannableStringBuilder builder = new SpannableStringBuilder(strs.get(i));
             if (index > 0) {
-                builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.toolbar)), index + 1, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.borrow_color)), index + 1, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             if (builder.length() > 6) {
                 builder.setSpan(new UnderlineSpan(), 2, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

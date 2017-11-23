@@ -9,6 +9,7 @@
 
 
     <color name="main_color">#f5bb40</color>
+    <color name="borrow_color">#ff5b52</color>
     <color name="color_transparency">#00000000</color>
     <color name="color_2a2a2a">#2a2a2a</color>
     <color name="color_f1f1f1">#f1f1f1</color>
