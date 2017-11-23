@@ -173,6 +173,7 @@ public class HomeFragment extends BaseFragment {
                             }
                             binding.banner1.setPageMargin(25);
                             binding.banner1.setAdapter(new GalleryAdapter(imgs));
+                            binding.banner1.setOffscreenPageLimit(3);
                             binding.banner1.setCurrentItem(1);
                             binding.banner1.setPageTransformer(true, new DepthPageTransformer());
                             binding.banner1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
