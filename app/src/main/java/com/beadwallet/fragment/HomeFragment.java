@@ -3,6 +3,7 @@ package com.beadwallet.fragment;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -49,6 +50,7 @@ public class HomeFragment extends BaseFragment {
     private boolean productComplete;
     private boolean informationComplete;
 
+    int currentPosition = 0;
 
     public static HomeFragment getInstance() {
         return new HomeFragment();
@@ -156,6 +158,11 @@ public class HomeFragment extends BaseFragment {
                     public void onSuccess(List<BannerEntity> bannerEntities) {
 
                         if(bannerEntities != null && bannerEntities.size() > 0){
+                            if(bannerEntities.size()>1){
+                                //添加无限滑动
+                                bannerEntities.add(0, bannerEntities.get(bannerEntities.size()-1));
+                                bannerEntities.add(bannerEntities.get(1));
+                            }
                             List<ImageView> imgs = new ArrayList<>();
                             for(BannerEntity b : bannerEntities){
                                 ImageView iv = new ImageView(getActivity());
@@ -164,11 +171,34 @@ public class HomeFragment extends BaseFragment {
                                         bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
                             }
-
                             binding.banner1.setPageMargin(25);
-                            binding.banner1.setOffscreenPageLimit(2);
                             binding.banner1.setAdapter(new GalleryAdapter(imgs));
+                            binding.banner1.setCurrentItem(1);
                             binding.banner1.setPageTransformer(true, new DepthPageTransformer());
+                            binding.banner1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                                @Override
+                                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                                }
+
+                                @Override
+                                public void onPageSelected(int position) {
+                                    currentPosition = position;
+                                }
+
+                                @Override
+                                public void onPageScrollStateChanged(int state) {
+                                    //若viewpager滑动未停止，直接返回
+                                    if (state != ViewPager.SCROLL_STATE_IDLE) return;
+                                        //若当前为第一张，设置页面为倒数第二张
+                                    if (currentPosition == 0) {
+                                        binding.banner1.setCurrentItem(imgs.size() - 2,false);
+                                    } else if (currentPosition == imgs.size()-1) {
+                                        //若当前为倒数第一张，设置页面为第二张
+                                        binding.banner1.setCurrentItem(1,false);
+                                    }
+                                }
+                            });
 
                         }
 

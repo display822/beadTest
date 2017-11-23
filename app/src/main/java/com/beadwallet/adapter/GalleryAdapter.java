@@ -32,7 +32,6 @@ public class GalleryAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-
         container.addView(datas.get(position));
         return datas.get(position);
     }
