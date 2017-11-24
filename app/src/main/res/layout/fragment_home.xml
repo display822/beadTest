@@ -177,7 +177,7 @@
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/borrow_tip" />
 
-                    <com.beadwallet.widget.VerticalMarqueeTextView
+                    <com.bead.dreamwallet.widget.VerticalMarqueeTextView
                         android:id="@+id/text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

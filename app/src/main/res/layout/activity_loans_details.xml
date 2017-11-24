@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.beadwallet.entity.LoansDetailsEntity" />
+            type="com.bead.dreamwallet.entity.LoansDetailsEntity" />
 
         <variable
             name="applyCLick"
@@ -26,7 +26,7 @@
             android:background="@color/color_FFFFFF"
             android:orientation="vertical">
 
-            <com.beadwallet.widget.ObservableScrollView
+            <com.bead.dreamwallet.widget.ObservableScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -295,7 +295,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </com.beadwallet.widget.ObservableScrollView>
+            </com.bead.dreamwallet.widget.ObservableScrollView>
 
             <TextView
                 android:layout_width="match_parent"

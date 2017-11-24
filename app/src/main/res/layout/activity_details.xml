@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.beadwallet.entity.DetailsEntity" />
+            type="com.bead.dreamwallet.entity.DetailsEntity" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -16,7 +16,7 @@
 
         <variable
             name="data"
-            type="com.beadwallet.entity.ForumEntity" />
+            type="com.bead.dreamwallet.entity.ForumEntity" />
 
         <variable
             name="forumClick"
