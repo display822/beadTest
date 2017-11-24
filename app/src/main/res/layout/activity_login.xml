@@ -143,7 +143,7 @@
                     android:padding="10dp"
                     android:textSize="14sp" />
 
-                <com.bead.dreamwallet.widget.TimeButton
+                <com.dreamwallet.widget.TimeButton
                     android:id="@+id/tb_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

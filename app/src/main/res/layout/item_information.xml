@@ -16,7 +16,7 @@
 
         <variable
             name="data"
-            type="com.bead.dreamwallet.entity.InformationEntity" />
+            type="com.dreamwallet.entity.InformationEntity" />
 
     </data>
 

@@ -13,7 +13,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.bead.dreamwallet"
+        applicationId "com.dreamwallet"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 310
@@ -36,7 +36,7 @@ android {
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        def fileName = "水珠钱包_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        def fileName = "追梦钱包_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }

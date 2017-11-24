@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="com.bead.dreamwallet.entity.StarProductEntity" />
+            type="com.dreamwallet.entity.StarProductEntity" />
 
         <import type="android.view.View.OnClickListener" />
 

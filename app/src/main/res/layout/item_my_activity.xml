@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.bead.dreamwallet.entity.MyActivityEntity" />
+            type="com.dreamwallet.entity.MyActivityEntity" />
 
         <variable
             name="activityDetailsClick"

@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.bead.dreamwallet.entity.ForumDetailsEntity.PostInfoBean" />
+            type="com.dreamwallet.entity.ForumDetailsEntity.PostInfoBean" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -109,7 +109,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/color_dddddd" />
 
-                    <com.bead.dreamwallet.widget.ScrollListView
+                    <com.dreamwallet.widget.ScrollListView
                         android:id="@+id/rl_forum"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

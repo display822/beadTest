@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="com.bead.dreamwallet.entity.InformationListEntity" />
+            type="com.dreamwallet.entity.InformationListEntity" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
