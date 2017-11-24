@@ -17,7 +17,7 @@ public class HomeInformationEntity {
     private int id;
     private String title;
     private String url;
-    private long createTime;
+    private long create_time;
 
     public String getImg() {
         return img;
@@ -51,11 +51,11 @@ public class HomeInformationEntity {
         this.url = url;
     }
 
-    public long getCreateTime() {
-        return createTime;
+    public long getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(long create_time) {
+        this.create_time = create_time;
     }
 }

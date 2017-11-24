@@ -41,7 +41,7 @@ public class HomeInformationAdapter extends RecyclerView.Adapter<HomeInformation
         HomeInformationEntity homeInformationEntity = data.get(position);
         holder.binding.setData(homeInformationEntity);
 
-        holder.binding.textView.setText(DateFormat.format("yyyy-MM-dd",data.get(position).getCreateTime()));
+        holder.binding.textView.setText(DateFormat.format("yyyy-MM-dd", data.get(position).getCreate_time()));
         Glide.with(holder.binding.iv.getContext()).load(homeInformationEntity.getImg())
                 .placeholder(R.drawable.ic_home_infoprefer).error(R.drawable.ic_home_infoprefer).into(holder.binding.iv);
         holder.binding.getRoot().setOnClickListener(new OnNoDoubleClickListener() {

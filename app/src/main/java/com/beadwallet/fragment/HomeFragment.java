@@ -257,7 +257,7 @@ public class HomeFragment extends BaseFragment {
                             LayoutInflater inflater = LayoutInflater.from(mActivity);
                             DefaultProductBinding starbinding = DataBindingUtil.inflate(inflater, R.layout.default_product, null, false);
                             starbinding.setData(item);
-                            starbinding.tvInfo.setText(item.getLend_speed() + "放款 ·月费率" + item.getDaily_interest_rate() + "%");
+                            starbinding.tvInfo.setText("·"+item.getLend_speed() + "放款 ·月费率" + item.getDaily_interest_rate() + "%");
                             starbinding.setApplyClick(view -> {
                                 StatisticsUtil.visitCount(mActivity, StatisticsUtil.starPlatform, item.getId());
                                 LoansDetailsActivity.startActivity(mActivity, item.getId());

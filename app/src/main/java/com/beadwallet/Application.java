@@ -35,12 +35,12 @@ public class Application extends BaseApplication {
     }
 
     protected void setBaseUrl() {
-        Api.setBaseUrl("http://m.beadwallet.com/loansupermarket-app/");//正式
+        Api.setBaseUrl("http://n.beadwallet.com/loansupermarket-app/");//正式
 //        Api.setBaseUrl("http://106.14.97.38:8060/loansupermarket-app/");//测试
     }
 
     public static String getShareUrl() {
-        return  "http://m.beadwallet.com/loansupermarket/#/main/home";//正式
+        return  "http://n.beadwallet.com/loansupermarket/#/main/home";//正式
 //        return "http://106.14.97.38/szqb/#/main/home";//测试
     }
 
@@ -52,8 +52,8 @@ public class Application extends BaseApplication {
     @BindingAdapter("circleImg")
     public static void loadCircleImg(ImageView img, String path) {
         Glide.with(img.getContext()).load(path)
-                .placeholder(R.drawable.ic_default_loans)
-                .error(R.drawable.ic_default_loans)
+                .placeholder(R.drawable.logo_gray)
+                .error(R.drawable.logo_gray)
                 .bitmapTransform(new CropCircleTransformation(img.getContext()))
                 .into(img);
     }
@@ -61,8 +61,8 @@ public class Application extends BaseApplication {
     @BindingAdapter("circleImgDetail")
     public static void loadCircleImgDetail(ImageView img, String path) {
         Glide.with(img.getContext()).load(path)
-                .placeholder(R.drawable.ic_default_loans_detail)
-                .error(R.drawable.ic_default_loans_detail)
+                .placeholder(R.drawable.logo_gray)
+                .error(R.drawable.logo_gray)
                 .bitmapTransform(new CropCircleTransformation(img.getContext()))
                 .into(img);
     }
