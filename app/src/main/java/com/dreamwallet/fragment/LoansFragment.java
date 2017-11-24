@@ -68,7 +68,7 @@ public class LoansFragment extends BaseFragment {
 
     public void init() {
         initRefresh();
-        initRecommendProduct();
+//        initRecommendProduct();
     }
 
     private void initRefresh() {
@@ -101,14 +101,11 @@ public class LoansFragment extends BaseFragment {
             @Override
             public void onSpringUpdate(Spring spring) {
                 super.onSpringUpdate(spring);
-                binding.ivRecommendProduct.setTranslationX((float) spring.getCurrentValue());
+//                binding.ivRecommendProduct.setTranslationX((float) spring.getCurrentValue());
             }
         });
         spring.setEndValue(0.1);
-        binding.ivRecommendProduct.setOnClickListener(view -> {
-                    LoansDetailsActivity.startActivity(mActivity, "");
-                }
-        );
+//        binding.ivRecommendProduct.setOnClickListener(view -> LoansDetailsActivity.startActivity(mActivity, ""));
     }
 
     private void initPlatformListData(int type) {

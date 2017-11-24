@@ -30,7 +30,7 @@
                     android:id="@+id/rl_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp" />
+                    android:paddingTop="10dp" />
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
             <android.support.v7.widget.ViewStubCompat
@@ -41,14 +41,14 @@
                 android:visibility="gone" />
         </FrameLayout>
 
-        <ImageView
-            android:id="@+id/iv_recommend_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="40dp"
-            android:layout_marginEnd="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_start_product" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_recommend_product"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--android:layout_marginBottom="40dp"-->
+            <!--android:layout_marginEnd="10dp"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@drawable/ic_start_product" />-->
     </FrameLayout>
 </layout>
