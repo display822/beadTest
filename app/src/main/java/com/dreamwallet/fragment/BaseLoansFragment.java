@@ -41,11 +41,9 @@ public class BaseLoansFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_base_loans, container, false);
-        ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
-        ToolBarUtil.getInstance(mActivity)
-                .setTitle("贷款")
-                .isShow(false)
-                .build();
+        ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
+
+
         initView(view);
         return view;
     }
@@ -55,11 +53,8 @@ public class BaseLoansFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
-            ToolBarUtil.getInstance(mActivity)
-                    .setTitle("贷款")
-                    .isShow(false)
-                    .build();
+            ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
+
             if (titleAdapter != null && titleAdapter.getItemCount() > 0) {
                 rlTitle.scrollToPosition(Global.loansPosition);
                 titleAdapter.setCurrentPosition(Global.loansPosition);//刷新头部

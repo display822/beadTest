@@ -46,10 +46,10 @@ public class LoansTitleAdapter extends RecyclerView.Adapter<LoansTitleAdapter.Lo
         holder.binding.setTitle(data.get(position).getSortAllName());
         if (position == currentPosition) {
             holder.binding.setIsShow(true);
-            holder.binding.tvTitle.setTextColor(context.getResources().getColor(R.color.toolbar));
+            holder.binding.tvTitle.setTextColor(context.getResources().getColor(R.color.main_color));
         } else {
             holder.binding.setIsShow(false);
-            holder.binding.tvTitle.setTextColor(context.getResources().getColor(R.color.color_424242));
+            holder.binding.tvTitle.setTextColor(context.getResources().getColor(R.color.color_666666));
 
         }
         holder.binding.getRoot().setOnClickListener(view -> {
