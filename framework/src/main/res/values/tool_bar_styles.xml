@@ -8,7 +8,7 @@
         <!--无标题-->
         <item name="windowNoTitle">true</item>
         <!--状态栏背景-->
-        <item name="colorPrimaryDark">@color/statusbar</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <!--toolBar背景-->
         <item name="colorPrimary">@color/toolbar</item>
         <!--项目文字颜色-->

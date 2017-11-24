@@ -58,6 +58,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initVar() {
+
+        setFlagTranslucentStatus();
         myHandler = new MyHandler();
         homeFragment = HomeFragment.getInstance();
         loansFragment = BaseLoansFragment.getInstance();
