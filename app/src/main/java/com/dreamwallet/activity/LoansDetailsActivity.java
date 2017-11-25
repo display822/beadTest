@@ -84,7 +84,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
                                 if (UserInfo.isLogin()) {
                                     addApplyReord(platformId);
                                     StatisticsUtil.clickCount(mActivity, platformId);
-                                    // BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), "水珠钱包");
+                                    // BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), "追梦钱包");
                                     AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
                                 } else {
                                     LoginActivity.startActivity(mActivity, LoginActivity.FINISH);

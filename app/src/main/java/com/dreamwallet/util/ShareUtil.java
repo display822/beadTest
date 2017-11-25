@@ -18,8 +18,8 @@ public class ShareUtil {
         UMImage umImage = new UMImage(mActivity, R.drawable.ic_logo);
         UMWeb web = new UMWeb(Application.getShareUrl());
         web.setThumb(umImage);
-        web.setTitle("水珠钱包-专注个人无抵押信用小额贷款的服务平台");
-        web.setDescription("水珠钱包专注个人小额贷款，安全的一站式服务，快速满足您的资金需求");
+        web.setTitle("追梦钱包-专注个人无抵押信用小额贷款的服务平台");
+        web.setDescription("追梦钱包专注个人小额贷款，安全的一站式服务，快速满足您的资金需求");
         new ShareAction(mActivity)
                 .withMedia(web)
                 .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.WEIXIN_FAVORITE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE)
