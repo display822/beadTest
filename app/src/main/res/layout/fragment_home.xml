@@ -12,14 +12,6 @@
             type="java.lang.String" />
 
         <variable
-            name="borrowClick"
-            type="OnClickListener" />
-
-        <variable
-            name="periodClick"
-            type="OnClickListener" />
-
-        <variable
             name="limitClick"
             type="OnClickListener" />
 
@@ -28,7 +20,7 @@
             type="OnClickListener" />
 
         <variable
-            name="hotClick"
+            name="tipClick"
             type="OnClickListener" />
 
         <variable
@@ -39,6 +31,46 @@
             name="communityClick"
             type="OnClickListener" />
     </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/color_FFFFFF"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/statusbar"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:text="追梦钱包"
+                android:textSize="17sp"
+                android:textColor="@color/color_333333"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="15dp"
+                android:onClick="@{tipClick}"
+                android:src="@drawable/ic_activity"
+                />
+        </RelativeLayout>
+
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refresh"
@@ -273,4 +305,5 @@
 
         </android.support.v4.widget.NestedScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
 </layout>

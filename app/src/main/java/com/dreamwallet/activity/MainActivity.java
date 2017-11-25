@@ -15,7 +15,6 @@ import com.example.skn.framework.base.BaseApplication;
 import com.example.skn.framework.update.UpdateHelper;
 import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
 import com.dreamwallet.R;
 import com.dreamwallet.fragment.BaseLoansFragment;
 import com.dreamwallet.fragment.FindFragment;
@@ -46,8 +45,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     public void showLoansByPosition(int position) {
         Global.loansPosition = position;
-        ((RadioButton) rgMain.getChildAt(1)).setChecked(true);
+//        ((RadioButton) rgMain.getChildAt(1)).setChecked(true);
 
+        //打开loanActivity
+        Intent intent = new Intent(this, LoansActivity.class);
+        startActivity(intent);
     }
 
     public void showFindByPosition(int position) {
@@ -81,10 +83,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void init() {
         UserInfo.initUserInfo();
         setContentView(R.layout.activity_main);
-        toolbar = ToolBarUtil.getInstance(mActivity)
-                .setTitle(getString(R.string.app_name))
-                .isShow(false)
-                .build();
+
         rgMain = (RadioGroup) findViewById(R.id.rg_main);
         rgMain.setOnCheckedChangeListener(this);
         currentFragment = homeFragment;

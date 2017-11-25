@@ -35,7 +35,7 @@ public class FindFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_find, container, false);
         init();
-        ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
+
         return binding.getRoot();
     }
 
@@ -43,7 +43,6 @@ public class FindFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
             changeTab(Global.findPosition == 0);
         }
 

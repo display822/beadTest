@@ -63,11 +63,7 @@ public class HomeFragment extends BaseFragment {
         binding.refresh.setOnRefreshListener(refreshLayout -> init());
         setHasOptionsMenu(true);
         StatisticsUtil.homePage(mActivity);
-        ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
-        ToolBarUtil.getInstance(mActivity)
-                .setTitle(mActivity.getString(R.string.app_name))
-                .isShow(false)
-                .build();
+
         binding.refresh.autoRefresh();
         return binding.getRoot();
     }
@@ -75,13 +71,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {
-            ((MainActivity) mActivity).toolbar.setVisibility(View.VISIBLE);
-            ToolBarUtil.getInstance(mActivity)
-                    .setTitle(mActivity.getString(R.string.app_name))
-                    .isShow(false)
-                    .build();
-        }
+
     }
 
     public void init() {
@@ -93,11 +83,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initClickListener() {
-        binding.setBorrowClick(view -> {
-            //综合排序
-            ((MainActivity) mActivity).showLoansByPosition(0);
-            StatisticsUtil.visitCount(mActivity, StatisticsUtil.BorrowClick, "1");
-        });
+
+        binding.setTipClick(view -> MyActivityActivity.startActivity(mActivity));
+
         binding.setLimitClick(view -> {
             //额度高
             ((MainActivity) mActivity).showLoansByPosition(1);
@@ -107,16 +95,6 @@ public class HomeFragment extends BaseFragment {
             //利率低
             ((MainActivity) mActivity).showLoansByPosition(2);
             StatisticsUtil.visitCount(mActivity, StatisticsUtil.BorrowClick, "3");
-        });
-        binding.setHotClick(view -> {
-            //申请多
-            ((MainActivity) mActivity).showLoansByPosition(3);
-            StatisticsUtil.visitCount(mActivity, StatisticsUtil.BorrowClick, "4");
-        });
-        binding.setPeriodClick(view -> {
-            //周期长
-            ((MainActivity) mActivity).showLoansByPosition(4);
-            StatisticsUtil.visitCount(mActivity, StatisticsUtil.BorrowClick, "5");
         });
 
 
@@ -297,26 +275,6 @@ public class HomeFragment extends BaseFragment {
                     }
                 });
 
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        if (!menu.hasVisibleItems()) {
-            inflater.inflate(R.menu.menu_main, menu);
-        }
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_info:
-                MyActivityActivity.startActivity(mActivity);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

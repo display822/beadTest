@@ -38,7 +38,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         initView(view);
-        ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
+
         return view;
     }
 
@@ -46,8 +46,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden)
-            ((MainActivity) mActivity).toolbar.setVisibility(View.GONE);
+
     }
 
     private void initView(View view) {
