@@ -116,8 +116,9 @@
 
                         <View
                             android:layout_width="0.1dp"
-                            android:layout_height="15dp"
-                            android:background="@color/color_333333" />
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/color_666666" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -144,8 +145,9 @@
 
                         <View
                             android:layout_width="0.1dp"
-                            android:layout_height="15dp"
-                            android:background="@color/color_333333" />
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/color_666666" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -171,7 +173,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="%"
                                     android:textColor="@color/color_666666"
-                                    android:textSize="13sp" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
@@ -180,6 +182,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:textColor="@color/color_666666"
+                                android:textSize="13sp"
                                 android:text="参考费率" />
                         </LinearLayout>
 
