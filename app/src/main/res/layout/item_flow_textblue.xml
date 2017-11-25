@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="5dp"
     android:gravity="center"
-    android:drawableLeft="@drawable/loan_tag_green"
-    android:text="审核快"
+    android:drawableLeft="@drawable/loan_tag_blue"
+    android:text="放款快"
     android:textColor="@color/color_666666"
     android:textSize="11.5sp">
 

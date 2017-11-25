@@ -167,7 +167,7 @@ public class LoansFragment extends BaseFragment {
         public void onBindViewHolder(LoansAdapter.StapleViewHolder viewHolder, final int position) {
             LoansEntity loansEntity = data.get(position);
             viewHolder.bind.setData(loansEntity);
-            viewHolder.bind.tvInfo.setText(loansEntity.getLendSpeed() + "放款 | 参考费率：" + loansEntity.getDailyInterestRate() + "% | 贷款期限" + loansEntity.getMaxCycle());
+            viewHolder.bind.tvInfo.setText(loansEntity.getLendSpeed() + "放款\n月费率" + loansEntity.getDailyInterestRate() + "%\n贷款期限" + loansEntity.getMaxCycle());
             if (!TextUtils.isEmpty(data.get(position).getLabel())) {
                 String[] labels = data.get(position).getLabel().split(",");
                 viewHolder.bind.flLabel.setVisibility(View.VISIBLE);
