@@ -52,7 +52,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
     protected void init() {
         setFlagTranslucentStatus();
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_loans_details);
-        toolbar = ToolBarUtil.getInstance(mActivity).setTitle("水珠钱包").build();
+        toolbar = ToolBarUtil.getInstance(mActivity).setTitle("追梦钱包").build();
         toolbar.setBackgroundColor(Color.argb((int) 0, 104, 230, 219));
         ViewTreeObserver observer = binding.llTop.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

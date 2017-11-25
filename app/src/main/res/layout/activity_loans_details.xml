@@ -39,182 +39,158 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
-                    <FrameLayout
+
+                    <RelativeLayout
+                        android:id="@+id/ll_top"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="130dp"
+                        android:background="@color/color_FFFFFF">
 
-                        <LinearLayout
-                            android:id="@+id/ll_top"
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="40dp"
-                            android:background="@drawable/bg_product_details_top"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingTop="20dp">
+                            android:src="@drawable/detail_top_bg" />
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/ic_default_loans_detail"
-                                    app:circleImgDetail="@{data.logo}" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="10dp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="8dp"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:maxEms="5"
-                                    android:maxLines="2"
-                                    android:text="@{data.abbreviation}"
-                                    android:textColor="@color/color_FFFFFF"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="50dp"
-                                android:background="@color/color_FFFFFF" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="30dp"
-                                android:layout_weight="3"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="申请人数（人）"
-                                    android:textColor="@color/color_FFFFFF" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:text="@{data.statistics}"
-                                    android:textColor="@color/color_FFFFFF"
-                                    android:textSize="18sp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:background="@drawable/bg_product_details_center"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="15dp">
-
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@{data.quato}"
-                                    android:textColor="@color/color_ffff0000"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="额度（元）"
-                                    android:textSize="15sp" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="0.1dp"
-                                android:layout_height="15dp"
-                                android:background="@color/color_333333" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@{data.maxCycle}"
-                                    android:textColor="@color/color_7CD7FB"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="期限（天）" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="0.1dp"
-                                android:layout_height="15dp"
-                                android:background="@color/color_333333" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{String.valueOf(data.dailyInterestRate),default=0}"
-                                        android:textColor="@color/color_7CD7FB"
-                                        android:textSize="15sp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="%"
-                                        android:textColor="@color/color_7CD7FB"
-                                        android:textSize="15sp" />
-
-                                </LinearLayout>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="参考费率" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </FrameLayout>
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/logo_gray"
+                            app:circleImgDetail="@{data.logo}" />
+                    </RelativeLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.statistics,default = 10000}"
+                            android:textColor="@color/borrow_color"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="人已放款"
+                            android:textColor="@color/color_333333" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_FFFFFF"
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{data.quato}"
+                                android:textColor="@color/color_333333"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textColor="@color/color_666666"
+                                android:text="额度（元）"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.1dp"
+                            android:layout_height="15dp"
+                            android:background="@color/color_333333" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{data.maxCycle}"
+                                android:textColor="@color/color_333333"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textColor="@color/color_666666"
+                                android:textSize="13sp"
+                                android:text="期限（天）" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.1dp"
+                            android:layout_height="15dp"
+                            android:background="@color/color_333333" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(data.dailyInterestRate),default=0}"
+                                    android:textColor="@color/color_333333"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="%"
+                                    android:textColor="@color/color_666666"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="参考费率" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/color_f1f1f1"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
@@ -227,21 +203,31 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="5dp"
-                                android:drawableStart="@drawable/ic_blue"
-                                android:text="@string/apply_condition" />
+                                android:layout_marginLeft="9dp"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/loan_tag_green"
+                                android:text="@string/apply_condition"
+                                android:textColor="@color/color_333333"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="14dp"
                                 android:layout_marginTop="10dp"
-                                android:text="@{data.applyCondition}" />
+                                android:lineSpacingExtra="2dp"
+                                android:text="@{data.applyCondition,default = 十八周岁以上中国公民}"
+                                android:textColor="@color/color_666666"
+                                android:textSize="13sp" />
+
                         </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_h_line" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/color_ffa9acaf" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -252,22 +238,28 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="5dp"
-                                android:drawableStart="@drawable/ic_blue"
+                                android:layout_marginLeft="9dp"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/loan_tag_red"
                                 android:text="@string/need_material" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="14dp"
                                 android:layout_marginTop="10dp"
-                                android:text="@{data.requireDocument}" />
+                                android:lineSpacingExtra="2dp"
+                                android:text="@{data.requireDocument}"
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_h_line" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/color_ffa9acaf" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -278,16 +270,19 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="5dp"
-                                android:drawableStart="@drawable/ic_blue"
+                                android:layout_marginLeft="9dp"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/loan_tag_blue"
                                 android:text="@string/product_introduce" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="14dp"
                                 android:layout_marginTop="10dp"
-                                android:lineSpacingExtra="1dp"
-                                android:text="@{data.introduction}" />
+                                android:lineSpacingExtra="2dp"
+                                android:text="@{data.introduction}"
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
@@ -299,13 +294,13 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_loans_detail_btn"
+                android:layout_height="50dp"
+                android:background="@drawable/title_bg"
                 android:gravity="center"
                 android:onClick="@{applyCLick}"
                 android:text="立即申请"
-                android:textColor="@color/color_FFFFFF"
-                android:textSize="18sp" />
+                android:textColor="@color/color_333333"
+                android:textSize="17sp" />
 
         </LinearLayout>
 

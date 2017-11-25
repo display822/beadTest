@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.example.skn.framework.R;
 import com.example.skn.framework.dialog.DialogUtil;
@@ -68,9 +67,7 @@ abstract public class BaseActivity extends AppCompatActivity implements EasyPerm
         View decorview = getWindow().getDecorView();
         if(Build.VERSION.SDK_INT>=21){//5.0以上的系统支持
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |View.SYSTEM_UI_FLAG_LAYOUT_STABLE;//表示让应用主题内容占据系统状态栏的空间
-            if(Build.VERSION.SDK_INT>=23){
-                option = option | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-            }
+
             decorview.setSystemUiVisibility(option);
             getWindow().setStatusBarColor(Color.parseColor("#00ffffff"));//设置状态栏颜色为透明
         }

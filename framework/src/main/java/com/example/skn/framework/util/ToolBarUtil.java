@@ -1,5 +1,6 @@
 package com.example.skn.framework.util;
 
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -72,6 +73,7 @@ public class ToolBarUtil {
         toolbar.setTitle("");
         toolbar_title.setVisibility(View.VISIBLE);
         toolbar_title.setText(title);
+        toolbar_title.setTextColor(Color.parseColor("#ffffff"));
         return this;
     }
 
