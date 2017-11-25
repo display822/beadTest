@@ -30,6 +30,7 @@
             android:layout_marginBottom="12dp"
             android:layout_marginTop="16dp"
             android:paddingLeft="15dp"
+            android:onClick="@{applyClick}"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -131,7 +132,6 @@
                 android:layout_marginTop="36dp"
                 android:background="@drawable/ic_apply_by_now"
                 android:gravity="center"
-                android:onClick="@{applyClick}"
                 android:text="立即申请"
                 android:textColor="@color/color_333333"
                 android:textSize="14sp" />
@@ -140,7 +140,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_below="@id/loan_content"
+            android:layout_above="@id/loan_content"
             android:background="@color/color_f5f5f5"/>
 
     </RelativeLayout>
