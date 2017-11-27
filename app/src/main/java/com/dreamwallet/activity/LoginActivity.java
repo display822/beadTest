@@ -1,6 +1,5 @@
 package com.dreamwallet.activity;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -8,15 +7,7 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.RelativeLayout;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.base.BaseWebViewActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.BaseEntity;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.*;
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityLoginBinding;
 import com.dreamwallet.entity.LoginEntity;
@@ -25,6 +16,15 @@ import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.dreamwallet.widget.TimeButton;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.base.BaseWebViewActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.BaseEntity;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.SpUtil;
+import com.example.skn.framework.util.StringUtil;
+import com.example.skn.framework.util.ToastUtil;
+import com.example.skn.framework.util.ToolBarUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,8 +32,7 @@ import java.util.Map;
 import rx.Observable;
 
 
-public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnPreDrawListener
-        , TimeButton.OnLoadDataListener {
+public class LoginActivity extends BaseActivity implements TimeButton.OnLoadDataListener {
     private ActivityLoginBinding bind;
     private int loginType;
     public final static String FINISH = "finish";
@@ -49,6 +48,7 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnPr
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         loginType = 2;
         type = getIntent().getStringExtra("type");
     }
@@ -61,7 +61,7 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnPr
             bind.etPhone.setText(SpUtil.getStringData("histore_phone"));
         }
         bind.tvLoginAgreement.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-        bind.imgLine.getViewTreeObserver().addOnPreDrawListener(this);
+
         bind.tbCode.setOnLoadDataListener(this);
         bind.setClearPhoneListener(v -> bind.etPhone.setText(""));
         bind.setPwdLoginListener(v -> {
@@ -93,16 +93,6 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnPr
 
 
     @Override
-    public boolean onPreDraw() {
-        int translationX = (AppUtil.getWidth(mActivity) / 2 - bind.imgLine.getWidth()) / 2;
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT
-                , RelativeLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMarginStart(translationX);
-        bind.imgLine.setLayoutParams(layoutParams);
-        return true;
-    }
-
-    @Override
     public void load(final TimeButton timeButton) {
         String phone = bind.etPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone)) {
@@ -131,21 +121,21 @@ public class LoginActivity extends BaseActivity implements ViewTreeObserver.OnPr
     }
 
     public void Click() {
-        if (bind.imgLine.getTranslationX() == 0 && loginType == 1) {
-            ObjectAnimator animator = ObjectAnimator.ofFloat(bind.imgLine, "translationX", bind.imgLine.getTranslationX(), AppUtil.getWidth(mActivity) / 2);
-            animator.setDuration(500);
-            animator.start();
+
+        if (loginType == 1) {
+            bind.imgLine2.setVisibility(View.VISIBLE);
+            bind.imgLine1.setVisibility(View.GONE);
+
             //密码登录
             new Handler().postDelayed(() -> {
                 bind.etPwd.setVisibility(View.VISIBLE);
                 bind.llLastPwd.setVisibility(View.VISIBLE);
                 bind.llCode.setVisibility(View.GONE);
             }, 500);
-        }
-        if (bind.imgLine.getTranslationX() > 0 && loginType == 2) {
-            ObjectAnimator animator = ObjectAnimator.ofFloat(bind.imgLine, "translationX", bind.imgLine.getTranslationX(), 0);
-            animator.setDuration(500);
-            animator.start();
+        }else if (loginType == 2) {
+            bind.imgLine1.setVisibility(View.VISIBLE);
+            bind.imgLine2.setVisibility(View.GONE);
+
             new Handler().postDelayed(() -> {
                 bind.etPwd.setVisibility(View.GONE);
                 bind.llLastPwd.setVisibility(View.GONE);

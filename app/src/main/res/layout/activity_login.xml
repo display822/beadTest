@@ -40,41 +40,57 @@
             android:background="@color/color_FFFFFF"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
             <TextView
                 android:id="@+id/tv_code_login"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="@{codeLoginListener}"
                 android:padding="15dp"
                 android:text="@string/login_by_code" />
 
+                <ImageView
+                    android:id="@+id/img_line1"
+                    android:layout_width="100dp"
+                    android:layout_height="3dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/login_indicator" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_pwd_login"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="@{pwdLoginListener}"
                 android:padding="15dp"
                 android:text="@string/login_by_pwd" />
 
+                <ImageView
+                    android:id="@+id/img_line2"
+                    android:layout_width="100dp"
+                    android:layout_height="3dp"
+                    android:scaleType="fitXY"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/login_indicator" />
+            </LinearLayout>
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_FFFFFF">
-
-            <ImageView
-                android:id="@+id/img_line"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_login_check_line" />
-
-
-        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,9 +143,11 @@
 
             <LinearLayout
                 android:id="@+id/ll_code"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="10dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -145,8 +163,8 @@
 
                 <com.dreamwallet.widget.TimeButton
                     android:id="@+id/tb_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/bg_login_verify"
@@ -174,7 +192,7 @@
                     android:layout_marginStart="5dp"
                     android:onClick="@{findPwdListener}"
                     android:text="@string/click_with_find"
-                    android:textColor="@color/color_30cad9" />
+                    android:textColor="@color/main_color" />
             </LinearLayout>
 
             <TextView
@@ -182,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_btn"
+                android:background="@drawable/login_indicator"
                 android:gravity="center"
                 android:onClick="@{LoginListener}"
                 android:text="@string/login"
@@ -215,7 +233,7 @@
                     android:id="@+id/tv_login_agreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_30cad9"
+                    android:textColor="@color/main_color"
                     android:text="@string/register_agreement" />
             </LinearLayout>
         </LinearLayout>
