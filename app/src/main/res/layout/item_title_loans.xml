@@ -40,10 +40,10 @@
 
             <View
                 android:id="@+id/view_line"
-                android:layout_width="12dp"
+                android:layout_width="16dp"
                 android:layout_height="5dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/main_color"
+                android:background="@drawable/title_indicator"
                 android:visibility="@{isShow?View.VISIBLE:View.GONE}" />
 
         </LinearLayout>
