@@ -38,6 +38,7 @@ public class HelpCenterActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         setContentView(R.layout.activity_help_center);
     }
 

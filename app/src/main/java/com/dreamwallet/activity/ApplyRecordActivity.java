@@ -48,7 +48,7 @@ public class ApplyRecordActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
-
+        setFlagTranslucentStatus();
     }
 
     @Override

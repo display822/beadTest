@@ -57,7 +57,7 @@ public class MyFindActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
-
+        setFlagTranslucentStatus();
     }
 
     @Override
