@@ -29,7 +29,8 @@ public class MyTagAdapter extends TagAdapter<String> {
             //蓝色
             resXml = R.layout.item_flow_textblue;
         }
-        TextView tvHeader = (TextView) LayoutInflater.from(parent.getContext()).inflate(resXml, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(resXml, parent, false);
+        TextView tvHeader = (TextView) view.findViewById(R.id.loans_label);
         tvHeader.setText(s);
         return tvHeader;
     }

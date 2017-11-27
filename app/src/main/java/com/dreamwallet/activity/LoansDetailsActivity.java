@@ -53,7 +53,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
         setFlagTranslucentStatus();
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_loans_details);
         toolbar = ToolBarUtil.getInstance(mActivity).setTitle("追梦钱包").build();
-        toolbar.setBackgroundColor(Color.argb((int) 0, 104, 230, 219));
+        toolbar.setBackgroundColor(Color.argb((int) 0, 228, 208, 55));
         ViewTreeObserver observer = binding.llTop.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -123,13 +123,13 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
     @Override
     public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
         if (y <= 0) {
-            toolbar.setBackgroundColor(Color.argb((int) 0, 104, 230, 219));  //AGB由相关工具获得，或者美工提供
+            toolbar.setBackgroundColor(Color.argb((int) 0, 228, 208, 55));  //AGB由相关工具获得，或者美工提供
         } else if (y > 0 && y <= imageHeight) {
             float scale = (float) y / imageHeight;
             // 只是layout背景透明(仿知乎滑动效果)
-            toolbar.setBackgroundColor(Color.argb((int) (255 * scale), 104, 230, 219));
+            toolbar.setBackgroundColor(Color.argb((int) (255 * scale), 228, 208, 55));
         } else {
-            toolbar.setBackgroundColor(Color.argb((int) 255, 104, 230, 219));
+            toolbar.setBackgroundColor(Color.argb((int) 255, 228, 208, 55));
         }
     }
 

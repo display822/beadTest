@@ -9,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.util.SpUtil;
 import com.dreamwallet.R;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.util.SpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +25,8 @@ import java.util.List;
 public class GuideActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager vpGuide;
     private List<View> pagers = new ArrayList<>();
-    private List<View> pagers_img = new ArrayList<>();
-    private View dot1;
-    private View dot2;
-    private View dot3;
-    private TextView tv_entry;
-    private TextView tv_tip;
+    private ImageView dot;
+    private ImageView tv_entry;
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, GuideActivity.class));
@@ -40,13 +35,15 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void initVar() {
-        int[] resID = new int[]{R.drawable.ic_guide1, R.drawable.ic_guide2, R.drawable.ic_guide3};
-        for (int i = 0; i < resID.length; i++) {
+        int[] resImg = new int[]{R.drawable.ic_guide1, R.drawable.ic_guide2, R.drawable.ic_guide3};
+        int[] resTv = new int[]{R.drawable.tv_guid_1, R.drawable.tv_guid_2, R.drawable.tv_guid_3};
+        for (int i = 0; i < resImg.length; i++) {
             View view = LayoutInflater.from(this).inflate(R.layout.widget_guide_page, null);
             ImageView imageView = ((ImageView) view.findViewById(R.id.img_page));
-            imageView.setImageResource(resID[i]);
+            ImageView tvView = ((ImageView) view.findViewById(R.id.tv_page));
+            imageView.setImageResource(resImg[i]);
+            tvView.setImageResource(resTv[i]);
             pagers.add(view);
-            pagers_img.add(imageView);
         }
     }
 
@@ -56,8 +53,8 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener 
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         setContentView(R.layout.activity_guide);
         vpGuide = (ViewPager) findViewById(R.id.vp_guide);
-        tv_tip = (TextView) findViewById(R.id.tv_tip);
-        tv_entry = (TextView) findViewById(R.id.tv_entry);
+        dot = (ImageView) findViewById(R.id.tips_dot);
+        tv_entry = (ImageView) findViewById(R.id.tv_entry);
         tv_entry.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
@@ -66,11 +63,7 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener 
             }
         });
 
-        dot1 = findViewById(R.id.dot1);
-        dot2 = findViewById(R.id.dot2);
-        dot3 = findViewById(R.id.dot3);
 
-        dot1.setSelected(true);
         tv_entry.setVisibility(View.GONE);
 
         bindAdapter();
@@ -116,20 +109,11 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener 
             public void onPageSelected(int position) {
                 tv_entry.setVisibility(View.GONE);
                 if (position == 0) {
-                    tv_tip.setText("海量产品  精准定位");
-                    dot1.setSelected(true);
-                    dot2.setSelected(false);
-                    dot3.setSelected(false);
+                    dot.setImageResource(R.drawable.ic_dot_one);
                 } else if (position == 1) {
-                    tv_tip.setText("数据安全  滴水不漏");
-                    dot1.setSelected(false);
-                    dot2.setSelected(true);
-                    dot3.setSelected(false);
+                    dot.setImageResource(R.drawable.ic_dot_two);
                 } else if (position == 2) {
-                    tv_tip.setText("海量产品  精准定位");
-                    dot1.setSelected(false);
-                    dot2.setSelected(false);
-                    dot3.setSelected(true);
+                    dot.setImageResource(R.drawable.ic_dot_three);
                     tv_entry.setVisibility(View.VISIBLE);
                 }
             }
@@ -144,7 +128,6 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onDestroy() {
         pagers = null;
-        pagers_img = null;
         super.onDestroy();
     }
 
