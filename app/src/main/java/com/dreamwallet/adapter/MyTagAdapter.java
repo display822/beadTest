@@ -32,6 +32,6 @@ public class MyTagAdapter extends TagAdapter<String> {
         View view = LayoutInflater.from(parent.getContext()).inflate(resXml, parent, false);
         TextView tvHeader = (TextView) view.findViewById(R.id.loans_label);
         tvHeader.setText(s);
-        return tvHeader;
+        return view;
     }
 }
