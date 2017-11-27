@@ -6,24 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.dreamwallet.R;
-import com.dreamwallet.adapter.GalleryAdapter;
-import com.dreamwallet.widget.DepthPageTransformer;
-import com.dreamwallet.widget.GlideRoundBitmap;
 import com.bumptech.glide.Glide;
-import com.example.skn.framework.base.BaseFragment;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
+import com.dreamwallet.R;
 import com.dreamwallet.activity.LoansDetailsActivity;
 import com.dreamwallet.activity.MainActivity;
 import com.dreamwallet.activity.MyActivityActivity;
+import com.dreamwallet.adapter.GalleryAdapter;
 import com.dreamwallet.adapter.HomeInformationAdapter;
 import com.dreamwallet.databinding.DefaultProductBinding;
 import com.dreamwallet.databinding.FragmentHomeBinding;
@@ -33,7 +25,12 @@ import com.dreamwallet.entity.HomeInformationEntity;
 import com.dreamwallet.entity.StarProductEntity;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
-import com.example.skn.framework.util.ToolBarUtil;
+import com.dreamwallet.widget.DepthPageTransformer;
+import com.dreamwallet.widget.GlideRoundBitmap;
+import com.example.skn.framework.base.BaseFragment;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -145,8 +142,8 @@ public class HomeFragment extends BaseFragment {
                             for(BannerEntity b : bannerEntities){
                                 ImageView iv = new ImageView(getActivity());
                                 iv.setScaleType(ImageView.ScaleType.FIT_XY);
-                                Glide.with(mActivity).load(b.getTitleImg()).
-                                        bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
+                                Glide.with(mActivity).load(b.getTitleImg()).placeholder(R.drawable.ic_banner_holder).
+                                        error(R.drawable.ic_banner_holder).bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
                             }
                             binding.banner1.setPageMargin(25);
