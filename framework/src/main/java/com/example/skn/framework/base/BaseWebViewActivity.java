@@ -54,6 +54,7 @@ public class BaseWebViewActivity extends BaseActivity {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void init() {
+        setFlagTranslucentStatus();
         setContentView(R.layout.activity_web_view);
         toolbar = ToolBarUtil.getInstance(this).setTitle(title).build();
         webView = (WebView) findViewById(R.id.web);

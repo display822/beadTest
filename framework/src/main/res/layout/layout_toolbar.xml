@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/toolbar"
+        android:background="@drawable/title_bg"
         android:clipToPadding="true"
         android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"

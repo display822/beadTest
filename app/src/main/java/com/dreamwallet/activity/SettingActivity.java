@@ -34,6 +34,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         setContentView(R.layout.activity_setting);
     }
 

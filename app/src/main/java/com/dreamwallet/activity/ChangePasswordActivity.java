@@ -39,6 +39,7 @@ public class ChangePasswordActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         setContentView(R.layout.activity_change_password);
     }
 

@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dreamwallet.R;
+import com.dreamwallet.util.UrlService;
+import com.dreamwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
 import com.example.skn.framework.util.StringUtil;
 import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.dreamwallet.R;
-import com.dreamwallet.util.UrlService;
-import com.dreamwallet.util.UserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +35,7 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
     private EditText et_phone;
     private EditText et_content;
     private TextView btn_submit;
+    private ImageView ic_back;
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, FeedBackActivity.class));
@@ -42,12 +43,13 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         setContentView(R.layout.activity_feed_back);
     }
 
     @Override
     protected void init() {
-        ToolBarUtil.getInstance(this).setTitle("我要反馈").build();
+
         rb_apply_borrow = (RadioButton) findViewById(R.id.rb_apply_borrow);
         rb_experience = (RadioButton) findViewById(R.id.rb_experience);
         rb_other = (RadioButton) findViewById(R.id.rb_other);
@@ -55,7 +57,9 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
         et_phone = (EditText) findViewById(R.id.et_phone);
         et_content = (EditText) findViewById(R.id.et_content);
         btn_submit = (TextView) findViewById(R.id.btn_submit);
+        ic_back = (ImageView) findViewById(R.id.title_back);
 
+        ic_back.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         rb_apply_borrow.setChecked(true);
     }
@@ -109,6 +113,9 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
         switch (view.getId()) {
             case R.id.btn_submit:
                 submit();
+                break;
+            case R.id.title_back:
+                finish();
                 break;
         }
     }

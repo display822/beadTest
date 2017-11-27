@@ -2,4 +2,6 @@
 <resources>
 
     <dimen name="status_bar_padding">25dp</dimen>
+
+    <dimen name="loans_height">65dp</dimen>
 </resources>
