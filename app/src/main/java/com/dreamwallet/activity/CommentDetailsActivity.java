@@ -6,13 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.dreamwallet.R;
 import com.dreamwallet.adapter.CommentAdapter;
 import com.dreamwallet.databinding.ActivityCommentBinding;
@@ -20,6 +13,12 @@ import com.dreamwallet.entity.CommentBean;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.ToastUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,13 +47,15 @@ public class CommentDetailsActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
+
+        setFlagTranslucentStatus();
         csmId = getIntent().getIntExtra("csmId", 0);
     }
 
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_comment);
-        ToolBarUtil.getInstance(mActivity).setTitle("全部评论").build();
+        binding.titleBack.setOnClickListener(view -> finish());
         commentAdapter = new CommentAdapter(mActivity, data);
         commentAdapter.setHideLastLine(true);
         binding.rlComment.setAdapter(commentAdapter);

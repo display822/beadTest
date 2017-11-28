@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="18sp"
-                android:text="资讯"
+                android:text="梦想分期"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="15dp"

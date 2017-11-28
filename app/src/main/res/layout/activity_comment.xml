@@ -12,7 +12,35 @@
         android:orientation="vertical">
 
 
-        <include layout="@layout/layout_toolbar" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/loans_height"
+            android:orientation="horizontal"
+            android:background="@drawable/title_bg"
+            >
+
+            <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="15dp"
+                />
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="18sp"
+                android:text="全部评论"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp"
+                />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_comment_send"
+                    android:background="@drawable/bg_login_verify"
                     android:gravity="center"
                     android:maxLength="200"
                     android:text="发送"

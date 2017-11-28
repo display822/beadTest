@@ -12,18 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamwallet.R;
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.dreamwallet.adapter.MyTagAdapter;
 import com.dreamwallet.databinding.ActivityApplyRecordBinding;
 import com.dreamwallet.databinding.ItemApplyRecordBinding;
 import com.dreamwallet.entity.ApplyRecordBean;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,8 @@ public class ApplyRecordActivity extends BaseActivity {
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_apply_record);
-        ToolBarUtil.getInstance(mActivity).setTitle("申请记录").build();
+
+        binding.titleBack.setOnClickListener(view -> finish());
         binding.rlApply.setLayoutManager(new LinearLayoutManager(mActivity));
         applyRecordAdapter = new ApplyRecordAdapter(mActivity, data);
         binding.rlApply.setAdapter(applyRecordAdapter);
@@ -145,14 +145,14 @@ public class ApplyRecordActivity extends BaseActivity {
 
         @Override
         public ApplyRecordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            ItemApplyRecordBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_apply_record, parent, false);
+            ItemApplyRecordBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_loans_record, parent, false);
             return new ApplyRecordViewHolder(binding);
         }
 
         @Override
         public void onBindViewHolder(ApplyRecordViewHolder holder, int position) {
             holder.binding.setData(data.get(position));
-            holder.binding.tvInfo.setText(data.get(position).getLendSpeed() + "放款 | 参考费率：" + data.get(position).getDailyInterestRate() + "% | 贷款期限" + data.get(position).getCycle());
+            holder.binding.tvInfo.setText(data.get(position).getLendSpeed() + "放款\n月费率" + data.get(position).getDailyInterestRate() + "%\n贷款期限" + data.get(position).getCycle());
             holder.binding.setApplyClick(view -> LoansDetailsActivity.startActivity(mActivity, data.get(position).getProductId() + ""));
             if (!TextUtils.isEmpty(data.get(position).getLabel())) {
                 String[] labels = data.get(position).getLabel().split(",");

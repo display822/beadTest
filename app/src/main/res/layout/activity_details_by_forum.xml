@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="18sp"
-                android:text="论坛"
+                android:text="梦想分期"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="15dp"
@@ -159,14 +159,13 @@
                         android:id="@+id/tv_show_all_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="60dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:background="@drawable/bg_login_verify"
                         android:gravity="center"
                         android:padding="12dp"
                         android:text="查看更多跟帖"
-                        android:textColor="@color/toolbar" />
+                        android:textColor="@color/main_color" />
                 </LinearLayout>
             </ScrollView>
 
