@@ -8,12 +8,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.skn.framework.base.BaseApplication;
 import com.example.skn.framework.http.Api;
-import com.example.skn.framework.util.CrashHandler;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.UMShareConfig;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -35,12 +33,12 @@ public class Application extends BaseApplication {
     }
 
     protected void setBaseUrl() {
-        Api.setBaseUrl("http://n.beadwallet.com/loansupermarket-app/");//正式
+        Api.setBaseUrl("http://47.100.31.15/loansupermarket-app/");//正式
 //        Api.setBaseUrl("http://106.14.97.38:8060/loansupermarket-app/");//测试
     }
 
     public static String getShareUrl() {
-        return  "http://n.beadwallet.com/loansupermarket/#/main/home";//正式
+        return  "http://47.100.31.15/loansupermarket/#/main/home";//正式
 //        return "http://106.14.97.38/szqb/#/main/home";//测试
     }
 

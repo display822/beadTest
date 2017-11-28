@@ -28,15 +28,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/color_FFFFFF"
+        android:orientation="vertical"
+        android:clipChildren="false">
 
-        <cn.bingoogolapple.bgabanner.BGABanner
-            android:id="@+id/banner"
-            style="@style/BannerDefaultStyle"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:banner_pointTopBottomMargin="15dp"
-            app:banner_placeholderDrawable="@drawable/ic_find_banner" />
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:clipChildren="false">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/banner2"
+                android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_height="120dp"
+                android:visibility="gone"
+                >
+            </android.support.v4.view.ViewPager>
+
+            <ImageView
+                android:id="@+id/banner2_no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_banner_holder" />
+        </FrameLayout>
+
 
         <LinearLayout
             android:id="@+id/ll_detail"
@@ -45,18 +64,20 @@
             android:layout_gravity="bottom"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="-20dp"
             android:background="@drawable/shape_default_bg"
             android:orientation="horizontal"
-            android:padding="15dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="8dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawablePadding="10dp"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_forum_icon1"
                 android:gravity="center"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp"
                 android:onClick="@{click1}"
                 android:text="行业资讯" />
 
@@ -64,9 +85,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawablePadding="10dp"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_forum_icon2"
                 android:gravity="center"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp"
                 android:onClick="@{click2}"
                 android:text="贷款知识" />
 
@@ -74,9 +97,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawablePadding="10dp"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_forum_icon3"
                 android:gravity="center"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp"
                 android:onClick="@{click3}"
                 android:text="用卡常识" />
 
@@ -84,21 +109,15 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawablePadding="10dp"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_forum_icon4"
                 android:gravity="center"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp"
                 android:onClick="@{click4}"
                 android:text="防骗课堂" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_tip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="- 资讯精选 -"
-            android:textStyle="bold" />
     </LinearLayout>
 </layout>

@@ -133,6 +133,8 @@ public class HomeFragment extends BaseFragment {
                     public void onSuccess(List<BannerEntity> bannerEntities) {
 
                         if(bannerEntities != null && bannerEntities.size() > 0){
+                            binding.banner1.setVisibility(View.VISIBLE);
+                            binding.banner1No.setVisibility(View.GONE);
                             if(bannerEntities.size()>1){
                                 //添加无限滑动
                                 bannerEntities.add(0, bannerEntities.get(bannerEntities.size()-1));
@@ -176,6 +178,9 @@ public class HomeFragment extends BaseFragment {
                                 }
                             });
 
+                        }else{
+                            binding.banner1.setVisibility(View.GONE);
+                            binding.banner1No.setVisibility(View.VISIBLE);
                         }
 
                         closeRefresh(1);
@@ -183,6 +188,8 @@ public class HomeFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(String code, String errorMsg) {
+                        binding.banner1.setVisibility(View.GONE);
+                        binding.banner1No.setVisibility(View.VISIBLE);
                         closeRefresh(1);
                     }
                 });
