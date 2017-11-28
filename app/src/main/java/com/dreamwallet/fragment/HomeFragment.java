@@ -210,7 +210,7 @@ public class HomeFragment extends BaseFragment {
                             ArrayList<String> titleList = new ArrayList<>();
                             for (BorrowRecordEntity item : borrowRecordEntities) {
                                 if (item != null) {
-                                    titleList.add(item.getNote());
+                                    titleList.add("尾号"+item.getPhone()+"的用户在"+item.getProduct_name()+"成功借款"+item.getMoney()+"元");
                                 }
                             }
                             binding.text.setData(titleList, null);

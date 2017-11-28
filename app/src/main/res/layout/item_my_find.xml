@@ -47,7 +47,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="10dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_find_list_icon" />
+                android:src="@drawable/ic_home_infoprefer" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -1,11 +1,8 @@
 package com.dreamwallet.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
-import android.text.method.MovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
@@ -16,9 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-
-import com.example.skn.framework.util.AppUtil;
 import com.dreamwallet.R;
+import com.example.skn.framework.util.AppUtil;
 
 import java.util.List;
 
@@ -103,7 +99,7 @@ public class VerticalMarqueeTextView extends LinearLayout {
         int i = 0;
         while (i < strs.size()) {   //循环
             final TextView tv = new TextView(mContext);
-            int index = strs.get(i).lastIndexOf("请");
+            int index = strs.get(i).lastIndexOf("款");
             SpannableStringBuilder builder = new SpannableStringBuilder(strs.get(i));
             if (index > 0) {
                 builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.borrow_color)), index + 1, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

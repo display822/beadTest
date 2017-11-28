@@ -264,8 +264,8 @@ public class MyFindActivity extends BaseActivity {
             MyFindEntity myFindEntity = data.get(position);
             if (visitType == 1) {
                 holder.binding.iv.setVisibility(View.VISIBLE);
-                Glide.with(holder.binding.iv.getContext()).load(myFindEntity.getImg()).placeholder(R.drawable.ic_find_list_icon)
-                        .error(R.drawable.ic_find_list_icon).into(holder.binding.iv);
+                Glide.with(holder.binding.iv.getContext()).load(myFindEntity.getImg()).placeholder(R.drawable.ic_home_infoprefer)
+                        .error(R.drawable.ic_home_infoprefer).into(holder.binding.iv);
             } else {
                 holder.binding.iv.setVisibility(View.GONE);
             }

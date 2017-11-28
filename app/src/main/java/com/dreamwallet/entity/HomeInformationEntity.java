@@ -18,6 +18,7 @@ public class HomeInformationEntity {
     private String title;
     private String url;
     private long create_time;
+    private String cms_content_pv;
 
     public String getImg() {
         return img;
@@ -57,5 +58,13 @@ public class HomeInformationEntity {
 
     public void setCreate_time(long create_time) {
         this.create_time = create_time;
+    }
+
+    public String getCms_content_pv() {
+        return cms_content_pv;
+    }
+
+    public void setCms_content_pv(String cms_content_pv) {
+        this.cms_content_pv = cms_content_pv;
     }
 }

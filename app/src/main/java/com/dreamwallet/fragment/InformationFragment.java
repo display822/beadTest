@@ -212,7 +212,7 @@ public class InformationFragment extends BaseFragment {
             viewHolder.setText(R.id.tv_time, DataUtil.getTime(item.getCreate_time()));
             viewHolder.setText(R.id.tv_title, item.getTitle());
             ImageView iv = viewHolder.getView(R.id.iv);
-            Glide.with(mActivity).load(item.getImg()).placeholder(R.drawable.ic_find_list_icon).error(R.drawable.ic_find_list_icon).into(iv);
+            Glide.with(mActivity).load(item.getImg()).placeholder(R.drawable.ic_home_infoprefer).error(R.drawable.ic_home_infoprefer).into(iv);
             viewHolder.getView(R.id.ll_item).setOnClickListener(new OnNoDoubleClickListener() {
                 @Override
                 public void onNoDoubleClick(View v) {
