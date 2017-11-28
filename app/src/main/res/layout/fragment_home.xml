@@ -45,7 +45,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="@dimen/status_bar_padding"
                 android:background="@color/color_dddddd"
                 />
             <TextView

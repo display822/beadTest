@@ -54,8 +54,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     public void showFindByPosition(int position) {
         Global.findPosition = position;
-        ((RadioButton) rgMain.getChildAt(2)).setChecked(true);
+//        ((RadioButton) rgMain.getChildAt(2)).setChecked(true);
 
+        Intent intent = new Intent(this, InformationActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -1,14 +1,10 @@
 package com.example.skn.framework.util;
 
-import android.app.Activity;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.util.Base64;
 import android.util.Log;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -217,8 +213,8 @@ public class StringUtil {
      */
     public static String encrypting(String str) {
         try {
-            SecretKeySpec key = new SecretKeySpec("meiyouzy".getBytes(), "DES");
-            IvParameterSpec iv = new IvParameterSpec("meiyouzy".getBytes());
+            SecretKeySpec key = new SecretKeySpec("MonsterWallet".getBytes(), "DES");
+            IvParameterSpec iv = new IvParameterSpec("MonsterWallet".getBytes());
             Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, key, iv);
             byte[] result = cipher.doFinal(str.getBytes());
@@ -236,8 +232,8 @@ public class StringUtil {
     public static String decryption(String str) {
         try {
             byte[] result = Base64.decode(str.getBytes(), Base64.DEFAULT);
-            SecretKeySpec key = new SecretKeySpec("meiyouzy".getBytes(), "DES");
-            IvParameterSpec iv = new IvParameterSpec("meiyouzy".getBytes());
+            SecretKeySpec key = new SecretKeySpec("MonsterWallet".getBytes(), "DES");
+            IvParameterSpec iv = new IvParameterSpec("MonsterWallet".getBytes());
             Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, key, iv);
             Log.i("Base64Util", "b: " + new String(cipher.doFinal(result)));

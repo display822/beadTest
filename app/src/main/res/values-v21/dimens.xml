@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="status_bar_padding">25dp</dimen>
+    <dimen name="status_bar_padding">22dp</dimen>
 
     <dimen name="loans_height">65dp</dimen>
 </resources>
