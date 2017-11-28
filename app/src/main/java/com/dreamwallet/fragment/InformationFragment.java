@@ -29,6 +29,7 @@ import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.DataUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -123,6 +124,9 @@ public class InformationFragment extends BaseFragment {
                                 Glide.with(mActivity).load(b.getTitleImg()).placeholder(R.drawable.ic_banner_holder).
                                         error(R.drawable.ic_banner_holder).bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
+                                iv.setOnClickListener(view ->
+                                        AppUtil.startWeb(mActivity, b.getUrl())
+                                );
                             }
                             layoutBinding.banner2.setPageMargin(25);
                             layoutBinding.banner2.setAdapter(new GalleryAdapter(imgs));

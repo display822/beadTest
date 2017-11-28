@@ -31,6 +31,7 @@ import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.DataUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -72,6 +73,7 @@ public class ForumFragment extends BaseFragment {
         layoutBinding = DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.layout_find_fragment_group_layout, null, false);
         layoutBinding.llDetail.setVisibility(View.GONE);
         forumAdapter = new ForumAdapter(mActivity, data, R.layout.item_forum);
+        binding.rlForum.setDivider(null);
         binding.rlForum.addHeaderView(layoutBinding.getRoot());
         binding.rlForum.setAdapter(forumAdapter);
         binding.refresh.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
@@ -130,6 +132,8 @@ public class ForumFragment extends BaseFragment {
                                 Glide.with(mActivity).load(b.getTitleImg()).placeholder(R.drawable.ic_banner_holder).
                                         error(R.drawable.ic_banner_holder).bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
+                                iv.setOnClickListener(view ->
+                                        AppUtil.startWeb(mActivity, b.getUrl()));
                             }
                             layoutBinding.banner2.setPageMargin(25);
                             layoutBinding.banner2.setAdapter(new GalleryAdapter(imgs));

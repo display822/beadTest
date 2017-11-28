@@ -8,15 +8,14 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.dreamwallet.R;
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
 import com.dreamwallet.databinding.ActivityAddForumBinding;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.ToastUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +32,13 @@ public class AddForumActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
-
+        setFlagTranslucentStatus();
     }
 
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_add_forum);
-        ToolBarUtil.getInstance(mActivity).setTitle("发帖").build();
+        binding.titleBack.setOnClickListener(view -> finish());
         binding.tvAdd.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {

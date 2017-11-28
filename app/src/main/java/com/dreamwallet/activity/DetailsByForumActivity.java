@@ -8,12 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.umeng.socialize.UMShareAPI;
 import com.dreamwallet.R;
 import com.dreamwallet.adapter.CommentAdapter;
 import com.dreamwallet.databinding.ActivityDetailsByForumBinding;
@@ -22,6 +16,11 @@ import com.dreamwallet.util.ShareUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.ToastUtil;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.HashMap;
 
@@ -42,13 +41,14 @@ public class DetailsByForumActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
         cmsId = getIntent().getIntExtra("cmsId", 0);
     }
 
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_details_by_forum);
-        ToolBarUtil.getInstance(mActivity).setTitle("").build();
+        binding.titleBack.setOnClickListener(view -> finish());
         binding.tvSend.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
