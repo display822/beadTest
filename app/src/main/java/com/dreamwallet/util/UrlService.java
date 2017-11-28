@@ -86,6 +86,11 @@ public interface UrlService {
     @GET("information/getInformationList")
     Observable<BaseEntity<List<InformationEntity>>> getInformationList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
+    //资讯流量量
+    @GET("information/cmsContentPv")
+    Observable<BaseEntity<String>> informationCount(@Query("informationId") String informationId);
+
+
     //得到论坛
     @POST("post/list")
     Observable<BaseEntity<List<ForumEntity>>> getForumList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);

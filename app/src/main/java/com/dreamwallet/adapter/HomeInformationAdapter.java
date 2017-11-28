@@ -12,6 +12,7 @@ import com.dreamwallet.R;
 import com.dreamwallet.activity.DetailsActivity;
 import com.dreamwallet.databinding.ItemHomeInformationBinding;
 import com.dreamwallet.entity.HomeInformationEntity;
+import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.bumptech.glide.Glide;
 
@@ -47,6 +48,7 @@ public class HomeInformationAdapter extends RecyclerView.Adapter<HomeInformation
         holder.binding.getRoot().setOnClickListener(new OnNoDoubleClickListener() {
                                                         @Override
                                                         public void onNoDoubleClick(View v) {
+                                                            StatisticsUtil.homeInformationCount(String.valueOf(homeInformationEntity.getId()));
                                                             DetailsActivity.startActivity(context, homeInformationEntity.getId());
                                                         }
                                                     }

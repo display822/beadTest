@@ -22,6 +22,31 @@ public class StatisticsUtil {
     public static final int FORUM = 2;//论坛
 
     /**
+     *
+     *  首页资讯统计
+     */
+    public static void homeInformationCount(String informationId){
+        Api.getDefault(UrlService.class).informationCount(informationId).compose(Api.handlerResult())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("beadwallet", "insertInformationVisit---error--->" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e("beadwallet", "insertInformationVisit---success--->" + s);
+                    }
+                });
+
+    }
+
+    /**
      * 统计资讯与论坛
      */
     public static void statistics(Context context, int type, int id) {

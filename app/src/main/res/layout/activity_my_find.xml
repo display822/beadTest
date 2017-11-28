@@ -33,13 +33,12 @@
 
             <TextView
                 android:id="@+id/tv_edit"
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize"
                 android:layout_alignParentEnd="true"
-                android:gravity="center"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
+                android:layout_alignParentBottom="true"
                 android:text="编辑"
+                android:layout_marginBottom="20dp"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="15sp" />
 
@@ -69,14 +68,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="资讯"
-                    android:textColor="@{isInformation?@color/toolbar:@color/color_424242}"
+                    android:textColor="@{isInformation?@color/main_color:@color/color_424242}"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_apply_record_line"
+                    android:background="@color/main_color"
                     android:visibility="@{isInformation?View.VISIBLE:View.GONE}" />
             </LinearLayout>
 
@@ -103,14 +102,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="帖子"
-                    android:textColor="@{!isInformation?@color/toolbar:@color/color_424242}"
+                    android:textColor="@{!isInformation?@color/main_color:@color/color_424242}"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_apply_record_line"
+                    android:background="@color/main_color"
                     android:visibility="@{!isInformation?View.VISIBLE:View.GONE}" />
             </LinearLayout>
 
