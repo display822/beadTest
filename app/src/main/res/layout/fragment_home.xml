@@ -67,7 +67,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="15dp"
                 android:onClick="@{tipClick}"
-                android:src="@drawable/ic_activity"
+                android:src="@drawable/ic_activity_tip"
                 />
         </RelativeLayout>
 
@@ -80,7 +80,6 @@
         android:layout_height="match_parent"
         android:background="@color/color_f5f5f5">
 
-        <include layout="@layout/layout_refresh" />
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">

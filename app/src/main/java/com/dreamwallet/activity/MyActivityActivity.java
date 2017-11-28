@@ -11,15 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToolBarUtil;
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ItemMyActivityBinding;
 import com.dreamwallet.entity.MyActivityEntity;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
 
 import java.util.List;
 
@@ -37,13 +36,13 @@ public class MyActivityActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
-
+        setFlagTranslucentStatus();
     }
 
     @Override
     protected void init() {
         setContentView(R.layout.activity_my_activity);
-        ToolBarUtil.getInstance(mActivity).setTitle("活动").build();
+
         rlActivity = (RecyclerView) findViewById(R.id.rl_activity);
         rlActivity.setLayoutManager(new LinearLayoutManager(mActivity));
         View view = findViewById(R.id.activity_my_myactivity);
