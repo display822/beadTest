@@ -3,6 +3,7 @@ package com.dreamwallet.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -38,6 +39,7 @@ public class CommentDetailsActivity extends BaseActivity {
     private int LOAD = 1;
     private ActivityCommentBinding binding;
     private CommentAdapter commentAdapter;
+    AnimationDrawable drawable;
 
     public static void StartActivity(Context context, int csmId) {
         Intent intent = new Intent(context, CommentDetailsActivity.class);
@@ -55,6 +57,9 @@ public class CommentDetailsActivity extends BaseActivity {
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_comment);
+
+        drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
+        drawable.start();
         binding.titleBack.setOnClickListener(view -> finish());
         commentAdapter = new CommentAdapter(mActivity, data);
         commentAdapter.setHideLastLine(true);
@@ -137,6 +142,7 @@ public class CommentDetailsActivity extends BaseActivity {
                             binding.refresh.finishRefresh();
                             updateEmptyOrNetErrorView(data.size() > 0, true);
                         } else if (type == LOAD) binding.refresh.finishLoadmore();
+
                     }
 
                     @Override
@@ -149,6 +155,7 @@ public class CommentDetailsActivity extends BaseActivity {
                             binding.refresh.finishRefresh();
                             updateEmptyOrNetErrorView(false, !TextUtils.equals(code, "-1"));
                         } else if (type == LOAD) binding.refresh.finishLoadmore();
+
                     }
                 });
     }

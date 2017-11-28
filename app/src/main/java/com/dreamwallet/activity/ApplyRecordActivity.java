@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -40,6 +41,8 @@ public class ApplyRecordActivity extends BaseActivity {
     private ApplyRecordAdapter applyRecordAdapter;
     private List<ApplyRecordBean> data = new ArrayList<>();
 
+    AnimationDrawable drawable;
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, ApplyRecordActivity.class);
         context.startActivity(intent);
@@ -54,6 +57,8 @@ public class ApplyRecordActivity extends BaseActivity {
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_apply_record);
 
+        drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
+        drawable.start();
         binding.titleBack.setOnClickListener(view -> finish());
         binding.rlApply.setLayoutManager(new LinearLayoutManager(mActivity));
         applyRecordAdapter = new ApplyRecordAdapter(mActivity, data);
@@ -110,6 +115,7 @@ public class ApplyRecordActivity extends BaseActivity {
                             binding.refresh.finishRefresh();
                             updateEmptyOrNetErrorView(false, !TextUtils.equals(code, "-1"));
                         } else if (refrash == LOAD) binding.refresh.finishLoadmore();
+
                     }
 
                     @Override

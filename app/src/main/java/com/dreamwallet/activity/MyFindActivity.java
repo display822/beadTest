@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -47,6 +48,7 @@ public class MyFindActivity extends BaseActivity {
     private int visitType = 1;
     private int REFRESH = 0;
     private int LOAD = 1;
+    AnimationDrawable drawable;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MyFindActivity.class);
@@ -64,6 +66,9 @@ public class MyFindActivity extends BaseActivity {
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_my_find);
         ToolBarUtil.getInstance(mActivity).setTitle("我的发现").build();
+
+        drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
+        drawable.start();
         myFindAdapter = new MyFindAdapter(mActivity, data);
         binding.rlMyFind.setLayoutManager(new LinearLayoutManager(mActivity));
         binding.rlMyFind.setAdapter(myFindAdapter);
@@ -78,6 +83,7 @@ public class MyFindActivity extends BaseActivity {
             public void onRefresh(RefreshLayout refreshlayout) {
                 pageNum = 1;
                 getData(REFRESH);
+
             }
         });
         binding.tvEdit.setOnClickListener(new View.OnClickListener() {

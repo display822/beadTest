@@ -4,7 +4,6 @@ import android.accounts.NetworkErrorException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -85,7 +84,7 @@ public abstract class RequestCallBack<T> extends Subscriber<T> {
 
     public void onNotLogon() {
         if (context != null) {
-            ComponentName componentName = new ComponentName("com.beadwallet", "com.beadwallet.activity.LoginActivity");
+            ComponentName componentName = new ComponentName("com.dreamwallet", "com.dreamwallet.activity.LoginActivity");
             Intent intent = new Intent();
             intent.setComponent(componentName);
             intent.putExtra("type", "finish");

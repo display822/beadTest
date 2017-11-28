@@ -3,24 +3,26 @@ package com.dreamwallet.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ItemInformationListBinding;
 import com.dreamwallet.entity.InformationListEntity;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,8 @@ public class InformationListActivity extends BaseActivity {
     private SmartRefreshLayout refresh;
     private String title;
 
+    AnimationDrawable drawable;
+
     public static void startActivity(Context context, int informationType, String title) {
         Intent intent = new Intent(context, InformationListActivity.class);
         intent.putExtra("informationType", informationType);
@@ -50,6 +54,8 @@ public class InformationListActivity extends BaseActivity {
 
     @Override
     protected void initVar() {
+        setFlagTranslucentStatus();
+
         informationType = getIntent().getIntExtra("informationType", 0);
         title = getIntent().getStringExtra("title");
     }
@@ -57,7 +63,10 @@ public class InformationListActivity extends BaseActivity {
     @Override
     protected void init() {
         setContentView(R.layout.activity_information_list);
-        ToolBarUtil.getInstance(mActivity).setTitle(title).build();
+
+        drawable = (AnimationDrawable) ((ImageView) findViewById(R.id.refresh_anim)).getDrawable();
+        drawable.start();
+        ((TextView) findViewById(R.id.title_tv)).setText(title);
         rlInformation = (RecyclerView) findViewById(R.id.rl_information);
         refresh = (SmartRefreshLayout) findViewById(R.id.refresh);
         rlInformation.setLayoutManager(new LinearLayoutManager(mActivity));
@@ -78,6 +87,8 @@ public class InformationListActivity extends BaseActivity {
                 getData(REFRESH);
             }
         });
+
+        findViewById(R.id.title_back).setOnClickListener(view -> finish());
 
     }
 
@@ -101,6 +112,7 @@ public class InformationListActivity extends BaseActivity {
                         informationListAdapter.notifyDataSetChanged();
                         if (type == REFRESH) refresh.finishRefresh();
                         else if (type == LOAD) refresh.finishLoadmore();
+
                     }
 
                     @Override

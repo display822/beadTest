@@ -13,7 +13,15 @@
             app:srlEnableAutoLoadmore="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include layout="@layout/layout_refresh" />
+
+            <ImageView
+                android:id="@+id/refresh_anim"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:src="@drawable/refresh_anim" />
+
             <ListView
                 android:id="@+id/rl_forum"
                 android:layout_width="match_parent"

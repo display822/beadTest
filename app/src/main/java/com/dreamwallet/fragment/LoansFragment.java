@@ -2,6 +2,7 @@ package com.dreamwallet.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dreamwallet.R;
+import com.dreamwallet.activity.LoansDetailsActivity;
+import com.dreamwallet.adapter.MyTagAdapter;
+import com.dreamwallet.databinding.FragmentLoansBinding;
+import com.dreamwallet.databinding.ItemLoansBinding;
+import com.dreamwallet.entity.LoansEntity;
+import com.dreamwallet.util.StatisticsUtil;
+import com.dreamwallet.util.UrlService;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
@@ -20,14 +29,6 @@ import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-import com.dreamwallet.R;
-import com.dreamwallet.activity.LoansDetailsActivity;
-import com.dreamwallet.adapter.MyTagAdapter;
-import com.dreamwallet.databinding.FragmentLoansBinding;
-import com.dreamwallet.databinding.ItemLoansBinding;
-import com.dreamwallet.entity.LoansEntity;
-import com.dreamwallet.util.StatisticsUtil;
-import com.dreamwallet.util.UrlService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +50,15 @@ public class LoansFragment extends BaseFragment {
     private int pageNum = 1;
     private int REFRESH = 0;
     private int LOAD = 1;
-
+    AnimationDrawable drawable;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loans, container, false);
+
+        drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
+        drawable.start();
         init();
         initEmptyOrNetErrorView(binding.getRoot(), R.id.viewStub, new View.OnClickListener() {
             @Override
@@ -125,6 +129,7 @@ public class LoansFragment extends BaseFragment {
                             binding.refresh.finishRefresh();
                             updateEmptyOrNetErrorView(data.size() > 0, true);
                         } else if (type == LOAD) binding.refresh.finishLoadmore();
+
                     }
 
                     @Override

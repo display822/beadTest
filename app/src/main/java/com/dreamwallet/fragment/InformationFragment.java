@@ -2,6 +2,7 @@ package com.dreamwallet.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -57,6 +58,7 @@ public class InformationFragment extends BaseFragment {
     private InformationAdapter informationAdapter1;
     private List<InformationEntity> data;
     int currentPosition = 0;
+    AnimationDrawable drawable;
 
     @Nullable
     @Override
@@ -71,6 +73,8 @@ public class InformationFragment extends BaseFragment {
         layoutBinding = DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.layout_find_fragment_group_layout, null, false);
         informationAdapter1 = new InformationAdapter(mActivity, data, R.layout.item_information);
 
+        drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
+        drawable.start();
         binding.rlInformation.setDivider(null);
         binding.rlInformation.addHeaderView(layoutBinding.getRoot());
         binding.rlInformation.setAdapter(informationAdapter1);
