@@ -98,8 +98,8 @@ public class MyActivityActivity extends BaseActivity {
         public void onBindViewHolder(MyActivityViewHolder holder, int position) {
             MyActivityEntity myActivityEntity = data.get(position);
             Glide.with(holder.binding.iv.getContext()).load(myActivityEntity.getImg())
-                    .placeholder(R.drawable.ic_activity_cover)
-                    .error(R.drawable.ic_activity_cover)
+                    .placeholder(R.drawable.ic_banner_holder)
+                    .error(R.drawable.ic_banner_holder)
                     .into(holder.binding.iv);
             holder.binding.setData(myActivityEntity);
             holder.binding.setActivityDetailsClick(new OnNoDoubleClickListener() {

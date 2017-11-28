@@ -8,11 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.skn.framework.base.BaseFragment;
 import com.dreamwallet.R;
-import com.dreamwallet.activity.MainActivity;
 import com.dreamwallet.databinding.FragmentFindBinding;
 import com.dreamwallet.util.Global;
+import com.example.skn.framework.base.BaseFragment;
 
 /**
  * Created by hf
@@ -61,10 +60,11 @@ public class FindFragment extends BaseFragment {
      * true =0 资讯
      */
     private void changeTab(boolean flag) {
-        binding.tvInformation.setTextColor(flag ? getResources().getColor(R.color.toolbar) : getResources().getColor(R.color.color_FFFFFF));
-        binding.tvInformation.setBackgroundColor(flag ? getResources().getColor(R.color.color_FFFFFF) : getResources().getColor(R.color.toolbar));
-        binding.tvForum.setBackgroundColor(flag ? getResources().getColor(R.color.toolbar) : getResources().getColor(R.color.color_FFFFFF));
-        binding.tvForum.setTextColor(flag ? getResources().getColor(R.color.color_FFFFFF) : getResources().getColor(R.color.toolbar));
+        binding.tvInformation.setTextColor(flag ? getResources().getColor(R.color.main_color) : getResources().getColor(R.color.color_FFFFFF));
+        binding.tvInformation.setBackground(flag ? getResources().getDrawable(R.drawable.shape_corner5_trans_left) : getResources().getDrawable(R.drawable.shape_corner5_left_no));
+
+        binding.tvForum.setBackground(flag ? getResources().getDrawable(R.drawable.shape_corner5_right_no) : getResources().getDrawable(R.drawable.shape_corner5_trans_right));
+        binding.tvForum.setTextColor(flag ? getResources().getColor(R.color.color_FFFFFF) : getResources().getColor(R.color.main_color));
         if (flag) {
             if (!informationFragment.isAdded())
                 getFragmentManager().beginTransaction().add(R.id.fl_main, informationFragment).commit();

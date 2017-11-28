@@ -13,15 +13,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/toolbar"
-            android:gravity="center"
-            android:minHeight="?attr/actionBarSize">
+            android:layout_height="@dimen/loans_height"
+            android:background="@drawable/title_bg"
+            android:gravity="bottom"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_find_tab"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:padding="1dp">
 
@@ -30,20 +31,16 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/color_FFFFFF"
                     android:gravity="center"
-                    android:text="资讯"
-                    android:textColor="@color/toolbar" />
+                    android:text="资讯" />
 
                 <TextView
                     android:id="@+id/tv_forum"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/toolbar"
                     android:gravity="center"
-                    android:text="论坛"
-                    android:textColor="@color/color_FFFFFF" />
+                    android:text="论坛" />
 
 
             </LinearLayout>
