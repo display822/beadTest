@@ -60,7 +60,6 @@ public class HomeFragment extends BaseFragment {
         binding.refresh.setOnRefreshListener(refreshLayout -> init());
         setHasOptionsMenu(true);
         StatisticsUtil.homePage(mActivity);
-
         binding.refresh.autoRefresh();
         return binding.getRoot();
     }
