@@ -73,6 +73,7 @@
         <activity android:name=".activity.InformationListActivity" />
         <activity android:name=".activity.AddForumActivity" />
         <activity android:name=".activity.LoansActivity"/>
+        <activity android:name=".activity.InformationActivity"/>
 
 
         <!-- 友盟分享 -->
