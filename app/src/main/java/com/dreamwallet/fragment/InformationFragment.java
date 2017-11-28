@@ -69,6 +69,8 @@ public class InformationFragment extends BaseFragment {
         data = new ArrayList<>();
         layoutBinding = DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.layout_find_fragment_group_layout, null, false);
         informationAdapter1 = new InformationAdapter(mActivity, data, R.layout.item_information);
+
+        binding.rlInformation.setDivider(null);
         binding.rlInformation.addHeaderView(layoutBinding.getRoot());
         binding.rlInformation.setAdapter(informationAdapter1);
         binding.refresh.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
@@ -211,6 +213,7 @@ public class InformationFragment extends BaseFragment {
         public void bindData(ViewHolder viewHolder, InformationEntity item, int position) {
             viewHolder.setText(R.id.tv_time, DataUtil.getTime(item.getCreate_time()));
             viewHolder.setText(R.id.tv_title, item.getTitle());
+            viewHolder.setText(R.id.tv_num, item.getCms_content_pv());
             ImageView iv = viewHolder.getView(R.id.iv);
             Glide.with(mActivity).load(item.getImg()).placeholder(R.drawable.ic_home_infoprefer).error(R.drawable.ic_home_infoprefer).into(iv);
             viewHolder.getView(R.id.ll_item).setOnClickListener(new OnNoDoubleClickListener() {

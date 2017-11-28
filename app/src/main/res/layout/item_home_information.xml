@@ -65,6 +65,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:textColor="@color/color_666666"
+                android:textSize="12sp"
                 android:text="@{data.cms_content_pv}"
                 />
         </RelativeLayout>

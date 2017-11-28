@@ -19,7 +19,9 @@
             <ListView
                 android:id="@+id/rl_information"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/color_f1f1f1"
+                />
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>

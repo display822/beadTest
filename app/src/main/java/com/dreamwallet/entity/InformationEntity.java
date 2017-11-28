@@ -24,6 +24,7 @@ public class InformationEntity implements Serializable {
     private long create_time;
     private int discuss_count;
     private String url;
+    private String cms_content_pv;
 
     public String getImg() {
         return img;
@@ -79,5 +80,13 @@ public class InformationEntity implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getCms_content_pv() {
+        return cms_content_pv;
+    }
+
+    public void setCms_content_pv(String cms_content_pv) {
+        this.cms_content_pv = cms_content_pv;
     }
 }
