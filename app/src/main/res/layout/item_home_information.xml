@@ -36,25 +36,39 @@
             android:layout_height="90dp"
             android:background="@color/color_FFFFFF"
             android:orientation="vertical"
-            android:paddingBottom="5dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="15dp"
-            android:paddingTop="5dp">
+            android:paddingBottom="2dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="15dp">
 
             <TextView
+                android:id="@+id/home_infor_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="@{data.title,default= title}"
                 android:textColor="@color/color_333333"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/home_infor_title"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="20dp"
+                android:ellipsize="end"
+                android:textSize="12sp"
+                android:maxLines="2"
+                android:textColor="@color/color_666666"
+                android:text="@{data.detail}"
+                />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:textSize="11.5sp"
                 android:textColor="@color/color_666666" />
 
             <TextView
@@ -65,7 +79,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:textColor="@color/color_666666"
-                android:textSize="12sp"
+                android:textSize="11.5sp"
                 android:text="@{data.cms_content_pv}"
                 />
         </RelativeLayout>
