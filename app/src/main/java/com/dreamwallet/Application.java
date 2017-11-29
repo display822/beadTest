@@ -80,7 +80,7 @@ public class Application extends BaseApplication {
     private void initShare() {
         Config.DEBUG = true;
         PlatformConfig.setQQZone("101445672", "6b94bb48484d12ecf698522134517c3b");
-        PlatformConfig.setWeixin("wx3705832d33a9e807", "6b9309740a94665bb4ebbb9feecf04de");
+        PlatformConfig.setWeixin("wx6ca55a14e5ba1695", "91e09add8da0ed8a0e5de3a3fe6701cc");
 //        PlatformConfig.setSinaWeibo("1635000357", "901e4011b61379675a4239d7aa158664", "http://www.beadwallet.com");
         UMShareAPI.get(this);
     }
