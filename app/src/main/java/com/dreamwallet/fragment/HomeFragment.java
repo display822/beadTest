@@ -200,7 +200,12 @@ public class HomeFragment extends BaseFragment {
                                 @Override
                                 public void onPageScrollStateChanged(int state) {
                                     //若viewpager滑动未停止，直接返回
-                                    if (state != ViewPager.SCROLL_STATE_IDLE) return;
+                                    if (state != ViewPager.SCROLL_STATE_IDLE) {
+                                        handler.removeMessages(BANNER_SCROLL);
+                                        return;
+                                    }else{
+                                        handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2500);
+                                    }
                                         //若当前为第一张，设置页面为倒数第二张
                                     if (currentPosition == 0) {
                                         binding.banner1.setCurrentItem(imgs.size() - 2,false);
@@ -211,7 +216,7 @@ public class HomeFragment extends BaseFragment {
                                 }
                             });
                             if(isNolimit){
-                                handler.sendEmptyMessageDelayed(BANNER_SCROLL, 1500);
+                                handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2000);
                             }
 
                         }else{
