@@ -11,8 +11,11 @@ import com.example.skn.framework.base.BaseActivity;
 public class InformationActivity extends BaseActivity {
 
 
+    public static boolean isInformationActivity = false;
+
     @Override
     protected void initVar() {
+        isInformationActivity = true;
         setFlagTranslucentStatus();
         setContentView(R.layout.activity_information);
     }
@@ -25,5 +28,11 @@ public class InformationActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        isInformationActivity = false;
     }
 }

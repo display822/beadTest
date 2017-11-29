@@ -75,7 +75,7 @@ public class ForumFragment extends BaseFragment {
                 case BANNER_SCROLL:
                     handler.removeMessages(BANNER_SCROLL);
                     //banner滚动
-                    layoutBinding.banner2.setCurrentItem(currentPosition+1);
+                    layoutBinding.banner2.setCurrentItem(currentPosition+1, true);
                     if(!isHidden){
                         handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2500);
                     }
@@ -182,7 +182,6 @@ public class ForumFragment extends BaseFragment {
                             layoutBinding.banner2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
                                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                                 }
 
                                 @Override

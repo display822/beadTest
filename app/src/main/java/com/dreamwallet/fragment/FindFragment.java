@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamwallet.R;
+import com.dreamwallet.activity.InformationActivity;
 import com.dreamwallet.databinding.FragmentFindBinding;
 import com.dreamwallet.util.Global;
 import com.example.skn.framework.base.BaseFragment;
@@ -53,6 +54,10 @@ public class FindFragment extends BaseFragment {
         currentFragment = informationFragment;//默认选择是0 当前fragment是informationFragment
         binding.tvInformation.setOnClickListener(view -> changeTab(true));
         binding.tvForum.setOnClickListener(view -> changeTab(false));
+        if(InformationActivity.isInformationActivity){
+            binding.titleBack.setVisibility(View.VISIBLE);
+        }
+        binding.titleBack.setOnClickListener(view -> getActivity().finish());
         changeTab(Global.findPosition == 0);
     }
 

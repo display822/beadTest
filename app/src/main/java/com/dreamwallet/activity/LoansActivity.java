@@ -11,6 +11,8 @@ import com.example.skn.framework.base.BaseActivity;
 
 public class LoansActivity extends BaseActivity {
 
+    public static boolean isLoansActivity = false;
+
     @Override
     protected void initVar() {
         setFlagTranslucentStatus();
@@ -19,11 +21,18 @@ public class LoansActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        isLoansActivity = true;
         getSupportFragmentManager().beginTransaction().add(R.id.layout_loan, BaseLoansFragment.getInstance()).commit();
     }
 
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        isLoansActivity = false;
     }
 }

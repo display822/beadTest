@@ -10,18 +10,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.skn.framework.base.BaseFragment;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
 import com.dreamwallet.R;
-import com.dreamwallet.activity.MainActivity;
+import com.dreamwallet.activity.LoansActivity;
 import com.dreamwallet.adapter.LoansTitleAdapter;
 import com.dreamwallet.entity.LoansTitleEntity;
 import com.dreamwallet.util.Global;
 import com.dreamwallet.util.UrlService;
-import com.example.skn.framework.util.ToolBarUtil;
+import com.example.skn.framework.base.BaseFragment;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,10 +67,18 @@ public class BaseLoansFragment extends BaseFragment {
         return new BaseLoansFragment();
     }
 
-    private void initView(View view) {
-        rlTitle = view.findViewById(R.id.rl_title);
+    private void initView(View root) {
+
+        rlTitle = root.findViewById(R.id.rl_title);
         rlTitle.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayout.HORIZONTAL, false));
-        vpMain = view.findViewById(R.id.vp_main);
+        vpMain = root.findViewById(R.id.vp_main);
+
+        ImageView tvBack = root.findViewById(R.id.title_back);
+        tvBack.setOnClickListener(view -> getActivity().finish());
+
+        if(LoansActivity.isLoansActivity){
+            tvBack.setVisibility(View.VISIBLE);
+        }
         getTitleTab();
     }
 

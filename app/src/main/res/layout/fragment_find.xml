@@ -11,6 +11,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/loans_height"
+            >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/loans_height"
@@ -42,11 +47,21 @@
                     android:gravity="center"
                     android:text="论坛" />
 
-
             </LinearLayout>
+          </LinearLayout>
 
-        </LinearLayout>
-
+            <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="15dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
         <FrameLayout
             android:id="@+id/fl_main"
             android:layout_width="match_parent"

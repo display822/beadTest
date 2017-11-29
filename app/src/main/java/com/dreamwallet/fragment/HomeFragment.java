@@ -62,7 +62,7 @@ public class HomeFragment extends BaseFragment {
                 case BANNER_SCROLL:
                     handler.removeMessages(BANNER_SCROLL);
                     //banner滚动
-                    binding.banner1.setCurrentItem(currentPosition+1);
+                    binding.banner1.setCurrentItem(currentPosition+1, true);
                     if(!isHidden){
                         handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2500);
                     }
@@ -190,7 +190,6 @@ public class HomeFragment extends BaseFragment {
                             binding.banner1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
                                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                                 }
 
                                 @Override
