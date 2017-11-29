@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.dreamwallet.R;
 import com.dreamwallet.adapter.MyTagAdapter;
 import com.dreamwallet.databinding.ActivityApplyRecordBinding;
-import com.dreamwallet.databinding.ItemApplyRecordBinding;
+import com.dreamwallet.databinding.ItemLoansRecordBinding;
 import com.dreamwallet.entity.ApplyRecordBean;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
@@ -151,7 +151,7 @@ public class ApplyRecordActivity extends BaseActivity {
 
         @Override
         public ApplyRecordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            ItemApplyRecordBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_loans_record, parent, false);
+            ItemLoansRecordBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_loans_record, parent, false);
             return new ApplyRecordViewHolder(binding);
         }
 
@@ -174,9 +174,9 @@ public class ApplyRecordActivity extends BaseActivity {
 
         class ApplyRecordViewHolder extends RecyclerView.ViewHolder {
 
-            public ItemApplyRecordBinding binding;
+            public ItemLoansRecordBinding binding;
 
-            public ApplyRecordViewHolder(ItemApplyRecordBinding binding) {
+            public ApplyRecordViewHolder(ItemLoansRecordBinding binding) {
                 super(binding.getRoot());
                 this.binding = binding;
             }

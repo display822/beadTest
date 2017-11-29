@@ -13,13 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.ToastUtil;
-import com.example.skn.framework.util.ToolBarUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityMyFindBinding;
 import com.dreamwallet.databinding.ItemMyFindBinding;
@@ -27,6 +20,12 @@ import com.dreamwallet.entity.MyFindEntity;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.ToastUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +64,7 @@ public class MyFindActivity extends BaseActivity {
     @Override
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_my_find);
-        ToolBarUtil.getInstance(mActivity).setTitle("我的发现").build();
+        binding.titleBack.setOnClickListener(view -> finish());
 
         drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
         drawable.start();

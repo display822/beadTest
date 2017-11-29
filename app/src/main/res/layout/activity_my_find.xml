@@ -27,9 +27,37 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/loans_height">
 
-            <include layout="@layout/layout_toolbar" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/loans_height"
+                android:orientation="horizontal"
+                android:background="@drawable/title_bg"
+                >
+
+                <ImageView
+                    android:id="@+id/title_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back"
+                    android:layout_gravity="bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="15dp"
+                    />
+                <TextView
+                    android:id="@+id/title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="18sp"
+                    android:text="我的发现"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                    />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_edit"
@@ -38,7 +66,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:text="编辑"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="10dp"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="15sp" />
 
@@ -158,14 +187,15 @@
 
                 <CheckBox
                     android:id="@+id/cb_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:gravity="center"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"
-                    android:button="@drawable/selector_check_round" />
+                    android:background="@drawable/selector_check_round"
+                    android:button="@null" />
 
                 <TextView
                     android:layout_width="wrap_content"
