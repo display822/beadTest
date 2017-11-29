@@ -1,15 +1,18 @@
 package com.dreamwallet.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ItemTitleLoansBinding;
 import com.dreamwallet.entity.LoansTitleEntity;
 import com.dreamwallet.util.Global;
+import com.example.skn.framework.util.AppUtil;
 
 import java.util.List;
 
@@ -44,6 +47,14 @@ public class LoansTitleAdapter extends RecyclerView.Adapter<LoansTitleAdapter.Lo
     @Override
     public void onBindViewHolder(LoansTitleViewHolder holder, int position) {
         holder.binding.setTitle(data.get(position).getSortAllName());
+        View root = holder.binding.getRoot();
+        if(data.size()<=4 && data.size()>0){
+            int width = AppUtil.getWidth((Activity) context);
+            ViewGroup.LayoutParams p = root.getLayoutParams();
+            p.width = width / data.size();
+            root.setLayoutParams(p);
+        }
+
         if (position == currentPosition) {
             holder.binding.setIsShow(true);
             holder.binding.tvTitle.setTextColor(context.getResources().getColor(R.color.main_color));
