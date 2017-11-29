@@ -2,6 +2,8 @@ package com.dreamwallet.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,6 +32,7 @@ import com.dreamwallet.widget.GlideRoundBitmap;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.AppUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +49,27 @@ public class HomeFragment extends BaseFragment {
     private boolean recordComplete;
     private boolean productComplete;
     private boolean informationComplete;
+    public static final int BANNER_SCROLL = 1;
+    private boolean isHidden = false;
 
     int currentPosition = 0;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            //如果没有隐藏，继续发消息
+            switch (msg.what){
+                case BANNER_SCROLL:
+                    handler.removeMessages(BANNER_SCROLL);
+                    //banner滚动
+                    binding.banner1.setCurrentItem(currentPosition+1);
+                    if(!isHidden){
+                        handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2500);
+                    }
+                    break;
+            }
+        }
+    };
 
     public static HomeFragment getInstance() {
         return new HomeFragment();
@@ -67,7 +89,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-
+        isHidden = hidden;
+        if(!hidden){
+            handler.sendEmptyMessageDelayed(BANNER_SCROLL, 1000);
+        }
     }
 
     public void init() {
@@ -134,23 +159,33 @@ public class HomeFragment extends BaseFragment {
                         if(bannerEntities != null && bannerEntities.size() > 0){
                             binding.banner1.setVisibility(View.VISIBLE);
                             binding.banner1No.setVisibility(View.GONE);
+                            boolean isNolimit = false;
                             if(bannerEntities.size()>1){
+                                isNolimit = true;
                                 //添加无限滑动
                                 bannerEntities.add(0, bannerEntities.get(bannerEntities.size()-1));
                                 bannerEntities.add(bannerEntities.get(1));
                             }
                             List<ImageView> imgs = new ArrayList<>();
-                            for(BannerEntity b : bannerEntities){
+                            for(int i=0 ; i< bannerEntities.size(); i++){
+                                BannerEntity b = bannerEntities.get(i);
+                                int position = i;
                                 ImageView iv = new ImageView(getActivity());
                                 iv.setScaleType(ImageView.ScaleType.FIT_XY);
                                 Glide.with(mActivity).load(b.getTitleImg()).placeholder(R.drawable.ic_banner_holder).
                                         error(R.drawable.ic_banner_holder).bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
+
+                                iv.setOnClickListener(view ->
+                                        {
+                                            AppUtil.startWeb(mActivity, b.getUrl());
+                                            StatisticsUtil.visitCount(mActivity, StatisticsUtil.banner, position + "");
+                                        }
+                                );
                             }
                             binding.banner1.setPageMargin(25);
                             binding.banner1.setAdapter(new GalleryAdapter(imgs));
                             binding.banner1.setOffscreenPageLimit(3);
-                            binding.banner1.setCurrentItem(1);
                             binding.banner1.setPageTransformer(true, new DepthPageTransformer());
                             binding.banner1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
@@ -176,6 +211,9 @@ public class HomeFragment extends BaseFragment {
                                     }
                                 }
                             });
+                            if(isNolimit){
+                                handler.sendEmptyMessageDelayed(BANNER_SCROLL, 1500);
+                            }
 
                         }else{
                             binding.banner1.setVisibility(View.GONE);
@@ -209,7 +247,7 @@ public class HomeFragment extends BaseFragment {
                             ArrayList<String> titleList = new ArrayList<>();
                             for (BorrowRecordEntity item : borrowRecordEntities) {
                                 if (item != null) {
-                                    titleList.add("尾号"+item.getPhone()+"的用户在"+item.getProduct_name()+"成功借款"+item.getMoney()+"元");
+                                    titleList.add("尾号"+item.getPhone()+"的用户在["+item.getProduct_name()+"]成功借款"+item.getMoney()+"元");
                                 }
                             }
                             binding.text.setData(titleList, null);

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -60,6 +62,36 @@ public class InformationFragment extends BaseFragment {
     int currentPosition = 0;
     AnimationDrawable drawable;
 
+    public static final int BANNER_SCROLL = 1;
+    private boolean isHidden = false;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            //如果没有隐藏，继续发消息
+            switch (msg.what){
+                case BANNER_SCROLL:
+                    handler.removeMessages(BANNER_SCROLL);
+                    //banner滚动
+                    layoutBinding.banner2.setCurrentItem(currentPosition+1);
+                    if(!isHidden){
+                        handler.sendEmptyMessageDelayed(BANNER_SCROLL, 2500);
+                    }
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        isHidden = hidden;
+        if(!hidden){
+            handler.sendEmptyMessageDelayed(BANNER_SCROLL, 1000);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -115,7 +147,9 @@ public class InformationFragment extends BaseFragment {
                             layoutBinding.banner2.setVisibility(View.VISIBLE);
                             layoutBinding.banner2No.setVisibility(View.GONE);
 
+                            boolean isNolimit = false;
                             if(bannerEntities.size()>1){
+                                isNolimit = true;
                                 //添加无限滑动
                                 bannerEntities.add(0, bannerEntities.get(bannerEntities.size()-1));
                                 bannerEntities.add(bannerEntities.get(1));
@@ -135,7 +169,6 @@ public class InformationFragment extends BaseFragment {
                             layoutBinding.banner2.setPageMargin(25);
                             layoutBinding.banner2.setAdapter(new GalleryAdapter(imgs));
                             layoutBinding.banner2.setOffscreenPageLimit(3);
-                            layoutBinding.banner2.setCurrentItem(1);
                             layoutBinding.banner2.setPageTransformer(true, new DepthPageTransformer());
                             layoutBinding.banner2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
@@ -161,6 +194,10 @@ public class InformationFragment extends BaseFragment {
                                     }
                                 }
                             });
+
+                            if(isNolimit){
+                                handler.sendEmptyMessageDelayed(BANNER_SCROLL, 1500);
+                            }
 
                         }else{
                             layoutBinding.banner2.setVisibility(View.GONE);
