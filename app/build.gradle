@@ -47,6 +47,12 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     productFlavors {
         anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
 //        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手

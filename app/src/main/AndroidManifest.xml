@@ -18,18 +18,25 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 定位权限 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <!-- jpush  一些系统要求的权限，如访问网络等-->
+    <!-- Required -->
+    <permission
+        android:name="com.dreamwallet.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等-->
     <uses-permission android:name="com.dreamwallet.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name=".Application"
@@ -122,10 +129,64 @@
         <!-- 友盟 -->
 
         <!-- jpush-->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="8f29d8e37d01754370a37bf9" />
+        <!-- Rich push 核心功能 since 2.0.6-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:theme="@style/MyDialogStyle"
+            android:exported="false">
+        </activity>
+
         <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.dreamwallet" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK 核心功能-->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":mult"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <!-- since 3.0.9 Required SDK 核心功能-->
+        <provider
+            android:authorities="com.dreamwallet.DataProvider"
+            android:name="cn.jpush.android.service.DataProvider"
+            android:exported="false"
+            />
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="com.dreamwallet" />
+            </intent-filter>
+
+        </service>
+        <!-- since 3.1.0 Required SDK 核心功能-->
+        <provider
+            android:authorities="com.dreamwallet.DownloadProvider"
+            android:name="cn.jpush.android.service.DownloadProvider"
+            android:exported="true"
+            />
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -147,55 +208,13 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <!-- since 3.1.0 Required SDK 核心功能-->
-        <provider
-            android:authorities="com.dreamwallet.DownloadProvider"
-            android:name="cn.jpush.android.service.DownloadProvider"
-            android:exported="true"
-            />
-        <!-- since 3.0.9 Required SDK 核心功能-->
-        <provider
-            android:authorities="com.dreamwallet.DataProvider"
-            android:name="cn.jpush.android.service.DataProvider"
-            android:exported="false"
-            />
-        <!-- Required SDK 核心功能-->
-        <!-- 可配置android:process参数将PushService放在其他进程中 -->
-        <service
-            android:name="cn.jpush.android.service.PushService"
-            android:process=":mult"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-            </intent-filter>
-        </service>
-
-        <!-- Rich push 核心功能 since 2.0.6-->
-        <activity
-            android:name="cn.jpush.android.ui.PopWinActivity"
-            android:theme="@style/MyDialogStyle"
-            android:exported="false">
-        </activity>
 
         <!-- Required SDK核心功能-->
-        <activity
-            android:name="cn.jpush.android.ui.PushActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.dreamwallet" />
-            </intent-filter>
-        </activity>
-        <!-- Required -->
-        <permission
-            android:name="com.dreamwallet.permission.JPUSH_MESSAGE"
-            android:protectionLevel="signature" />
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="8f29d8e37d01754370a37bf9" /> <!--  </>值来自开发者平台取得的AppKey-->
 
     </application>
 
