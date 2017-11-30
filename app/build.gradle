@@ -6,9 +6,9 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'dreamwallet'
+            keyAlias 'beadwallet'
             keyPassword '!qaz1120'
-            storeFile file('../dreamwallet.jks')
+            storeFile file('../beadwallet.jks')
             storePassword '!qaz1120'
         }
     }
