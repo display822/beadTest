@@ -6,9 +6,9 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'beadwallet'
+            keyAlias 'dreamwallet'
             keyPassword '!qaz1120'
-            storeFile file('../beadwallet.jks')
+            storeFile file('../dreamwallet.jks')
             storePassword '!qaz1120'
         }
     }
@@ -57,12 +57,9 @@ android {
 //        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
         zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
 //        tencent { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"] }//应用宝
-//        baidu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"] }//百度手机助手
 //        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
 //        huawei { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"] }//华为智汇云
-//        gfan { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "gfan"] }//机锋市场
 //        vivo { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"] }//vivo应用商店
-//        pacific { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pacific"] }//太平洋
 //        mumayi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi"] }//木蚂蚁
 //        yingyonghui { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui"] }//应用汇
 //        maopaotang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "maopaotang"] }//冒泡堂
@@ -70,10 +67,14 @@ android {
 //        youyi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "youyi"] }//优亿
 //        ndouwang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ndouwang"] }//N多网
 //        anzhi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"] }//安智市场
-//        meizu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"] }//魅族软件中心
-//        letv { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv"] }//乐视应用商店
 //        samsung { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "samsung"] }//三星应用商店
 //        nearme { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nearme"] }//OPPO应用商店/near me
+
+//        gfan { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "gfan"] }//机锋市场
+//        pacific { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pacific"] }//太平洋
+//        baidu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"] }//百度手机助手
+//        meizu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"] }//魅族软件中心
+//        letv { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv"] }//乐视应用商店
     }
 }
 
