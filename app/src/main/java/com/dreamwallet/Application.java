@@ -36,7 +36,7 @@ public class Application extends BaseApplication {
     }
 
     protected void setBaseUrl() {
-        Api.setBaseUrl("http://47.100.31.15/loansupermarket-app/");//正式
+        Api.setBaseUrl("http://m.dreamwallet.cn/loansupermarket-app/");//正式
 //        Api.setBaseUrl("http://106.14.97.38:8060/loansupermarket-app/");//测试 n.b e a dwallet.com
     }
 
