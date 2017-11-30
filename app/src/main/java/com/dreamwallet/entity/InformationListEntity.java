@@ -8,7 +8,7 @@ public class InformationListEntity {
     /**
      * img :
      * id : 238
-     * author : 追梦钱包
+     * author : 追梦宝
      * title : 如何贷款才能更省钱？教你几个技巧
      * create_time : 1503995404000
      * discuss_count : 2

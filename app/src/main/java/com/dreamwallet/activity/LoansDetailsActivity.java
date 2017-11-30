@@ -52,7 +52,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
     protected void init() {
         setFlagTranslucentStatus();
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_loans_details);
-        toolbar = ToolBarUtil.getInstance(mActivity).setTitle("追梦钱包").build();
+        toolbar = ToolBarUtil.getInstance(mActivity).setTitle("追梦宝").build();
         toolbar.setBackgroundColor(Color.argb((int) 0, 228, 208, 55));
         ViewTreeObserver observer = binding.llTop.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -84,7 +84,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
                                 if (UserInfo.isLogin()) {
                                     addApplyReord(platformId);
                                     StatisticsUtil.clickCount(mActivity, platformId);
-                                    // BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), "追梦钱包");
+                                    // BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), "追梦宝");
                                     AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
                                 } else {
                                     LoginActivity.startActivity(mActivity, LoginActivity.FINISH);

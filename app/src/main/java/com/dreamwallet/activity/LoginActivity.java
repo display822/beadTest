@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
         bind.tvLoginAgreement.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
-                BaseWebViewActivity.show(mActivity, "file:///android_asset/register.html", "追梦钱包注册协议", true);
+                BaseWebViewActivity.show(mActivity, "file:///android_asset/register.html", "追梦宝注册协议", true);
             }
         });
     }
@@ -169,7 +169,7 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
             return false;
         }
         if (!bind.cbAgreement.isChecked()) {
-            ToastUtil.show("请同意追梦钱包注册协议");
+            ToastUtil.show("请同意追梦宝注册协议");
             return false;
         }
         return true;

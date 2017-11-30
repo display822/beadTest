@@ -239,7 +239,7 @@ public class ForumFragment extends BaseFragment {
 //        layoutBinding.banner.setDelegate((banner, itemView, model, position)
 //                ->
 //                AppUtil.startWeb(mActivity, ((BannerEntity) model).getUrl()));
-//                BaseWebViewActivity.show(mActivity, ((BannerEntity) model).getUrl(), "追梦钱包"));
+//                BaseWebViewActivity.show(mActivity, ((BannerEntity) model).getUrl(), "追梦宝"));
     }
 
     public void getData(int type) {

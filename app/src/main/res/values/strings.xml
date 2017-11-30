@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">追梦钱包</string>
+    <string name="app_name">追梦宝</string>
     <string name="home">首页</string>
     <string name="loans">贷款</string>
     <string name="me">我的</string>
@@ -43,7 +43,7 @@
     <string name="login_by_pwd">密码登录</string>
     <string name="login_by_code">动态码登录</string>
     <string name="i_read">我已阅读</string>
-    <string name="register_agreement">《追梦钱包注册协议》</string>
+    <string name="register_agreement">《追梦宝注册协议》</string>
     <string name="no_more">没有更多了…</string>
     <string name="canot_find_suitable_product">没有找到合适的产品？点击这</string>
     <string name="quick_matching">快速匹配</string>
@@ -73,7 +73,7 @@
     <string name="feed_back_question_tip">请选择问题类型，帮助我们更快的处理您的反馈</string>
     <string name="no_track">你还没留下任何足迹哦~</string>
     <string name="look">去看看</string>
-    <string name="beadwallet">追梦钱包</string>
+    <string name="beadwallet">追梦宝</string>
     <string name="me_center">个人中心</string>
     <string name="help_center">帮助中心</string>
     <string name="my_find">我的发现</string>

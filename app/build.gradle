@@ -36,7 +36,7 @@ android {
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        def fileName = "追梦钱包_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        def fileName = "追梦宝_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
