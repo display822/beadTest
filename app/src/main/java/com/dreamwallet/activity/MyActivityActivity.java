@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.dreamwallet.R;
@@ -43,9 +44,13 @@ public class MyActivityActivity extends BaseActivity {
     protected void init() {
         setContentView(R.layout.activity_my_activity);
 
+        ImageView iv = (ImageView) findViewById(R.id.title_back);
+        iv.setOnClickListener(view -> finish());
         rlActivity = (RecyclerView) findViewById(R.id.rl_activity);
         rlActivity.setLayoutManager(new LinearLayoutManager(mActivity));
         View view = findViewById(R.id.activity_my_myactivity);
+
+
         initEmptyOrNetErrorView(view, R.id.viewStub, new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -52,7 +52,7 @@
 
             <ImageView
                 android:id="@+id/title_back"
-                android:layout_width="30dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back"
                 android:layout_gravity="bottom"
