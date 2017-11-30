@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.DepthPageTransformer;
+import com.dreamwallet.widget.FixSpeedScroller;
 import com.dreamwallet.widget.GlideRoundBitmap;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.example.skn.framework.base.BaseFragment;
@@ -39,6 +41,7 @@ import com.example.skn.framework.util.DataUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -177,8 +180,18 @@ public class ForumFragment extends BaseFragment {
                             layoutBinding.banner2.setPageMargin(25);
                             layoutBinding.banner2.setAdapter(new GalleryAdapter(imgs));
                             layoutBinding.banner2.setOffscreenPageLimit(3);
-
                             layoutBinding.banner2.setPageTransformer(true, new DepthPageTransformer());
+                            //滚动速度
+                            try {
+                                Class clazz=Class.forName("android.support.v4.view.ViewPager");
+                                Field f=clazz.getDeclaredField("mScroller");
+                                FixSpeedScroller fixedSpeedScroller=new FixSpeedScroller(getActivity(), new LinearOutSlowInInterpolator());
+                                f.setAccessible(true);
+                                f.set(layoutBinding.banner2, fixedSpeedScroller);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                             layoutBinding.banner2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
                                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

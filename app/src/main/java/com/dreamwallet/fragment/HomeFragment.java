@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,14 @@ import com.dreamwallet.entity.StarProductEntity;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.DepthPageTransformer;
+import com.dreamwallet.widget.FixSpeedScroller;
 import com.dreamwallet.widget.GlideRoundBitmap;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
 import com.example.skn.framework.util.AppUtil;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -187,6 +190,17 @@ public class HomeFragment extends BaseFragment {
                             binding.banner1.setAdapter(new GalleryAdapter(imgs));
                             binding.banner1.setOffscreenPageLimit(3);
                             binding.banner1.setPageTransformer(true, new DepthPageTransformer());
+                            //滚动速度
+                            try {
+                                Class clazz=Class.forName("android.support.v4.view.ViewPager");
+                                Field f=clazz.getDeclaredField("mScroller");
+                                FixSpeedScroller fixedSpeedScroller=new FixSpeedScroller(getActivity(), new LinearOutSlowInInterpolator());
+                                f.setAccessible(true);
+                                f.set(binding.banner1,fixedSpeedScroller);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                             binding.banner1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
                                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
