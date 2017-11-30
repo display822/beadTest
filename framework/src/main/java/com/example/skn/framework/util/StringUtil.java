@@ -27,7 +27,7 @@ public class StringUtil {
         Pattern p = null;
         Matcher m = null;
         boolean b = false;
-        p = Pattern.compile("^[1][3,4,5,8,7][0-9]{9}$"); // 验证手机号
+        p = Pattern.compile("^[1][34587][0-9]{9}$"); // 验证手机号
         m = p.matcher(str);
         b = m.matches();
         return b;
@@ -213,8 +213,8 @@ public class StringUtil {
      */
     public static String encrypting(String str) {
         try {
-            SecretKeySpec key = new SecretKeySpec("MonsterWallet".getBytes(), "DES");
-            IvParameterSpec iv = new IvParameterSpec("MonsterWallet".getBytes());
+            SecretKeySpec key = new SecretKeySpec("dmwallet".getBytes(), "DES");
+            IvParameterSpec iv = new IvParameterSpec("dmwallet".getBytes());
             Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, key, iv);
             byte[] result = cipher.doFinal(str.getBytes());
@@ -232,8 +232,8 @@ public class StringUtil {
     public static String decryption(String str) {
         try {
             byte[] result = Base64.decode(str.getBytes(), Base64.DEFAULT);
-            SecretKeySpec key = new SecretKeySpec("MonsterWallet".getBytes(), "DES");
-            IvParameterSpec iv = new IvParameterSpec("MonsterWallet".getBytes());
+            SecretKeySpec key = new SecretKeySpec("dmwallet".getBytes(), "DES");
+            IvParameterSpec iv = new IvParameterSpec("dmwallet".getBytes());
             Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, key, iv);
             Log.i("Base64Util", "b: " + new String(cipher.doFinal(result)));
