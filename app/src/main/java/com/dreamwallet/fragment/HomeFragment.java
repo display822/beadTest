@@ -32,7 +32,6 @@ import com.dreamwallet.widget.DepthPageTransformer;
 import com.dreamwallet.widget.FixSpeedScroller;
 import com.dreamwallet.widget.GlideRoundBitmap;
 import com.example.skn.framework.base.BaseFragment;
-import com.example.skn.framework.base.BaseWebViewActivity;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
 
@@ -181,7 +180,11 @@ public class HomeFragment extends BaseFragment {
 
                                 iv.setOnClickListener(view ->
                                         {
-                                            BaseWebViewActivity.show(mActivity, b.getUrl(), "追梦宝");
+                                            String url = b.getUrl();
+                                            int indexD = url.indexOf("=");
+                                            int indexY = url.indexOf("&");
+                                            String platformId = indexY != -1?  url.substring(indexD+1,indexY): url.substring(indexD+1);
+                                            LoansDetailsActivity.startActivity(getActivity(), platformId);
                                             StatisticsUtil.visitCount(mActivity, StatisticsUtil.banner, position + "");
                                         }
                                 );

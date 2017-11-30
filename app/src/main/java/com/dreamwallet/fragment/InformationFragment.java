@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.dreamwallet.R;
 import com.dreamwallet.activity.DetailsActivity;
 import com.dreamwallet.activity.InformationListActivity;
+import com.dreamwallet.activity.LoansDetailsActivity;
 import com.dreamwallet.adapter.GalleryAdapter;
 import com.dreamwallet.adapter.MyBaseAdapter;
 import com.dreamwallet.adapter.ViewHolder;
@@ -32,7 +33,6 @@ import com.dreamwallet.widget.FixSpeedScroller;
 import com.dreamwallet.widget.GlideRoundBitmap;
 import com.dreamwallet.widget.OnNoDoubleClickListener;
 import com.example.skn.framework.base.BaseFragment;
-import com.example.skn.framework.base.BaseWebViewActivity;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
 import com.example.skn.framework.util.DataUtil;
@@ -166,7 +166,13 @@ public class InformationFragment extends BaseFragment {
                                         error(R.drawable.ic_banner_holder).bitmapTransform(new GlideRoundBitmap(mActivity, 8)).into(iv);
                                 imgs.add(iv);
                                 iv.setOnClickListener(view ->
-                                        BaseWebViewActivity.show(mActivity, b.getUrl(), "追梦宝")
+                                        {
+                                            String url = b.getUrl();
+                                            int indexD = url.indexOf("=");
+                                            int indexY = url.indexOf("&");
+                                            String platformId = indexY != -1?  url.substring(indexD+1,indexY): url.substring(indexD+1);
+                                            LoansDetailsActivity.startActivity(getActivity(), platformId);
+                                        }
                                 );
                             }
                             layoutBinding.banner2.setPageMargin(25);
