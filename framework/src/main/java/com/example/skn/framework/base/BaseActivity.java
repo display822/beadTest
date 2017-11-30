@@ -25,10 +25,10 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 abstract public class BaseActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     protected BaseActivity mActivity;
-    private View mEmptyView;
-    private ViewStubCompat mEmptyStub;
-    private View.OnClickListener onClickListener;
-    private boolean isInitEmptyView;
+    protected View mEmptyView;
+    protected ViewStubCompat mEmptyStub;
+    protected View.OnClickListener onClickListener;
+    protected boolean isInitEmptyView;
 
     @Override
 

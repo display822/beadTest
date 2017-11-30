@@ -7,10 +7,12 @@ import android.databinding.DataBindingUtil;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.ViewStubCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dreamwallet.R;
 import com.dreamwallet.adapter.MyTagAdapter;
@@ -40,7 +42,7 @@ public class ApplyRecordActivity extends BaseActivity {
     private ActivityApplyRecordBinding binding;
     private ApplyRecordAdapter applyRecordAdapter;
     private List<ApplyRecordBean> data = new ArrayList<>();
-
+    private View.OnClickListener btClickListener,freshClickListener;
     AnimationDrawable drawable;
 
     public static void startActivity(Context context) {
@@ -78,12 +80,9 @@ public class ApplyRecordActivity extends BaseActivity {
             }
         });
         binding.refresh.autoRefresh();
-        initEmptyOrNetErrorView(binding.getRoot(), R.id.viewStub, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.refresh.autoRefresh();
-            }
-        });
+        initEmptyOrNetErrorView(binding.getRoot(), R.id.viewStub,
+                view -> {MainActivity.startActivity(this, 1);finish();},
+                view1 -> binding.refresh.autoRefresh());
     }
 
     private void getDate(int refrash) {
@@ -124,6 +123,53 @@ public class ApplyRecordActivity extends BaseActivity {
                         finish();
                     }
                 });
+    }
+
+    public void initEmptyOrNetErrorView(View rootView, int emptyOrNetErrorRes, View.OnClickListener btClickListener, View.OnClickListener freshClickListener) {
+        View emptyView = rootView.findViewById(emptyOrNetErrorRes);
+        if (emptyView instanceof ViewStubCompat) {
+            mEmptyStub = (ViewStubCompat) emptyView;
+        } else {
+            mEmptyView = emptyView;
+        }
+
+        this.btClickListener = btClickListener;
+        this.freshClickListener = freshClickListener;
+        isInitEmptyView = true;
+    }
+
+    public void updateEmptyOrNetErrorView(boolean hasData, boolean network) {
+        if (isInitEmptyView) {
+            if (!hasData) {
+                if (mEmptyView == null && mEmptyStub != null) {
+                    mEmptyView = mEmptyStub.inflate();
+                }
+                if (mEmptyView != null) {
+                    View ll_net_error = mEmptyView.findViewById(R.id.ll_net_error);
+                    View empty = mEmptyView.findViewById(R.id.tv_empty);
+                    if (!network) {
+                        View viewById = mEmptyView.findViewById(com.example.skn.framework.R.id.tv_reload);
+                        if (viewById != null) {
+                            viewById.setOnClickListener(freshClickListener);
+                        }
+                        ll_net_error.setVisibility(View.VISIBLE);
+                        empty.setVisibility(View.GONE);
+                    } else {
+                        Button button = mEmptyView.findViewById(R.id.tv_goloan);
+                        if(button != null){
+                            button.setOnClickListener(btClickListener);
+                        }
+                        empty.setVisibility(View.VISIBLE);
+                        ll_net_error.setVisibility(View.GONE);
+                    }
+                    mEmptyView.setVisibility(View.VISIBLE);
+                }
+            } else {
+                if (mEmptyView != null) {
+                    mEmptyView.setVisibility(View.GONE);
+                }
+            }
+        }
     }
 
     @Override

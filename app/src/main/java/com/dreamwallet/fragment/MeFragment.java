@@ -10,15 +10,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.skn.framework.base.BaseFragment;
 import com.dreamwallet.R;
 import com.dreamwallet.activity.ApplyRecordActivity;
 import com.dreamwallet.activity.HelpCenterActivity;
 import com.dreamwallet.activity.LoginActivity;
-import com.dreamwallet.activity.MainActivity;
 import com.dreamwallet.activity.MyFindActivity;
 import com.dreamwallet.activity.SettingActivity;
 import com.dreamwallet.util.UserInfo;
+import com.example.skn.framework.base.BaseFragment;
 
 /**
  * Created by DOY on 2017/7/18.
