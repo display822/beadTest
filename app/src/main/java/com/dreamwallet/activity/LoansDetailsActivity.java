@@ -9,12 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ViewTreeObserver;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.http.Api;
-import com.example.skn.framework.http.BaseEntity;
-import com.example.skn.framework.http.RequestCallBack;
-import com.example.skn.framework.util.AppUtil;
-import com.example.skn.framework.util.ToolBarUtil;
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityLoansDetailsBinding;
 import com.dreamwallet.entity.LoansDetailsEntity;
@@ -22,6 +16,12 @@ import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.ObservableScrollView;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.base.BaseWebViewActivity;
+import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.BaseEntity;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.ToolBarUtil;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -84,8 +84,8 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
                                 if (UserInfo.isLogin()) {
                                     addApplyReord(platformId);
                                     StatisticsUtil.clickCount(mActivity, platformId);
-                                    // BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), "追梦宝");
-                                    AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
+                                     BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), loansDetailsEntity.getAbbreviation());
+//                                    AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
                                 } else {
                                     LoginActivity.startActivity(mActivity, LoginActivity.FINISH);
                                 }

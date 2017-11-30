@@ -54,7 +54,7 @@ android {
     }
 
     productFlavors {
-        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
+//        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
 //        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
 //        tencent { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"] }//应用宝
 //        baidu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"] }//百度手机助手
@@ -66,7 +66,7 @@ android {
 //        mumayi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi"] }//木蚂蚁
 //        yingyonghui { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui"] }//应用汇
 //        maopaotang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "maopaotang"] }//冒泡堂
-//        liqu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu"] }//历趣
+        liqu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu"] }//历趣
 //        youyi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "youyi"] }//优亿
 //        ndouwang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ndouwang"] }//N多网
 //        anzhi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"] }//安智市场
