@@ -8,7 +8,7 @@ android {
         release {
             keyAlias 'beadwallet'
             keyPassword '!qaz1120'
-            storeFile file('../beadwallet.jks')
+            storeFile file('../dreamwallet.jks')
             storePassword '!qaz1120'
         }
     }
