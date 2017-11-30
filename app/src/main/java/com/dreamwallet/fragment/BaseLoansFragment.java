@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,13 @@ public class BaseLoansFragment extends BaseFragment {
             tvBack.setVisibility(View.VISIBLE);
         }
         getTitleTab();
+
+        initEmptyOrNetErrorView(root, R.id.viewStub, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getTitleTab();
+            }
+        });
     }
 
     private void getTitleTab() {
@@ -88,11 +96,13 @@ public class BaseLoansFragment extends BaseFragment {
                     @Override
                     public void onSuccess(List<LoansTitleEntity> loansTitleEntities) {
                         initTitle(loansTitleEntities);
+
+                        updateEmptyOrNetErrorView(loansTitleEntities.size() > 0, true);
                     }
 
                     @Override
                     public void onFailure(String code, String errorMsg) {
-
+                        updateEmptyOrNetErrorView(false, !TextUtils.equals(code, "-1"));
                     }
                 });
     }

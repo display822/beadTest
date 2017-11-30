@@ -42,9 +42,22 @@
         android:background="@color/color_FFFFFF" />
 
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.ViewStubCompat
+            android:id="@+id/viewStub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/layout_empty_or_net_error"
+            android:visibility="gone" />
+    </FrameLayout>
+
 
 </LinearLayout>
