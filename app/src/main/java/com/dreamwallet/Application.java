@@ -41,7 +41,7 @@ public class Application extends BaseApplication {
     }
 
     public static String getShareUrl() {
-        return  "http://47.100.31.15/loansupermarket/#/main/home";//正式
+        return  "http://m.dreamwallet.cn";//正式
 //        return "http://106.14.97.38/szqb/#/main/home";//测试
     }
 

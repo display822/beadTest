@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityDetailsBinding;
@@ -47,6 +45,10 @@ public class DetailsActivity extends BaseActivity {
     protected void init() {
         binding = DataBindingUtil.setContentView(mActivity, R.layout.activity_details);
         binding.titleBack.setOnClickListener(view -> finish());
+        binding.titleShare.setOnClickListener(view -> {
+            //分享
+            doShare();
+        });
     }
 
     @Override
@@ -67,34 +69,22 @@ public class DetailsActivity extends BaseActivity {
                 });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_share, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_share:
-                if (UserInfo.isLogin()) {
-                    if (Build.VERSION.SDK_INT >= 23) {
-                        String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
-                        boolean flag = EasyPermissions.hasPermissions(mActivity, mPermissionList);
-                        if (flag) {
-                            ShareUtil.ShareWeb(mActivity);
-                        } else {
-                            EasyPermissions.requestPermissions(mActivity, "为保证分享的成功，请同意以下权限", 123, mPermissionList);
-                        }
-                    } else {
-                        ShareUtil.ShareWeb(mActivity);
-                    }
+    private void doShare(){
+        if (UserInfo.isLogin()) {
+            if (Build.VERSION.SDK_INT >= 23) {
+                String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+                boolean flag = EasyPermissions.hasPermissions(mActivity, mPermissionList);
+                if (flag) {
+                    ShareUtil.ShareWeb(mActivity);
                 } else {
-                    LoginActivity.startActivity(mActivity, LoginActivity.FINISH);
+                    EasyPermissions.requestPermissions(mActivity, "为保证分享的成功，请同意以下权限", 123, mPermissionList);
                 }
-                break;
+            } else {
+                ShareUtil.ShareWeb(mActivity);
+            }
+        } else {
+            LoginActivity.startActivity(mActivity, LoginActivity.FINISH);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
