@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import cn.jpush.android.api.JPushInterface;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
@@ -27,6 +28,8 @@ public class Application extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         ViewTarget.setTagId(com.dreamwallet.R.id.tag_glide);
+        JPushInterface.setDebugMode(false);
+        JPushInterface.init(this);
         setBaseUrl();
         initShare();
         initUmengStatistics();
