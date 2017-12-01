@@ -18,6 +18,12 @@ android {
         targetSdkVersion 26
         versionCode 310
         versionName "3.1.0"
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
     }
     dataBinding {
         enabled = true
@@ -55,9 +61,9 @@ android {
 
     productFlavors {
 //        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
-        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
+//        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
 //        tencent { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"] }//应用宝
-//        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
+        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
 //        huawei { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"] }//华为智汇云
 //        vivo { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"] }//vivo应用商店
 //        mumayi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi"] }//木蚂蚁
@@ -65,7 +71,7 @@ android {
 //        maopaotang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "maopaotang"] }//冒泡堂
 //        liqu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu"] }//历趣
 //        youyi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "youyi"] }//优亿
-//        ndouwang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ndouwang"] }//N多网
+//        nduowang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nduowang"] }//N多网
 //        anzhi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"] }//安智市场
 //        samsung { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "samsung"] }//三星应用商店
 //        nearme { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nearme"] }//OPPO应用商店/near me
@@ -83,4 +89,6 @@ dependencies {
     compile project(':framework')
     compile 'com.zhy:flowlayout-lib:1.0.3'
     compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }

@@ -15,7 +15,7 @@ import com.dreamwallet.R;
 public class ShareUtil {
 
     public static void ShareWeb(BaseActivity mActivity) {
-        UMImage umImage = new UMImage(mActivity, R.drawable.ic_logo);
+        UMImage umImage = new UMImage(mActivity, R.drawable.ic_logon);
         UMWeb web = new UMWeb(Application.getShareUrl());
         web.setThumb(umImage);
         web.setTitle("追梦宝-专注个人无抵押信用小额贷款的服务平台");

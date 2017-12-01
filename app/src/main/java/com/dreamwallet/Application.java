@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.skn.framework.base.BaseApplication;
 import com.example.skn.framework.http.Api;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
@@ -30,6 +31,8 @@ public class Application extends BaseApplication {
         ViewTarget.setTagId(com.dreamwallet.R.id.tag_glide);
         JPushInterface.setDebugMode(false);
         JPushInterface.init(this);
+
+        CrashReport.initCrashReport(getApplicationContext(), "0c828dd23f", true);
         setBaseUrl();
         initShare();
         initUmengStatistics();

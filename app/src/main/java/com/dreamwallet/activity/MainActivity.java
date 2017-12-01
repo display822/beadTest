@@ -24,6 +24,9 @@ import com.dreamwallet.util.Global;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 
+import java.io.File;
+import java.io.IOException;
+
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
     private HomeFragment homeFragment;
     private BaseLoansFragment loansFragment;
@@ -95,6 +98,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initData() {
+        File files = getExternalFilesDir(null);
+        if(files !=null && !files.exists()){
+            try {
+                files.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         UpdateHelper.update(mActivity, UrlService.VERSION_URL, BaseApplication.getApp().getChannel());
     }
 
