@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--toolbar-->
+    <style name="AppTheme.toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--无actionBar-->
+        <item name="windowActionBar">false</item>
+        <!--无标题-->
+        <item name="windowNoTitle">true</item>
+        <!--状态栏背景-->
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <!--toolBar背景-->
+        <item name="colorPrimary">@color/main_color</item>
+        <!--项目文字颜色-->
+        <item name="android:textColor">@color/color_424242</item>
+        <!--项目文字大小-->
+        <item name="android:textSize">14sp</item>
+        <!--主界面背景-->
+        <item name="android:windowBackground">@color/color_f1f1f1</item>
+        <!--导航条背景-->
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/toolbar</item>
+        <!--菜单小三角颜色-->
+        <item name="android:textColorSecondary">@color/toolbar</item>
+        <!--各控制元件的预设颜色 (switch,check) sdk>=21-->
+        <item name="android:colorAccent" tools:targetApi="lollipop">@color/toolbar</item>
+    </style>
+</resources>
