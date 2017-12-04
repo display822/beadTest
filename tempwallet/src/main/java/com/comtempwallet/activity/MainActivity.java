@@ -6,12 +6,15 @@ import android.databinding.DataBindingUtil;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.comtempwallet.R;
 import com.comtempwallet.databinding.ActivityMainBinding;
+import com.comtempwallet.fragment.LoansFragment;
+import com.comtempwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
 import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.ToastUtil;
@@ -25,6 +28,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private static MyHandler myHandler;
     private static boolean isExit = false;
     private ActivityMainBinding binding;
+
+    private Fragment currentFragment;
+    private LoansFragment loansFragment;
 
 
     public static void startActivity(Activity activity, int index) {
@@ -49,13 +55,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setFlagTranslucentStatus();
         myHandler = new MyHandler();
 
+
+
     }
 
     @Override
     protected void init() {
+        UserInfo.initUserInfo();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.rgMain.setOnCheckedChangeListener(this);
 
+        currentFragment = loansFragment;
         ((RadioButton) binding.rgMain.getChildAt(0)).setChecked(true);
     }
 
