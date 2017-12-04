@@ -26,7 +26,7 @@ public class StartAppActivity extends BaseActivity {
 
                 } else {
                     //首页
-
+                    MainActivity.startActivity(mActivity, 0);
                 }
 //                finish();
             }

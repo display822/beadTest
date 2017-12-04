@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tempwallet</string>
+
+    <string name="loans">贷款</string>
+    <string name="repayment">还款</string>
+    <string name="mine">我的</string>
 </resources>

@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
     private int loginType;
     public final static String FINISH = "finish";
     public final static String TO_MAIN = "to_main";
-    private String type;
+    private String type = FINISH;
 
 
     public static void startActivity(Activity activity, String type) {

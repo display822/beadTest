@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="loansClick"
+            type="OnClickListener" />
+
+        <variable
+            name="repayClick"
+            type="OnClickListener" />
+
+        <variable
+            name="mineClick"
+            type="OnClickListener" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/layout_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/rg_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_fdfdfd"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_loans"
+                    style="@style/main_text"
+                    android:drawableTop="@drawable/ic_loading"
+                    android:onClick="@{loansClick}"
+                    android:text="@string/loans" />
+
+                <RadioButton
+                    android:id="@+id/rb_repay"
+                    style="@style/main_text"
+                    android:drawableTop="@drawable/ic_loading"
+                    android:onClick="@{repayClick}"
+                    android:text="@string/repayment" />
+
+                <RadioButton
+                    android:id="@+id/rb_mine"
+                    style="@style/main_text"
+                    android:drawableTop="@drawable/ic_loading"
+                    android:onClick="@{mineClick}"
+                    android:text="@string/mine" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
