@@ -23,12 +23,12 @@ public class StartAppActivity extends BaseActivity {
             super.handleMessage(msg);
             if (msg.what == 1) {
                 if (!SpUtil.getBooleanData("firstUse")) {
-
+                    MainActivity.startActivity(mActivity, 0);
                 } else {
                     //首页
                     MainActivity.startActivity(mActivity, 0);
                 }
-//                finish();
+                finish();
             }
         }
     };

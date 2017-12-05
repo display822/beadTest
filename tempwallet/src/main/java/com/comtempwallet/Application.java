@@ -20,6 +20,7 @@ public class Application extends BaseApplication {
     }
 
     protected void setBaseUrl() {
-        Api.setBaseUrl("http://");//正式
+        //正式
+        Api.setBaseUrl("http://www.baidu.com/");
     }
 }

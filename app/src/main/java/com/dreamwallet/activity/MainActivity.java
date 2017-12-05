@@ -10,19 +10,16 @@ import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.base.BaseApplication;
-import com.example.skn.framework.update.UpdateHelper;
-import com.example.skn.framework.util.AppUtil;
-import com.example.skn.framework.util.ToastUtil;
 import com.dreamwallet.R;
 import com.dreamwallet.fragment.BaseLoansFragment;
 import com.dreamwallet.fragment.FindFragment;
 import com.dreamwallet.fragment.HomeFragment;
 import com.dreamwallet.fragment.MeFragment;
 import com.dreamwallet.util.Global;
-import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
+import com.example.skn.framework.base.BaseActivity;
+import com.example.skn.framework.util.AppUtil;
+import com.example.skn.framework.util.ToastUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -106,7 +103,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 e.printStackTrace();
             }
         }
-        UpdateHelper.update(mActivity, UrlService.VERSION_URL, BaseApplication.getApp().getChannel());
+//        UpdateHelper.update(mActivity, UrlService.VERSION_URL, BaseApplication.getApp().getChannel());
     }
 
     @Override

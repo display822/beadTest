@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import com.comtempwallet.R;
 import com.comtempwallet.databinding.ActivityMainBinding;
 import com.comtempwallet.fragment.LoansFragment;
+import com.comtempwallet.fragment.MineFragment;
 import com.comtempwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
 import com.example.skn.framework.util.AppUtil;
@@ -21,6 +22,7 @@ import com.example.skn.framework.util.ToastUtil;
 
 /**
  * Created by Administrator on 2017/12/4 0004.
+ *
  */
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
@@ -31,6 +33,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private Fragment currentFragment;
     private LoansFragment loansFragment;
+    private MineFragment mineFragment;
 
 
     public static void startActivity(Activity activity, int index) {
@@ -45,7 +48,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setIntent(intent);
         int index = intent.getIntExtra("index", -1);
         if (index != -1) {
-            ((RadioButton) binding.rgMain.getChildAt(index)).setChecked(true);
+            ((RadioButton) binding.rgroupMain.getChildAt(index)).setChecked(true);
         }
     }
 
@@ -54,8 +57,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         setFlagTranslucentStatus();
         myHandler = new MyHandler();
-
-
+        loansFragment = LoansFragment.getInstance();
+        mineFragment = MineFragment.getInstance();
 
     }
 
@@ -63,10 +66,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void init() {
         UserInfo.initUserInfo();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.rgMain.setOnCheckedChangeListener(this);
+        binding.rgroupMain.setOnCheckedChangeListener(this);
 
         currentFragment = loansFragment;
-        ((RadioButton) binding.rgMain.getChildAt(0)).setChecked(true);
+        ((RadioButton) binding.rgroupMain.getChildAt(0)).setChecked(true);
     }
 
     @Override
@@ -99,11 +102,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
 
         if(checkedId == R.id.rb_loans){
-
+            if (!loansFragment.isAdded())
+                getSupportFragmentManager().beginTransaction().add(R.id.layout_main, loansFragment).commit();
+            getSupportFragmentManager().beginTransaction().hide(currentFragment).show(loansFragment).commit();
+            currentFragment = loansFragment;
         }else if(checkedId == R.id.rb_repay){
 
         }else if(checkedId == R.id.rb_mine){
-
+            if (!mineFragment.isAdded())
+                getSupportFragmentManager().beginTransaction().add(R.id.layout_main, mineFragment).commit();
+            getSupportFragmentManager().beginTransaction().hide(currentFragment).show(mineFragment).commit();
+            currentFragment = mineFragment;
         }
 
     }

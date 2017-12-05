@@ -4,4 +4,10 @@
     <string name="loans">贷款</string>
     <string name="repayment">还款</string>
     <string name="mine">我的</string>
+
+
+    <string name="my_card">我的银行卡</string>
+    <string name="share">分享</string>
+    <string name="help_and_feedback">帮助与反馈</string>
+    <string name="clear_cache">清除缓存</string>
 </resources>
