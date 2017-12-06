@@ -106,8 +106,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 getSupportFragmentManager().beginTransaction().add(R.id.layout_main, loansFragment).commit();
             getSupportFragmentManager().beginTransaction().hide(currentFragment).show(loansFragment).commit();
             currentFragment = loansFragment;
-        }else if(checkedId == R.id.rb_repay){
-
         }else if(checkedId == R.id.rb_mine){
             if (!mineFragment.isAdded())
                 getSupportFragmentManager().beginTransaction().add(R.id.layout_main, mineFragment).commit();

@@ -5,6 +5,10 @@
     <string name="repayment">还款</string>
     <string name="mine">我的</string>
 
+    <string name="apply_loan">立即申请</string>
+    <string name="apply_failed">签约失败，去追梦宝</string>
+    <string name="apply_check">审核中</string>
+
 
     <string name="my_card">我的银行卡</string>
     <string name="share">分享</string>

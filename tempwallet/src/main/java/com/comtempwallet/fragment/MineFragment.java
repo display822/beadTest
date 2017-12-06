@@ -39,7 +39,6 @@ public class MineFragment extends BaseFragment {
     private void initClickListener(){
 
         binding.setCardClick(v -> {});
-        binding.setShareClick(v -> {});
         binding.setHelpClick(v -> {});
         binding.setClearClick(v -> {});
     }

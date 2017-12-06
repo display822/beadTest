@@ -5,7 +5,6 @@
         <import type="android.view.View.OnClickListener"/>
         
         <variable name="cardClick" type="OnClickListener"/>
-        <variable name="shareClick" type="OnClickListener"/>
         <variable name="helpClick" type="OnClickListener"/>
         <variable name="clearClick" type="OnClickListener"/>
 
@@ -29,7 +28,7 @@
                 android:id="@+id/title_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/mine_setting"
                 android:layout_gravity="bottom"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
@@ -51,24 +50,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="270dp"
             android:layout_marginTop="-50dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             >
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="20dp"
-                android:background="@color/color_FFFFFF"/>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:background="@color/color_FFFFFF"
-                android:layout_alignParentBottom="true"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -77,230 +69,202 @@
                     android:text="123456789"
                     android:layout_marginTop="30dp"
                     />
-                
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    >
+                    android:background="@color/color_FFFFFF"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:id="@+id/ll_my_card"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:onClick="@{cardClick}"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/my_card"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/my_bank_card" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="已借款"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="$10000"
-                            />
+                            android:layout_marginStart="15dp"
+                            android:drawableEnd="@drawable/ic_right"
+                            android:drawablePadding="5dp"
+                            android:text="@string/my_card"
+                            android:textColor="@color/color_333333"
+                            android:textSize="16sp" />
+
+
                     </LinearLayout>
 
                     <View
-                        android:layout_width="1dp"
-                        android:layout_height="15dp"
-                        android:background="@color/color_aaaaaa"
-                        android:layout_gravity="center_vertical"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="40dp"
+                        android:background="@color/color_dddddd" />
+
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:id="@+id/ll_help"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-                        <TextView
+                        android:onClick="@{helpClick}"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="已邀请"
-                            />
+                            android:contentDescription="@string/help_and_feedback"
+                            android:layout_marginTop="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/help_feedback" />
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="0人"
-                            />
+                            android:layout_marginStart="15dp"
+                            android:drawableEnd="@drawable/ic_right"
+                            android:drawablePadding="5dp"
+                            android:text="@string/help_and_feedback"
+                            android:textColor="@color/color_333333"
+                            android:textSize="16sp" />
+
                     </LinearLayout>
 
                     <View
-                        android:layout_width="1dp"
-                        android:layout_height="15dp"
-                        android:background="@color/color_aaaaaa"
-                        android:layout_gravity="center_vertical"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="40dp"
+                        android:background="@color/color_dddddd" />
+
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:id="@+id/ll_clear"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-                        <TextView
+                        android:orientation="horizontal"
+                        android:onClick="@{clearClick}"
+                        android:padding="15dp">
+
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="星级分"
-                            />
+                            android:contentDescription="@string/clear_cache"
+                            android:layout_marginTop="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/my_clear_cache" />
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="888"
-                            />
+                            android:layout_marginStart="15dp"
+                            android:drawableEnd="@drawable/ic_right"
+                            android:drawablePadding="5dp"
+                            android:text="@string/clear_cache"
+                            android:textColor="@color/color_333333"
+                            android:textSize="16sp" />
+
                     </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/head_normal"
+                />
         </RelativeLayout>
 
-
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="@color/color_FFFFFF"
-            android:orientation="vertical">
+            >
 
             <LinearLayout
-                android:id="@+id/ll_my_card"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:onClick="@{cardClick}"
-                android:orientation="horizontal"
-                android:padding="15dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/my_card"
-                    android:layout_marginTop="3dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_right" />
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:drawablePadding="5dp"
-                    android:text="@string/my_card"
-                    android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
-
-
+                    android:text="已借款"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="$10000"
+                    />
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="50dp"
-                android:background="@color/color_dddddd" />
-
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:background="@color/color_aaaaaa"
+                android:layout_gravity="center_vertical"
+                />
             <LinearLayout
-                android:id="@+id/ll_my_share"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:onClick="@{shareClick}"
-                android:orientation="horizontal"
-                android:padding="15dp">
-
-                <ImageView
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/share"
-                    android:layout_marginTop="3dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_right" />
-
+                    android:text="已邀请"
+                    />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:drawablePadding="5dp"
-                    android:text="@string/share"
-                    android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
-
+                    android:layout_marginTop="15dp"
+                    android:text="0人"
+                    />
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="50dp"
-                android:background="@color/color_dddddd" />
-
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:background="@color/color_aaaaaa"
+                android:layout_gravity="center_vertical"
+                />
             <LinearLayout
-                android:id="@+id/ll_help"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:onClick="@{helpClick}"
-                android:orientation="horizontal"
-                android:padding="15dp">
-
-                <ImageView
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/help_and_feedback"
-                    android:layout_marginTop="3dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_right" />
-
+                    android:text="星级分"
+                    />
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:drawablePadding="5dp"
-                    android:text="@string/help_and_feedback"
-                    android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="50dp"
-                android:background="@color/color_dddddd" />
-
-            <LinearLayout
-                android:id="@+id/ll_clear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:onClick="@{clearClick}"
-                android:padding="15dp">
-
-                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/clear_cache"
-                    android:layout_marginTop="3dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_right" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:drawablePadding="5dp"
-                    android:text="@string/clear_cache"
-                    android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
-
+                    android:layout_marginTop="15dp"
+                    android:text="888"
+                    />
             </LinearLayout>
 
-        </LinearLayout>
+        </LinearLayout> -->
+
     </LinearLayout>
 </layout>

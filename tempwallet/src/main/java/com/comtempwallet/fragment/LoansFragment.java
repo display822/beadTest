@@ -30,7 +30,6 @@ public class LoansFragment extends BaseFragment {
     private boolean bannerComplete;
     private boolean productComplete;
 
-
     public static LoansFragment getInstance(){
         return new LoansFragment();
     }
@@ -84,13 +83,16 @@ public class LoansFragment extends BaseFragment {
 
     private void initClickListener(){
 
-        binding.setGoLoanClick(v -> {});
+        binding.setGoLoanClick(v -> {
 
+        });
+
+        binding.seekBar.setMax(100);
         binding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                binding.seekBar.setProgress(progress);
-                binding.borrowNum.setText(String.valueOf(progress));
+
+                binding.borrowNum.setText(String.valueOf(progress/10*50+500));
             }
 
             @Override
