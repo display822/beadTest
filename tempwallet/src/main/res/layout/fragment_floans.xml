@@ -6,7 +6,7 @@
         <import type="android.view.View.OnClickListener" />
 
         <variable
-            name="tipClick"
+            name="goLoanClick"
             type="OnClickListener" />
 
     </data>
@@ -17,50 +17,6 @@
         android:layout_height="match_parent"
         android:background="@color/color_f1f1f1"
         >
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/floans_bg_height"
-            android:background="@color/main_color"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:orientation="vertical"
-            >
-
-            <!-- 标题-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
-                >
-
-                <ImageView
-                    android:id="@+id/title_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_back"
-                    android:layout_gravity="bottom"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="15dp"
-                    />
-                <TextView
-                    android:id="@+id/title_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_FFFFFF"
-                    android:textSize="18sp"
-                    android:text="DreamMonster"
-                    android:onClick="@{tipClick}"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="15dp"
-                    />
-            </RelativeLayout>
 
             <com.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refresh"
@@ -86,75 +42,104 @@
                     android:orientation="vertical">
 
                     <!-- viewpager-->
-                    <FrameLayout
+                    <cn.bingoogolapple.bgabanner.BGABanner
+                        android:id="@+id/loan_banner"
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="10dp"
-                        android:clipChildren="false">
+                        android:layout_height="200dp"
+                        app:banner_placeholderDrawable="@mipmap/ic_launcher"
+                        app:banner_pointAutoPlayAble="true"
+                        app:banner_pointAutoPlayInterval="2"
+                        />
 
-                        <android.support.v4.view.ViewPager
-                            android:id="@+id/banner1"
-                            android:layout_width="match_parent"
-                            android:clipChildren="false"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginRight="40dp"
-                            android:layout_height="120dp"
-                            android:visibility="gone">
-                        </android.support.v4.view.ViewPager>
-
-                        <ImageView
-                            android:id="@+id/banner1_no"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ic_empty" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_marginStart="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_back" />
-
-                        <com.comtempwallet.widget.VerticalMarqueeTextView
-                            android:id="@+id/borrow_record"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="3dp"
-                            android:layout_gravity="center_vertical"
-                            />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:orientation="vertical"
+                        android:layout_marginTop="30dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@color/color_FFFFFF"
                         >
 
                         <!-- 卡片-->
+                        <TextView
+                            android:layout_width="63dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="end"
+                            android:gravity="bottom|center_horizontal"
+                            android:background="@color/main_color"
+                            android:rotation="45"
+                            android:translationX="22dp"
+                            android:translationY="-12dp"
+                            android:text="14天"
+                            />
 
+                        <TextView
+                            android:id="@+id/borrow_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="--元"
+                            android:textSize="20sp"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:orientation="vertical"
+                            >
+                            <SeekBar
+                                android:id="@+id/seek_bar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxHeight="5dp"
+                                android:minHeight="5dp"
+                                android:progressDrawable="@drawable/my_seekbar_style"
+                                android:thumb="@drawable/progress_bt"
+                                android:max="100"
+                                android:progress="50"
+                                />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="500元"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:text="1000元"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/fq_loan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_main_button"
+                            android:layout_gravity="center_horizontal"
+                            android:onClick="@{goLoanClick}"
+                            android:text="申请借款"
+                            />
 
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableLeft="@drawable/attention"
                         android:text="不向在校大学生提供贷款服务"
                         />
 
                 </LinearLayout>
                 </android.support.v4.widget.NestedScrollView>
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
-        </LinearLayout>
 
     </RelativeLayout>
 </layout>

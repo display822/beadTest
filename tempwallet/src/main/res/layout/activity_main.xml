@@ -44,21 +44,21 @@
                 <RadioButton
                     android:id="@+id/rb_loans"
                     style="@style/main_text"
-                    android:drawableTop="@drawable/ic_loading"
+                    android:drawableTop="@drawable/selector_main_loans"
                     android:onClick="@{loansClick}"
                     android:text="@string/loans" />
 
                 <RadioButton
                     android:id="@+id/rb_repay"
                     style="@style/main_text"
-                    android:drawableTop="@drawable/ic_loading"
+                    android:drawableTop="@drawable/selector_main_repay"
                     android:onClick="@{repayClick}"
                     android:text="@string/repayment" />
 
                 <RadioButton
                     android:id="@+id/rb_mine"
                     style="@style/main_text"
-                    android:drawableTop="@drawable/ic_loading"
+                    android:drawableTop="@drawable/selector_main_mine"
                     android:onClick="@{mineClick}"
                     android:text="@string/mine" />
             </RadioGroup>
