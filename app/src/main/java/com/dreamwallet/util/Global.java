@@ -15,6 +15,7 @@ public class Global {
     public static Map<String, Long> map;
     public static int loansPosition = 0;
     public static int findPosition = 0;
+    public static int hideLoans = 0;
     public static List<LoansTitleEntity> loansTitleEntities=new ArrayList<>();
 
 }

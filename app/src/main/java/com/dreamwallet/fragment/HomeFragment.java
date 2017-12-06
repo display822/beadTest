@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.dreamwallet.R;
+import com.dreamwallet.activity.DetailsActivity;
 import com.dreamwallet.activity.LoansDetailsActivity;
 import com.dreamwallet.activity.MainActivity;
 import com.dreamwallet.activity.MyActivityActivity;
@@ -26,6 +27,7 @@ import com.dreamwallet.entity.BannerEntity;
 import com.dreamwallet.entity.BorrowRecordEntity;
 import com.dreamwallet.entity.HomeInformationEntity;
 import com.dreamwallet.entity.StarProductEntity;
+import com.dreamwallet.util.Global;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.DepthPageTransformer;
@@ -33,11 +35,14 @@ import com.dreamwallet.widget.FixSpeedScroller;
 import com.dreamwallet.widget.GlideRoundBitmap;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
+import com.example.skn.framework.http.BaseEntity;
 import com.example.skn.framework.http.RequestCallBack;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Observable;
 
 /**
  * Created by hf
@@ -81,6 +86,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+
+        if(Global.hideLoans == 0){
+            binding.homeNeedHide.setVisibility(View.GONE);
+        }
         binding.refresh.setOnRefreshListener(refreshLayout -> init());
         setHasOptionsMenu(true);
         StatisticsUtil.homePage(mActivity);
@@ -153,7 +162,14 @@ public class HomeFragment extends BaseFragment {
 
     //banner
     private void initBanner() {
-        Api.getDefault(UrlService.class).getBannar().compose(Api.handlerResult())
+        Observable<BaseEntity<List<BannerEntity>>> bannar;
+        if(Global.hideLoans == 0){
+            bannar = Api.getDefault(UrlService.class).getBannar("0");
+        }else{
+            bannar = Api.getDefault(UrlService.class).getBannar();
+        }
+
+        bannar.compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<BannerEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<BannerEntity> bannerEntities) {
@@ -184,7 +200,11 @@ public class HomeFragment extends BaseFragment {
                                             int indexD = url.indexOf("=");
                                             int indexY = url.indexOf("&");
                                             String platformId = indexY != -1?  url.substring(indexD+1,indexY): url.substring(indexD+1);
-                                            LoansDetailsActivity.startActivity(getActivity(), platformId);
+                                            if(Global.hideLoans == 0){
+                                                DetailsActivity.startActivity(getActivity(), Integer.valueOf(platformId));
+                                            }else{
+                                                LoansDetailsActivity.startActivity(getActivity(), platformId);
+                                            }
                                             StatisticsUtil.visitCount(mActivity, StatisticsUtil.banner, position + "");
                                         }
                                 );
@@ -260,6 +280,11 @@ public class HomeFragment extends BaseFragment {
 
     //跑马灯效果
     private void initBorrowRecord() {
+        if(Global.hideLoans == 0) {
+            closeRefresh(2);
+            return;
+        }
+
         Api.getDefault(UrlService.class).getBorrowRecord().compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<BorrowRecordEntity>>(mActivity) {
                     @Override
@@ -286,6 +311,10 @@ public class HomeFragment extends BaseFragment {
 
     //明星产品
     private void initStartProduct() {
+        if(Global.hideLoans == 0) {
+            closeRefresh(3);
+            return;
+        }
         Api.getDefault(UrlService.class).getStarProduct().compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<StarProductEntity>>(mActivity) {
                     @Override

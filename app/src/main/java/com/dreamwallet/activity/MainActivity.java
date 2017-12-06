@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -91,6 +92,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         currentFragment = homeFragment;
         ((RadioButton) rgMain.getChildAt(0)).setChecked(true);//默认第一个radioButton被选中
 
+        RadioButton rbLoans = (RadioButton) findViewById(R.id.rb_loans);
+        if(Global.hideLoans == 0){
+            //隐藏
+            rbLoans.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -4,14 +4,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
+import com.dreamwallet.R;
+import com.dreamwallet.util.Global;
+import com.dreamwallet.util.UrlService;
+import com.dreamwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.BaseEntity;
+import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.JsonUtil;
 import com.example.skn.framework.util.SpUtil;
-import com.dreamwallet.R;
-import com.dreamwallet.util.UrlService;
-import com.dreamwallet.util.UserInfo;
 
 import rx.Subscriber;
 
@@ -28,6 +31,8 @@ public class StartAppActivity extends BaseActivity {
                     MainActivity.startActivity(mActivity, 0);
                 }
                 finish();
+            }else if(msg.what == 2){
+                checkLogin();
             }
         }
     };
@@ -40,6 +45,12 @@ public class StartAppActivity extends BaseActivity {
 
     @Override
     protected void init() {
+
+        getDreamSwift();
+
+    }
+
+    private void checkLogin(){
         if (UserInfo.isLogin()) {
             getUserInfo();
         } else {
@@ -49,6 +60,26 @@ public class StartAppActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+    }
+
+    private void getDreamSwift(){
+
+        Api.getDefault(UrlService.class).getSwift(AppUtil.getVersionName(), "Android").compose(Api.handlerResult())
+                .subscribe(new RequestCallBack<String>(mActivity, false) {
+                    @Override
+                    public void onSuccess(String s) {
+                        Global.hideLoans = Integer.valueOf(s);
+                        handler.sendEmptyMessage(2);
+                    }
+
+                    @Override
+                    public void onFailure(String code, String errorMsg) {
+                        handler.sendEmptyMessage(2);
+                    }
+                });
+
+
 
     }
 

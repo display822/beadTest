@@ -42,6 +42,12 @@ public interface UrlService {
 
     String VERSION_URL = Api.getBaseUrl() + "index/findAppDetail.do";
 
+
+
+    //获取banner
+    @GET("platform/togglr1")
+    Observable<BaseEntity<String>> getSwift(@Query("appVersion") String appVersion, @Query("channel") String channel);
+
     /**
      * 首页接口
      */
@@ -49,6 +55,9 @@ public interface UrlService {
     @GET("index/getBannar")
     Observable<BaseEntity<List<BannerEntity>>> getBannar();
 
+    //获取banner
+    @GET("index/getBannar")
+    Observable<BaseEntity<List<BannerEntity>>> getBannar(@Query("source") String source);
 
     //获取明星产品
     @GET("index/getStarProduct")

@@ -26,6 +26,7 @@ import com.dreamwallet.databinding.FragmentInformationBinding;
 import com.dreamwallet.databinding.LayoutFindFragmentGroupLayoutBinding;
 import com.dreamwallet.entity.BannerEntity;
 import com.dreamwallet.entity.InformationEntity;
+import com.dreamwallet.util.Global;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.DepthPageTransformer;
@@ -107,7 +108,9 @@ public class InformationFragment extends BaseFragment {
         data = new ArrayList<>();
         layoutBinding = DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.layout_find_fragment_group_layout, null, false);
         informationAdapter1 = new InformationAdapter(mActivity, data, R.layout.item_information);
-
+        if (Global.hideLoans == 0){
+            layoutBinding.fragmentInfoHide.setVisibility(View.GONE);
+        }
         drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
         drawable.start();
         binding.rlInformation.setDivider(null);
@@ -136,7 +139,9 @@ public class InformationFragment extends BaseFragment {
 
 
     private void initData(int type) {
-        getBanner();
+        if(Global.hideLoans != 0){
+            getBanner();
+        }
         getData(type);
 
     }

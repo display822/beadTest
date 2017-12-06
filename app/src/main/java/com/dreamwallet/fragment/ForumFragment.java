@@ -27,6 +27,7 @@ import com.dreamwallet.databinding.FragmentForumBinding;
 import com.dreamwallet.databinding.LayoutFindFragmentGroupLayoutBinding;
 import com.dreamwallet.entity.BannerEntity;
 import com.dreamwallet.entity.ForumEntity;
+import com.dreamwallet.util.Global;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
@@ -109,6 +110,9 @@ public class ForumFragment extends BaseFragment {
         data = new ArrayList<>();
         layoutBinding = DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.layout_find_fragment_group_layout, null, false);
 
+        if (Global.hideLoans == 0){
+            layoutBinding.fragmentInfoHide.setVisibility(View.GONE);
+        }
         drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
         drawable.start();
         layoutBinding.llDetail.setVisibility(View.GONE);
@@ -145,7 +149,9 @@ public class ForumFragment extends BaseFragment {
 
 
     private void initData(int type) {
-        getBanner();
+        if (Global.hideLoans != 0){
+            getBanner();
+        }
         getData(type);
 
     }

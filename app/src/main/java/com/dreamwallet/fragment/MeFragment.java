@@ -16,6 +16,7 @@ import com.dreamwallet.activity.HelpCenterActivity;
 import com.dreamwallet.activity.LoginActivity;
 import com.dreamwallet.activity.MyFindActivity;
 import com.dreamwallet.activity.SettingActivity;
+import com.dreamwallet.util.Global;
 import com.dreamwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseFragment;
 
@@ -61,6 +62,10 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
 
         iv_setting.setOnClickListener(this);
         ll_borrow_record.setOnClickListener(this);
+        if(Global.hideLoans == 0){
+            ll_borrow_record.setVisibility(View.GONE);
+            view.findViewById(R.id.mine_line).setVisibility(View.GONE);
+        }
 //        ll_credit_auth.setOnClickListener(this);
         ll_my_find.setOnClickListener(this);
         ll_help.setOnClickListener(this);
