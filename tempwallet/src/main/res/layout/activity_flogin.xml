@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/floging_title_height">
+
+            <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_back" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/login_background"
+                android:paddingTop="100dp">
+
+                <EditText
+                    android:id="@+id/login_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/login_et_bg"
+                    android:gravity="center"
+                    android:inputType="phone"
+                    android:hint="@string/login_phone_hint" />
+
+                <LinearLayout
+                    android:id="@+id/pd_llyt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/login_phone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/login_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_et_bg"
+                        android:gravity="center"
+                        android:hint="@string/login_pwd_hint" />
+
+                    <TextView
+                        android:id="@+id/forget_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/forget_pwd" />
+
+                    <Button
+                        android:id="@+id/login_bt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/forget_pd"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/main_button_enable"
+                        android:text="登录"
+                        android:textColor="@color/color_FFFFFF" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/register_llyt"
+                    android:layout_width="255dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/pd_llyt"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="6"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/verify_bg"
+                            android:gravity="center"
+                            android:hint="请输入验证码"
+                            />
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/register_verify_bg"
+                            android:textColor="@color/color_FFFFFF"
+                            android:text="获取验证码"
+                            />
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/new_set_pd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_et_bg"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:hint="@string/input_hint_pwd"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/register_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/register_llyt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:text="注册"
+                    android:textColor="@color/main_color" />
+
+                <LinearLayout
+                    android:id="@+id/protocol_llyt"
+                    android:layout_below="@id/register_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11.5sp"
+                        android:text="@string/protocol_tip"
+                        />
+
+                    <TextView
+                        android:id="@+id/protocol_html"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11.5sp"
+                        android:textColor="#000011"
+                        android:text="@string/protocol"
+                        />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/login_top_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_top_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_top_iv"
+                android:layout_centerHorizontal="true"
+                android:text="DreamMonster" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

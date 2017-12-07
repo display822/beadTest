@@ -6,4 +6,6 @@
     <dimen name="title_bar_height">65dp</dimen>
 
     <dimen name="floans_bg_height">172dp</dimen>
+
+    <dimen name="floging_title_height">60dp</dimen>
 </resources>

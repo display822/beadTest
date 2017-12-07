@@ -14,4 +14,12 @@
     <string name="share">分享</string>
     <string name="help_and_feedback">帮助与反馈</string>
     <string name="clear_cache">清除缓存</string>
+
+
+    <string name="login_phone_hint">请输入手机号码</string>
+    <string name="login_pwd_hint">请输入密码</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="input_hint_pwd">请设置6~16位字符密码</string>
+    <string name="protocol_tip">注册即表示同意</string>
+    <string name="protocol">《梦想分期注册协议》</string>
 </resources>

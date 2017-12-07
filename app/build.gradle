@@ -63,7 +63,7 @@ android {
 //        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
 //        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
 //        tencent { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"] }//应用宝
-        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
+//        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
 //        huawei { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"] }//华为智汇云
 //        vivo { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"] }//vivo应用商店
 //        mumayi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi"] }//木蚂蚁
@@ -74,7 +74,7 @@ android {
 //        nduowang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nduowang"] }//N多网
 //        anzhi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"] }//安智市场
 //        samsung { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "samsung"] }//三星应用商店
-//        nearme { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nearme"] }//OPPO应用商店/near me
+        nearme { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "nearme"] }//OPPO应用商店/near me
 //        pacific { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pacific"] }//太平洋
 //        letv { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv"] }//乐视应用商店
 //        gfan { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "gfan"] }//机锋市场

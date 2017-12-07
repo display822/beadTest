@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 
 import com.comtempwallet.R;
+import com.comtempwallet.activity.LoginActivity;
 import com.comtempwallet.adapter.BannerAdapter;
 import com.comtempwallet.databinding.FragmentFloansBinding;
 import com.comtempwallet.entity.BannerEntity;
 import com.comtempwallet.http.UrlService;
+import com.comtempwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.RequestCallBack;
@@ -84,6 +86,11 @@ public class LoansFragment extends BaseFragment {
     private void initClickListener(){
 
         binding.setGoLoanClick(v -> {
+            if(UserInfo.isLogin()){
+
+            }else{
+                LoginActivity.startActivity(mActivity);
+            }
 
         });
 
