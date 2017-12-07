@@ -70,6 +70,7 @@ public class StartAppActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String s) {
                         Global.hideLoans = Integer.valueOf(s);
+//                        Global.hideLoans = 1;
                         handler.sendEmptyMessage(2);
                     }
 
