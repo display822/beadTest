@@ -22,7 +22,7 @@ public class WalletDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String sql = "create table if not exists " + TABLE_NAME + " (type integer, money integer, record_date text, comment text)";
+        String sql = "create table if not exists " + TABLE_NAME + " (type integer, money integer, record_date DATE, comment text)";
 
         db.execSQL(sql);
     }

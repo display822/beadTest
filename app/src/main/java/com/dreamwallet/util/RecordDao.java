@@ -52,7 +52,7 @@ public class RecordDao {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         //"where datetime(record_date) > ? and datetime(record_date) < ?"
         Cursor cursor = db.query(WalletDB.TABLE_NAME, new String[]{"type", "money", "record_date", "comment"},
-                null, null, null, null, null);
+                "record_date >= ? and record_date <= ?", new String[]{firstDay, lastDay}, null, null, null);
 
         if (cursor.getCount() > 0) {
             List<MoneyRecord> orderList = new ArrayList<>(cursor.getCount());

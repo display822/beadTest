@@ -77,6 +77,8 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         mMonth = ca.get(Calendar.MONTH);
         mDay = ca.get(Calendar.DAY_OF_MONTH);
 
+        binding.selectYear.setText(String.valueOf(mYear));
+        binding.selectMonth.setText(String.valueOf(mMonth+1));
         List<MoneyRecord> list = getRecords();
         if(list.size() == 0){
             updateEmptyOrNetErrorView(false, true);
@@ -118,6 +120,8 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
                     mDay = dayOfMonth;
                     binding.selectYear.setText(String.valueOf(year));
                     binding.selectMonth.setText(String.valueOf(month+1));
+
+                    refreshData();
                 }
             }, mYear, mMonth, mDay).show();
         });
@@ -146,9 +150,17 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
 
     @Override
     public void onRefresh() {
+        refreshData();
+        binding.refresh.complete();
+    }
+
+    public void refreshData(){
         List<MoneyRecord> list = getRecords();
 
         if(list.size() == 0){
+            datas.clear();
+            adapter.setDatas(datas);
+            adapter.notifyDataSetChanged();
             updateEmptyOrNetErrorView(false, true);
         }else{
             datas.clear();
@@ -157,7 +169,6 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
             adapter.notifyDataSetChanged();
             updateEmptyOrNetErrorView(true, true);
         }
-        binding.refresh.complete();
     }
 
     private List<MoneyRecord> getRecords(){
