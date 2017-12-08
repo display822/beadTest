@@ -88,6 +88,7 @@
         <activity android:name=".activity.AddForumActivity" />
         <activity android:name=".activity.LoansActivity"/>
         <activity android:name=".activity.InformationActivity"/>
+        <activity android:name=".activity.AddRecordActivity"/>
 
 
         <!-- 友盟分享 -->

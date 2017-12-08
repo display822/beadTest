@@ -67,6 +67,7 @@
                     android:orientation="vertical"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/select_year"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -85,6 +86,7 @@
                         android:orientation="horizontal"
                         >
                         <TextView
+                            android:id="@+id/select_month"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="11"
@@ -189,7 +191,25 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.hankkin.library.RefreshSwipeMenuListView
+                android:id="@+id/refresh"
+                android:dividerHeight="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <android.support.v7.widget.ViewStubCompat
+                android:id="@+id/viewStub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout="@layout/layout_empty_or_net_error"
+                android:visibility="gone" />
+        </FrameLayout>
+
     </LinearLayout>
     
 </layout>

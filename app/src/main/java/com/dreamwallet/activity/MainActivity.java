@@ -7,7 +7,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -16,6 +15,7 @@ import com.dreamwallet.fragment.BaseLoansFragment;
 import com.dreamwallet.fragment.FindFragment;
 import com.dreamwallet.fragment.HomeFragment;
 import com.dreamwallet.fragment.MeFragment;
+import com.dreamwallet.fragment.MoneyRecordFragment;
 import com.dreamwallet.util.Global;
 import com.dreamwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private BaseLoansFragment loansFragment;
     private MeFragment meFragment;
     private FindFragment findFragment;
+    private MoneyRecordFragment moneyRecordFragment;
     private RadioGroup rgMain;
     private static boolean isExit = false;
     private static MyHandler myHandler;
@@ -70,6 +71,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         loansFragment = BaseLoansFragment.getInstance();
         meFragment = MeFragment.getInstance();
         findFragment = FindFragment.getInstance();
+
+        moneyRecordFragment = MoneyRecordFragment.getInstance();
     }
 
     @Override
@@ -95,7 +98,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         RadioButton rbLoans = (RadioButton) findViewById(R.id.rb_loans);
         if(Global.hideLoans == 0){
             //隐藏
-            rbLoans.setVisibility(View.GONE);
+            rbLoans.setText("记账");
+        }else{
+            rbLoans.setText("贷款");
         }
     }
 
@@ -120,10 +125,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             getSupportFragmentManager().beginTransaction().hide(currentFragment).show(homeFragment).commit();
             currentFragment = homeFragment;
         } else if (i == R.id.rb_loans) {
-            if (!loansFragment.isAdded())
-                getSupportFragmentManager().beginTransaction().add(R.id.layout_main, loansFragment).commit();
-            getSupportFragmentManager().beginTransaction().hide(currentFragment).show(loansFragment).commit();
-            currentFragment = loansFragment;
+            if(Global.hideLoans == 0){
+                if (!moneyRecordFragment.isAdded())
+                    getSupportFragmentManager().beginTransaction().add(R.id.layout_main, moneyRecordFragment).commit();
+                getSupportFragmentManager().beginTransaction().hide(currentFragment).show(moneyRecordFragment).commit();
+                currentFragment = moneyRecordFragment;
+            }else{
+                if (!loansFragment.isAdded())
+                    getSupportFragmentManager().beginTransaction().add(R.id.layout_main, loansFragment).commit();
+                getSupportFragmentManager().beginTransaction().hide(currentFragment).show(loansFragment).commit();
+                currentFragment = loansFragment;
+            }
         } else if (i == R.id.rb_find) {
             if (!findFragment.isAdded())
                 getSupportFragmentManager().beginTransaction().add(R.id.layout_main, findFragment).commit();

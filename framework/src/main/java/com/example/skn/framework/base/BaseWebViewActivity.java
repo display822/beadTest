@@ -3,7 +3,6 @@ package com.example.skn.framework.base;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -12,7 +11,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.skn.framework.R;
-import com.example.skn.framework.util.ToolBarUtil;
 
 /**
  * Created by hf
@@ -47,7 +45,6 @@ public class BaseWebViewActivity extends BaseActivity {
     protected WebView webView;
     protected String url;
     protected String title;
-    protected Toolbar toolbar;
     private ProgressBar pb;
     private boolean isInnerOpen;
 
@@ -56,7 +53,8 @@ public class BaseWebViewActivity extends BaseActivity {
     protected void init() {
         setFlagTranslucentStatus();
         setContentView(R.layout.activity_web_view);
-        toolbar = ToolBarUtil.getInstance(this).setTitle(title).build();
+
+        findViewById(R.id.title_back).setOnClickListener(v -> finish());
         webView = (WebView) findViewById(R.id.web);
         pb = (ProgressBar) findViewById(R.id.pb);
         webView.getSettings().setJavaScriptEnabled(true);
