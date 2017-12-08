@@ -1,58 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp">
 
-    <data>
-        <variable
-            name="record_type"
-            type="String"/>
+    <ImageView
+        android:id="@+id/icon_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/money_record_icon" />
 
-        <variable
-            name="record_num"
-            type="String"/>
+    <TextView
+        android:id="@+id/record_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/icon_type"
+        android:text="123456"
+        android:textColor="@color/color_333333"
+        android:textSize="15sp" />
 
-    </data>
+    <TextView
+        android:id="@+id/record_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:text="123456"
+        android:textColor="@color/color_333333"
+        android:textSize="15sp" />
 
-    <RelativeLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="60dp"
+        android:background="@color/color_999999" />
 
-        <ImageView
-            android:id="@+id/icon_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/money_record_icon"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            />
-
-        <TextView
-            android:layout_toRightOf="@id/icon_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{record_type, default = 123456}"
-            android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:textColor="@color/color_333333"
-            android:layout_marginLeft="30dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:textSize="15sp"
-            android:textColor="@color/color_333333"
-            android:text="@{record_num, default = 123456}"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="60dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/color_999999"/>
-
-    </RelativeLayout>
-</layout>
+</RelativeLayout>

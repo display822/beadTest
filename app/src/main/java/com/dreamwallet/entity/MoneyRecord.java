@@ -1,7 +1,5 @@
 package com.dreamwallet.entity;
 
-import java.util.Date;
-
 /**
  * Created by Administrator on 2017/12/8 0008.
  */
@@ -9,8 +7,8 @@ import java.util.Date;
 public class MoneyRecord {
 
     private int type;
-    private float money;
-    private Date date;
+    private int money;
+    private String record_date;
     private String comment;
 
 
@@ -22,20 +20,20 @@ public class MoneyRecord {
         this.type = type;
     }
 
-    public float getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(float money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 
-    public Date getDate() {
-        return date;
+    public String getRecord_date() {
+        return record_date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setRecord_date(String record_date) {
+        this.record_date = record_date;
     }
 
     public String getComment() {

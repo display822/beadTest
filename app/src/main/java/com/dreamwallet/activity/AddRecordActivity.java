@@ -10,6 +10,8 @@ import android.widget.DatePicker;
 
 import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityAddMoneyrecordBinding;
+import com.dreamwallet.entity.MoneyRecord;
+import com.dreamwallet.util.RecordDao;
 import com.example.skn.framework.base.BaseActivity;
 import com.example.skn.framework.util.ToastUtil;
 
@@ -79,7 +81,16 @@ public class AddRecordActivity extends BaseActivity implements DatePickerDialog.
     }
 
     private void saveRecord(){
+        RecordDao dao = new RecordDao(this);
+        MoneyRecord m = new MoneyRecord();
+        m.setType(type);
+        m.setMoney(Integer.valueOf(binding.moneyNum.getText().toString()));
+        m.setRecord_date(DateFormat.format("yyyy-MM-dd", new Date(mYear-1900, mMonth, mDay)).toString());
+        m.setComment(binding.comment.getText().toString());
+        dao.insertRecord(m);
 
+        ToastUtil.show("添加成功");
+        finish();
     }
 
     @Override
@@ -89,6 +100,9 @@ public class AddRecordActivity extends BaseActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        mYear = year;
+        mMonth = month;
+        mDay = dayOfMonth;
         binding.moneyDate.setText(DateFormat.format("yyyy年-MM月-dd日", new Date(year-1900, month, dayOfMonth)));
     }
 }
