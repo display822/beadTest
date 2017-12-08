@@ -22,13 +22,13 @@ import com.dreamwallet.databinding.FragmentMoneyRecordBinding;
 import com.dreamwallet.entity.MoneyRecord;
 import com.dreamwallet.util.RecordDao;
 import com.example.skn.framework.base.BaseFragment;
-import com.example.skn.framework.util.ToastUtil;
 import com.hankkin.library.RefreshSwipeMenuListView;
 import com.hankkin.library.SwipeMenu;
 import com.hankkin.library.SwipeMenuCreator;
 import com.hankkin.library.SwipeMenuItem;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +43,7 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
     private Date currDate;
     private MyAdapter adapter;
     private int mYear,mMonth,mDay;
+    private List<MoneyRecord> datas = new ArrayList<>();
 
     public static MoneyRecordFragment getInstance(){
         return new MoneyRecordFragment();
@@ -76,7 +77,14 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         mMonth = ca.get(Calendar.MONTH);
         mDay = ca.get(Calendar.DAY_OF_MONTH);
 
-        adapter = new MyAdapter(getActivity(), getRecords());
+        List<MoneyRecord> list = getRecords();
+        if(list.size() == 0){
+            updateEmptyOrNetErrorView(false, true);
+        }else{
+            datas.clear();
+            datas.addAll(list);
+        }
+        adapter = new MyAdapter(getActivity(), datas);
         binding.refresh.setAdapter(adapter);
         binding.refresh.setListViewMode(RefreshSwipeMenuListView.HEADER);
         binding.refresh.setOnRefreshListener(this);
@@ -85,7 +93,11 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         {
             switch (index) {
                 case 0: //删除
-                    ToastUtil.show("position:"+position+"-index:"+index);
+                    RecordDao dao = new RecordDao(getActivity());
+                    dao.deleteRecord(datas.get(position));
+                    datas.remove(position);
+                    adapter.setDatas(datas);
+                    adapter.notifyDataSetChanged();
                     break;
             }
         });
@@ -135,12 +147,17 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
     @Override
     public void onRefresh() {
         List<MoneyRecord> list = getRecords();
-        adapter = new MyAdapter(getActivity(), list);
-        binding.refresh.setAdapter(adapter);
-        binding.refresh.complete();
+
         if(list.size() == 0){
             updateEmptyOrNetErrorView(false, true);
+        }else{
+            datas.clear();
+            datas.addAll(list);
+            adapter.setDatas(datas);
+            adapter.notifyDataSetChanged();
+            updateEmptyOrNetErrorView(true, true);
         }
+        binding.refresh.complete();
     }
 
     private List<MoneyRecord> getRecords(){
@@ -179,7 +196,7 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
 
     @Override
     public void onLoadMore() {
-
+        binding.refresh.complete();
     }
 
     class MyAdapter extends BaseAdapter {
@@ -189,6 +206,10 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
 
         public MyAdapter(Context context, List<MoneyRecord> data){
             mContext = context;
+            datas = data;
+        }
+
+        public void setDatas(List<MoneyRecord> data){
             datas = data;
         }
 

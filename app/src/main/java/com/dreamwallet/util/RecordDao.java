@@ -41,10 +41,8 @@ public class RecordDao {
 
     public void deleteRecord(MoneyRecord m){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.beginTransaction();
 
-        db.delete(WalletDB.TABLE_NAME, "comment = ? and money = ? and datetime(date) = ?", new String[]{m.getComment(), String.valueOf(m.getMoney()), m.getRecord_date()});
-        db.setTransactionSuccessful();
+        db.delete(WalletDB.TABLE_NAME, "comment = ? and money = ? and record_date = ?", new String[]{m.getComment(), String.valueOf(m.getMoney()), m.getRecord_date()});
         db.close();
     }
 
