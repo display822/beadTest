@@ -6,11 +6,37 @@ package com.dreamwallet.entity;
 
 public class MoneyRecord {
 
+    private boolean isItem = true;
     private int type;
     private int money;
     private String record_date;
     private String comment;
+    private int totalIn;
+    private int totalOut;
 
+    public boolean isItem() {
+        return isItem;
+    }
+
+    public void setItem(boolean item) {
+        isItem = item;
+    }
+
+    public int getTotalOut() {
+        return totalOut;
+    }
+
+    public void setTotalOut(int totalOut) {
+        this.totalOut = totalOut;
+    }
+
+    public int getTotalIn() {
+        return totalIn;
+    }
+
+    public void setTotalIn(int totalIn) {
+        this.totalIn = totalIn;
+    }
 
     public int getType() {
         return type;

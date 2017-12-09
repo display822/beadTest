@@ -14,7 +14,10 @@
             name="datepay"
             type="String"/>
     </data>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,6 +25,7 @@
         >
 
         <TextView
+            android:id="@+id/type_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -45,6 +49,7 @@
                 android:text="收入:"
                 />
             <TextView
+                android:id="@+id/type_income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
@@ -59,6 +64,7 @@
                 android:text="支出:"
                 />
             <TextView
+                android:id="@+id/type_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
@@ -73,4 +79,6 @@
             android:layout_alignParentBottom="true"
             android:background="@color/color_999999"/>
     </RelativeLayout>
+
+</LinearLayout>
 </layout>

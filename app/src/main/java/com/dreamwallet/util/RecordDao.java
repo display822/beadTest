@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/8 0008.
+ *
  */
 
 public class RecordDao {
@@ -25,6 +26,10 @@ public class RecordDao {
         dbHelper = new WalletDB(context);
     }
 
+    /**
+     *
+     * 日期存储的格式是2017-09-01
+     */
     public void insertRecord(MoneyRecord m){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -52,7 +57,7 @@ public class RecordDao {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         //"where datetime(record_date) > ? and datetime(record_date) < ?"
         Cursor cursor = db.query(WalletDB.TABLE_NAME, new String[]{"type", "money", "record_date", "comment"},
-                "record_date >= ? and record_date <= ?", new String[]{firstDay, lastDay}, null, null, null);
+                "record_date >= ? and record_date <= ?", new String[]{firstDay, lastDay}, null, null, "record_date asc");
 
         if (cursor.getCount() > 0) {
             List<MoneyRecord> orderList = new ArrayList<>(cursor.getCount());
@@ -64,10 +69,14 @@ public class RecordDao {
                 record.setComment(cursor.getString(3));
                 orderList.add(record);
             }
+            cursor.close();
             return orderList;
         }else{
+            cursor.close();
             return new ArrayList<MoneyRecord>();
         }
+
+
     }
 
 }

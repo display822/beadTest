@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.hankkin.library.SwipeMenu;
 import com.hankkin.library.SwipeMenuCreator;
 import com.hankkin.library.SwipeMenuItem;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,6 +37,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/7 0007.
+ *
  */
 
 public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMenuListView.OnRefreshListener {
@@ -187,22 +190,43 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         ca.set(Calendar.MONTH, mMonth);
         ca.set(Calendar.DAY_OF_MONTH, ca.getActualMaximum(Calendar.DAY_OF_MONTH));
         String last = format.format(ca.getTime());
-
+        //数据库存储的结果-
         List<MoneyRecord> moneyRecords = dao.selectRecordByDate(first, last);
+
         int moneyIn=0;
         int moneyOut=0;
+        List<String> dates = new ArrayList<>();
+        List<MoneyRecord> results = new ArrayList<>();
+        int today = -1;
         for(MoneyRecord m: moneyRecords){
-            if(m.getType()==1){
-                //收入
-                moneyIn += m.getMoney();
-            }else{
-                moneyOut += m.getMoney();
+
+            if(!dates.contains(m.getRecord_date())){
+                //不包含当前日期，新建一个item统计今天的记账
+                dates.add(m.getRecord_date());
+                MoneyRecord temp = new MoneyRecord();
+                temp.setItem(false);
+                temp.setRecord_date(m.getRecord_date());
+                results.add(temp);
+                today++;
             }
+
+            MoneyRecord todayRecord = results.get(today);
+            if(m.getType()==1){
+                //总收入
+                moneyIn += m.getMoney();
+                todayRecord.setTotalIn(todayRecord.getTotalIn() + m.getMoney());
+            }else{
+                //总支出
+                moneyOut += m.getMoney();
+                todayRecord.setTotalOut(todayRecord.getTotalOut() + m.getMoney());
+            }
+
+            results.add(m);
         }
 
         binding.incomeNum.setText(String.valueOf(moneyIn));
         binding.outpayNum.setText(String.valueOf(moneyOut));
-        return moneyRecords;
+        return results;
     }
 
     @Override
@@ -230,6 +254,16 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return datas.get(position).isItem() ? 1 : 0;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 2;
+        }
+
+        @Override
         public Object getItem(int position) {
             return datas.get(position);
         }
@@ -241,34 +275,60 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
-
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.record_item_two, parent, false);
-
-                holder = new ViewHolder();
-                holder.comment = convertView.findViewById(R.id.record_type);
-                holder.money = convertView.findViewById(R.id.record_money);
-                convertView.setTag(holder);
-            }else{
-                holder = (ViewHolder) convertView.getTag();
-            }
-
             MoneyRecord m = datas.get(position);
-            holder.comment.setText(m.getComment());
-            if(m.getType() == 2){
-                holder.money.setText("-"+m.getMoney());
-            }else{
-                holder.money.setText(""+m.getMoney());
-            }
 
+            if(getItemViewType(position) == 1){
+                ItemHolder holder;
+                if(convertView == null){
+                    convertView = LayoutInflater.from(mContext).inflate(R.layout.record_item_two, parent, false);
+                    holder = new ItemHolder();
+                    holder.comment = convertView.findViewById(R.id.record_type);
+                    holder.money = convertView.findViewById(R.id.record_money);
+                    convertView.setTag(holder);
+                }
+                if(convertView.getTag() instanceof ItemHolder){
+                        holder = (ItemHolder) convertView.getTag();
+                        holder.comment.setText(m.getComment());
+                        if(m.getType() == 2){
+                            holder.money.setText("-"+m.getMoney());
+                        }else{
+                            holder.money.setText(""+m.getMoney());
+                        }
+                }
+            }else if(getItemViewType(position) == 0){
+                TypeHolder typeHolder;
+                if(convertView == null){
+                    convertView = LayoutInflater.from(mContext).inflate(R.layout.record_item_one, parent, false);
+                    typeHolder = new TypeHolder();
+                    typeHolder.date = convertView.findViewById(R.id.type_date);
+                    typeHolder.moneyIn = convertView.findViewById(R.id.type_income);
+                    typeHolder.moneyOut = convertView.findViewById(R.id.type_pay);
+                    convertView.setTag(typeHolder);
+                }
+                if(convertView.getTag() instanceof TypeHolder){
+                    typeHolder = (TypeHolder) convertView.getTag();
+                    try {
+                        typeHolder.date.setText(DateFormat.format("MM月-dd日 EEEE", new SimpleDateFormat("yyyy-MM-dd").parse(m.getRecord_date())));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    typeHolder.moneyIn.setText(String.valueOf(m.getTotalIn()));
+                    typeHolder.moneyOut.setText(String.valueOf(m.getTotalOut()));
+                }
+            }
             return convertView;
         }
 
-        class ViewHolder {
+        class ItemHolder {
             ImageView iv;
             TextView comment;
             TextView money;
+        }
+
+        class TypeHolder{
+            TextView date;
+            TextView moneyIn;
+            TextView moneyOut;
         }
     }
 }
