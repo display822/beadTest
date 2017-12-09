@@ -4,4 +4,6 @@
     <dimen name="status_bar_padding">0dp</dimen>
     <dimen name="loans_height">40dp</dimen>
     <dimen name="record_height">100dp</dimen>
+
+    <dimen name="verify_top_height">130dp</dimen>
 </resources>

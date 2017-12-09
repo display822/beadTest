@@ -14,6 +14,7 @@ import com.comtempwallet.adapter.BannerAdapter;
 import com.comtempwallet.databinding.FragmentFloansBinding;
 import com.comtempwallet.entity.BannerEntity;
 import com.comtempwallet.http.UrlService;
+import com.comtempwallet.util.Global;
 import com.comtempwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseFragment;
 import com.example.skn.framework.http.Api;
@@ -87,7 +88,12 @@ public class LoansFragment extends BaseFragment {
 
         binding.setGoLoanClick(v -> {
             if(UserInfo.isLogin()){
+                if(Global.isVerify){
 
+                }else {
+                    //去认证页面
+
+                }
             }else{
                 LoginActivity.startActivity(mActivity);
             }

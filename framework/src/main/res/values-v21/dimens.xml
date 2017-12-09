@@ -6,4 +6,6 @@
     <dimen name="loans_height">65dp</dimen>
 
     <dimen name="record_height">120dp</dimen>
+
+    <dimen name="verify_top_height">150dp</dimen>
 </resources>

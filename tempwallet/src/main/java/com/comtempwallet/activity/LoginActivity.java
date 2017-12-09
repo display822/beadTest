@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.comtempwallet.R;
 import com.comtempwallet.databinding.ActivityFloginBinding;
+import com.comtempwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
 
 /**
@@ -55,7 +56,10 @@ public class LoginActivity extends BaseActivity {
 
         binding.protocolHtml.setOnClickListener(v->{ });
 
-
+        binding.loginBt.setOnClickListener(v->{
+            //测试
+            UserInfo.saveUserInfo("13720335094", "123456", "c123456");
+        });
     }
 
     @Override
