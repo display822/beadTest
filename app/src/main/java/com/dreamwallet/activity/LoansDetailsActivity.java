@@ -17,10 +17,10 @@ import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.dreamwallet.widget.ObservableScrollView;
 import com.example.skn.framework.base.BaseActivity;
-import com.example.skn.framework.base.BaseWebViewActivity;
 import com.example.skn.framework.http.Api;
 import com.example.skn.framework.http.BaseEntity;
 import com.example.skn.framework.http.RequestCallBack;
+import com.example.skn.framework.util.AppUtil;
 import com.example.skn.framework.util.ToolBarUtil;
 
 import rx.Observable;
@@ -84,8 +84,8 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
                                 if (UserInfo.isLogin()) {
                                     addApplyReord(platformId);
                                     StatisticsUtil.clickCount(mActivity, platformId);
-                                     BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), loansDetailsEntity.getAbbreviation());
-//                                    AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
+//                                     BaseWebViewActivity.show(mActivity, loansDetailsEntity.getLink(), loansDetailsEntity.getAbbreviation(), true);
+                                    AppUtil.startWeb(mActivity, loansDetailsEntity.getLink());
                                 } else {
                                     LoginActivity.startActivity(mActivity, LoginActivity.FINISH);
                                 }

@@ -86,6 +86,7 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         if(list.size() == 0){
             updateEmptyOrNetErrorView(false, true);
         }else{
+            updateEmptyOrNetErrorView(true, true);
             datas.clear();
             datas.addAll(list);
         }
