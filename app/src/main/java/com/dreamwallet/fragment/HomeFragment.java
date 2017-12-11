@@ -142,6 +142,8 @@ public class HomeFragment extends BaseFragment {
             binding.rvMoneyrecord.setVisibility(View.GONE);
             binding.blankRecordShow.setVisibility(View.VISIBLE);
         }else{
+            binding.rvMoneyrecord.setVisibility(View.VISIBLE);
+            binding.blankRecordShow.setVisibility(View.GONE);
             binding.rvMoneyrecord.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
             binding.rvMoneyrecord.setAdapter(new HomeRecordAdapter(moneyRecords, mActivity));
         }

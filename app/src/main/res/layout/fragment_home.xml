@@ -314,7 +314,7 @@
                             android:id="@+id/blank_record_show"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
                             android:visibility="gone"
                             android:orientation="vertical">
                             <ImageView
