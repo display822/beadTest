@@ -21,13 +21,16 @@ import com.dreamwallet.activity.MainActivity;
 import com.dreamwallet.activity.MyActivityActivity;
 import com.dreamwallet.adapter.GalleryAdapter;
 import com.dreamwallet.adapter.HomeInformationAdapter;
+import com.dreamwallet.adapter.HomeRecordAdapter;
 import com.dreamwallet.databinding.DefaultProductBinding;
 import com.dreamwallet.databinding.FragmentHomeBinding;
 import com.dreamwallet.entity.BannerEntity;
 import com.dreamwallet.entity.BorrowRecordEntity;
 import com.dreamwallet.entity.HomeInformationEntity;
+import com.dreamwallet.entity.MoneyRecord;
 import com.dreamwallet.entity.StarProductEntity;
 import com.dreamwallet.util.Global;
+import com.dreamwallet.util.RecordDao;
 import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.widget.DepthPageTransformer;
@@ -39,7 +42,9 @@ import com.example.skn.framework.http.BaseEntity;
 import com.example.skn.framework.http.RequestCallBack;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import rx.Observable;
@@ -89,6 +94,9 @@ public class HomeFragment extends BaseFragment {
 
         if(Global.hideLoans == 0){
             binding.homeNeedHide.setVisibility(View.GONE);
+            binding.product.setVisibility(View.GONE);
+        }else{
+            binding.recordHide.setVisibility(View.GONE);
         }
         binding.refresh.setOnRefreshListener(refreshLayout -> init());
         setHasOptionsMenu(true);
@@ -107,11 +115,37 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void init() {
+        if(Global.hideLoans == 0){
+            initMoneyRecord();
+        }
         initBanner();
         initBorrowRecord();
         initStartProduct();
         initInformation();
         initClickListener();
+    }
+
+    private void initMoneyRecord(){
+        RecordDao dao = new RecordDao(getActivity());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        //获取当前月第一天：
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DAY_OF_MONTH,1);//设置为1号,当前日期既为本月第一天
+        String first = format.format(c.getTime());
+        //获取当前月最后一天
+        Calendar ca = Calendar.getInstance();
+        ca.set(Calendar.DAY_OF_MONTH, ca.getActualMaximum(Calendar.DAY_OF_MONTH));
+        String last = format.format(ca.getTime());
+        List<MoneyRecord> moneyRecords = dao.selectRecordByDate(first, last);
+        if (moneyRecords.size() == 0){
+            binding.rvMoneyrecord.setVisibility(View.GONE);
+            binding.blankRecordShow.setVisibility(View.VISIBLE);
+        }else{
+            binding.rvMoneyrecord.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
+            binding.rvMoneyrecord.setAdapter(new HomeRecordAdapter(moneyRecords, mActivity));
+        }
+
     }
 
     private void initClickListener() {
@@ -132,6 +166,8 @@ public class HomeFragment extends BaseFragment {
 
         binding.setInformationClick(view -> ((MainActivity) mActivity).showFindByPosition(0));
         binding.setCommunityClick(view -> ((MainActivity) mActivity).showFindByPosition(1));
+
+        binding.setRecordClick(v -> ((MainActivity) mActivity).showRecordActivity());
     }
 
     private void closeRefresh(int type) {

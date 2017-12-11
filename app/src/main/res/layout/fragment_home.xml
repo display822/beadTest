@@ -30,6 +30,10 @@
         <variable
             name="communityClick"
             type="OnClickListener" />
+
+        <variable
+            name="recordClick"
+            type="OnClickListener" />
     </data>
 
     <LinearLayout
@@ -241,7 +245,7 @@
 
                 </LinearLayout>
 
-
+                </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -265,7 +269,79 @@
 
                 </LinearLayout>
 
+                <!-- 速记-->
+                <LinearLayout
+                    android:id="@+id/record_hide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/main_color"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="速记"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/color_333333"
+                            />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/color_f1f1f1"
+                        />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp">
+                        <com.dreamwallet.widget.MyRecyclerView
+                            android:id="@+id/rv_moneyrecord"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <LinearLayout
+                            android:id="@+id/blank_record_show"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:visibility="gone"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/record_blank"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_333333"
+                                android:textSize="13sp"
+                                android:text="记账就是记生活！快记一笔吧"
+                                />
+
+                            <Button
+                                android:onClick="@{recordClick}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="记一笔"
+                                android:background="@drawable/ic_apply_by_now"
+                                />
+                        </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"

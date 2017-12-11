@@ -62,6 +62,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         startActivity(intent);
     }
 
+    public void showRecordActivity(){
+        ((RadioButton) rgMain.getChildAt(1)).setChecked(true);
+    }
+
     @Override
     protected void initVar() {
 
