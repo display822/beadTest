@@ -1,5 +1,6 @@
 package com.comtempwallet.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.widget.SeekBar;
 
 import com.comtempwallet.R;
 import com.comtempwallet.activity.LoginActivity;
+import com.comtempwallet.activity.VerifyActivity;
 import com.comtempwallet.adapter.BannerAdapter;
 import com.comtempwallet.databinding.FragmentFloansBinding;
 import com.comtempwallet.entity.BannerEntity;
@@ -92,7 +94,7 @@ public class LoansFragment extends BaseFragment {
 
                 }else {
                     //去认证页面
-
+                    startActivity(new Intent(getActivity(), VerifyActivity.class));
                 }
             }else{
                 LoginActivity.startActivity(mActivity);

@@ -8,6 +8,7 @@ import com.example.skn.framework.base.BaseActivity;
 
 /**
  * Created by Administrator on 2017/12/9 0009.
+ *
  */
 
 public class VerifyActivity extends BaseActivity {

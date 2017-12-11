@@ -43,6 +43,7 @@ public class StartAppActivity extends BaseActivity {
     protected void init() {
         if (UserInfo.isLogin()) {
 //            getUserInfo();
+            handler.sendEmptyMessageDelayed(1, 2000);
         } else {
             handler.sendEmptyMessageDelayed(1, 2000);
         }

@@ -3,7 +3,7 @@
 
     <dimen name="status_bar_padding">22dp</dimen>
 
-    <dimen name="verify_title_padding">30dp</dimen>
+    <dimen name="verify_title_padding">26dp</dimen>
 
     <dimen name="title_bar_height">65dp</dimen>
 

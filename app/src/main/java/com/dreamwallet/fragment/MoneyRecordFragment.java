@@ -197,7 +197,9 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
         int moneyOut=0;
         List<String> dates = new ArrayList<>();
         List<MoneyRecord> results = new ArrayList<>();
-        int today = -1;
+        int today = 0;
+        int gap = 0;
+        int todayGap = -1;
         for(MoneyRecord m: moneyRecords){
 
             if(!dates.contains(m.getRecord_date())){
@@ -207,7 +209,8 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
                 temp.setItem(false);
                 temp.setRecord_date(m.getRecord_date());
                 results.add(temp);
-                today++;
+                todayGap ++;
+                today = todayGap + gap;
             }
 
             MoneyRecord todayRecord = results.get(today);
@@ -222,6 +225,7 @@ public class MoneyRecordFragment extends BaseFragment implements RefreshSwipeMen
             }
 
             results.add(m);
+            gap++;
         }
 
         binding.incomeNum.setText(String.valueOf(moneyIn));
