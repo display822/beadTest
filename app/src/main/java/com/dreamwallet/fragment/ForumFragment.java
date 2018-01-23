@@ -157,7 +157,7 @@ public class ForumFragment extends BaseFragment {
     }
 
     private void getBanner() {
-        Api.getDefault(UrlService.class).getBbsBannar().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getBbsBannar("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<BannerEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<BannerEntity> bannerEntities) {
@@ -255,7 +255,7 @@ public class ForumFragment extends BaseFragment {
 
     public void getData(int type) {
         int pageSize = 5;
-        Api.getDefault(UrlService.class).getForumList(pageNum, pageSize).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getForumList(pageNum, pageSize, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<ForumEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<ForumEntity> forumEntityList) {

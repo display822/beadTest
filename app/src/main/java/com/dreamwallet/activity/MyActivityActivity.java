@@ -61,7 +61,7 @@ public class MyActivityActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        Api.getDefault(UrlService.class).getActivity().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getActivity("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<MyActivityEntity>>(mActivity, true) {
                     @Override
                     public void onSuccess(List<MyActivityEntity> myActivityEntities) {

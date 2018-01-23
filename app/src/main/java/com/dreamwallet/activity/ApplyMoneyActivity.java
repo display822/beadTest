@@ -114,7 +114,7 @@ public class ApplyMoneyActivity extends BaseActivity {
         map.clear();
         map.put("loginToken", UserInfo.loginToken);
         DialogUtil.showLoading(this);
-        Api.getDefault(UrlService.class).getBorrowInfo(map).compose(Api.handlerResult()).subscribe(new RequestCallBack<BorrowInfoBean>(mActivity,true) {
+        Api.getDefault(UrlService.class).getBorrowInfo(map, "android").compose(Api.handlerResult()).subscribe(new RequestCallBack<BorrowInfoBean>(mActivity,true) {
             @Override
             public void onSuccess(BorrowInfoBean borrowInfoBean) {
                 if (borrowInfoBean != null) {
@@ -165,7 +165,7 @@ public class ApplyMoneyActivity extends BaseActivity {
         map.put("borrowCycle", (int) Float.parseFloat(period));
         map.put("paymentDate", (int) Float.parseFloat(time));
         DialogUtil.showLoading(this);
-        Api.getDefault(UrlService.class).saveBorrowInfo(map).compose( Api.handlerResult())
+        Api.getDefault(UrlService.class).saveBorrowInfo(map, "android").compose( Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity,true) {
                     @Override
                     public void onSuccess(String s) {

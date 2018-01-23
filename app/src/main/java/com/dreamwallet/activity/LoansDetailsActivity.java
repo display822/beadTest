@@ -69,9 +69,9 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
     protected void initData() {
         Observable<BaseEntity<LoansDetailsEntity>> platformDetail;
         if (TextUtils.isEmpty(platformId)) {
-            platformDetail = Api.getDefault(UrlService.class).getPlatformDetail("1");
+            platformDetail = Api.getDefault(UrlService.class).getPlatformDetail("1", "android");
         } else {
-            platformDetail = Api.getDefault(UrlService.class).getPlatformDetail("2", platformId);
+            platformDetail = Api.getDefault(UrlService.class).getPlatformDetail("2", platformId, "android");
         }
         platformDetail.compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<LoansDetailsEntity>(mActivity, true) {
@@ -101,7 +101,7 @@ public class LoansDetailsActivity extends BaseActivity implements ObservableScro
     }
 
     private void addApplyReord(String productId) {
-        Api.getDefault(UrlService.class).addApply(UserInfo.loginToken, productId).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).addApply(UserInfo.loginToken, productId, "android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {

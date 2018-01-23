@@ -86,7 +86,7 @@ public class ApplyRecordActivity extends BaseActivity {
     }
 
     private void getDate(int refrash) {
-        Api.getDefault(UrlService.class).getApplyRecord(UserInfo.loginToken, pageNum, pageSize).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getApplyRecord(UserInfo.loginToken, pageNum, pageSize, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<ApplyRecordBean>>(mActivity) {
                     @Override
                     public void onSuccess(List<ApplyRecordBean> list) {

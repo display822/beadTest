@@ -92,7 +92,7 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
         map.put("type", type);
         map.put("content", content);
         map.put("reservePhone", phone);
-        Api.getDefault(UrlService.class).saveCustomerFeedBack(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).saveCustomerFeedBack(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity,true) {
                     @Override
                     public void onSuccess(String s) {

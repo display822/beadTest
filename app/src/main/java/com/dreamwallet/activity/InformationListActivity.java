@@ -100,7 +100,7 @@ public class InformationListActivity extends BaseActivity {
 
     private void getData(int type) {
         Api.getDefault(UrlService.class)
-                .getInformationBranchList(pageNum, pageSize, informationType)
+                .getInformationBranchList(pageNum, pageSize, informationType, "android")
                 .compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<InformationListEntity>>(mActivity) {
                     @Override

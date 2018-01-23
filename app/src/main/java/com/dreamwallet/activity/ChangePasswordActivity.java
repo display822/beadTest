@@ -95,7 +95,7 @@ public class ChangePasswordActivity extends BaseActivity {
         map.put("token", UserInfo.loginToken);
         map.put("oldPwd", oldpw);
         map.put("newPwd", newpw);
-        Api.getDefault(UrlService.class).modifyPwd(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).modifyPwd(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<LoginEntity>(mActivity, true) {
                     @Override
                     public void onSuccess(LoginEntity loginEntity) {

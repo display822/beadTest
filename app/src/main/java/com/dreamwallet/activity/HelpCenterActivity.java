@@ -96,7 +96,7 @@ public class HelpCenterActivity extends BaseActivity {
     @Override
     protected void initData() {
         DialogUtil.showLoading(this);
-        Api.getDefault(UrlService.class).getHelpCenter(new HashMap<>()).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getHelpCenter(new HashMap<>(), "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<HelpCenterBean>>(mActivity,true) {
                     @Override
                     public void onSuccess(List<HelpCenterBean> helpCenterBeen) {

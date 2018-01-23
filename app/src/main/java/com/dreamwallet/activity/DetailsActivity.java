@@ -53,7 +53,7 @@ public class DetailsActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        Api.getDefault(UrlService.class).getCmsDesc(cmsId).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getCmsDesc(cmsId, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<DetailsEntity>(mActivity, true) {
                     @Override
                     public void onSuccess(DetailsEntity detailsEntity) {

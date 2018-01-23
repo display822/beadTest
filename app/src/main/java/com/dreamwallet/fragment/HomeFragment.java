@@ -204,7 +204,7 @@ public class HomeFragment extends BaseFragment {
         if(Global.hideLoans == 0){
             bannar = Api.getDefault(UrlService.class).getBannar("0");
         }else{
-            bannar = Api.getDefault(UrlService.class).getBannar();
+            bannar = Api.getDefault(UrlService.class).getBannar("android");
         }
 
         bannar.compose(Api.handlerResult())
@@ -323,7 +323,7 @@ public class HomeFragment extends BaseFragment {
             return;
         }
 
-        Api.getDefault(UrlService.class).getBorrowRecord().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getBorrowRecord("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<BorrowRecordEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<BorrowRecordEntity> borrowRecordEntities) {
@@ -353,7 +353,7 @@ public class HomeFragment extends BaseFragment {
             closeRefresh(3);
             return;
         }
-        Api.getDefault(UrlService.class).getStarProduct().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getStarProduct("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<StarProductEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<StarProductEntity> starProductEntities) {
@@ -387,7 +387,7 @@ public class HomeFragment extends BaseFragment {
 
     //资讯
     private void initInformation() {
-        Api.getDefault(UrlService.class).getIndexNews().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getIndexNews("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<HomeInformationEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<HomeInformationEntity> homeInformationEntities) {

@@ -26,7 +26,7 @@ public class StartAppActivity extends BaseActivity {
             super.handleMessage(msg);
             if (msg.what == 1) {
                 if (!SpUtil.getBooleanData("firstUse")) {
-                    GuideActivity.startActivity(mActivity);
+                    MainActivity.startActivity(mActivity, 0);
                 } else {
                     MainActivity.startActivity(mActivity, 0);
                 }
@@ -85,7 +85,7 @@ public class StartAppActivity extends BaseActivity {
     }
 
     private void getUserInfo() {
-        Api.getDefault(UrlService.class).queryUser1(UserInfo.loginToken).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).queryUser1(UserInfo.loginToken, "android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {

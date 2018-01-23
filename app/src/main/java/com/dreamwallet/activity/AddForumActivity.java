@@ -67,7 +67,7 @@ public class AddForumActivity extends BaseActivity {
         map.put("token", UserInfo.loginToken);
         map.put("title", title);
         map.put("content", content);
-        Api.getDefault(UrlService.class).addForum(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).addForum(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {

@@ -69,7 +69,7 @@ public class DetailsByForumActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        Api.getDefault(UrlService.class).getForumDetails(cmsId).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getForumDetails(cmsId, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<ForumDetailsEntity>(mActivity, true) {
                     @Override
                     public void onSuccess(ForumDetailsEntity forumDetailsEntity) {
@@ -96,7 +96,7 @@ public class DetailsByForumActivity extends BaseActivity {
         map.put("token", UserInfo.loginToken);
         map.put("postId", cmsId);
         map.put("content", content);
-        Api.getDefault(UrlService.class).addForumResult(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).addForumResult(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {

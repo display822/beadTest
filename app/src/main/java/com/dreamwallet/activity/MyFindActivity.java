@@ -156,7 +156,7 @@ public class MyFindActivity extends BaseActivity {
         }
         idStr = idStr.substring(0, idStr.lastIndexOf(","));
         map.put("idStr", idStr);
-        Api.getDefault(UrlService.class).deleteInformationVisit(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).deleteInformationVisit(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {
@@ -186,7 +186,7 @@ public class MyFindActivity extends BaseActivity {
         map.put("pageSize", pageSize);
         map.put("visitType", visitType);
         map.put("token", UserInfo.loginToken);
-        Api.getDefault(UrlService.class).getCustomInformationVisit(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getCustomInformationVisit(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<MyFindEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<MyFindEntity> myFindEntities) {

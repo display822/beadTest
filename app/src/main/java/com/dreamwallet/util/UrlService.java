@@ -53,39 +53,39 @@ public interface UrlService {
      */
     //获取banner
     @GET("index/getBannar")
-    Observable<BaseEntity<List<BannerEntity>>> getBannar();
+    Observable<BaseEntity<List<BannerEntity>>> getBannar(@Query("source") String source);
 
     //获取banner
-    @GET("index/getBannar")
-    Observable<BaseEntity<List<BannerEntity>>> getBannar(@Query("source") String source);
+//    @GET("index/getBannar")
+//    Observable<BaseEntity<List<BannerEntity>>> getBannar(@Query("source") String source);
 
     //获取明星产品
     @GET("index/getStarProduct")
-    Observable<BaseEntity<List<StarProductEntity>>> getStarProduct();
+    Observable<BaseEntity<List<StarProductEntity>>> getStarProduct(@Query("source") String source);
 
     //获取借款跑马灯
     @GET("index/getBorrowRecord")
-    Observable<BaseEntity<List<BorrowRecordEntity>>> getBorrowRecord();
+    Observable<BaseEntity<List<BorrowRecordEntity>>> getBorrowRecord(@Query("source") String source);
 
     //获取首页资讯信息
     @GET("index/getIndexNews")
-    Observable<BaseEntity<List<HomeInformationEntity>>> getIndexNews();
+    Observable<BaseEntity<List<HomeInformationEntity>>> getIndexNews(@Query("source") String source);
 
     //获取活动信息
     @GET("index/getActivity")
-    Observable<BaseEntity<List<MyActivityEntity>>> getActivity();
+    Observable<BaseEntity<List<MyActivityEntity>>> getActivity(@Query("source") String source);
 
     //得到资讯详情/活动详情
     @GET("index/getCmsDesc")
-    Observable<BaseEntity<DetailsEntity>> getCmsDesc(@Query("cmsId") int cmsId);
+    Observable<BaseEntity<DetailsEntity>> getCmsDesc(@Query("cmsId") int cmsId, @Query("source") String source);
 
     //得到产品集合
     @GET("platform/getPlatformList")
-    Observable<BaseEntity<List<LoansEntity>>> getPlatformList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("sortInfoId") int sortInfoId);
+    Observable<BaseEntity<List<LoansEntity>>> getPlatformList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("sortInfoId") int sortInfoId, @Query("source") String source);
 
     //得到产品title集合
     @GET("platform/getPlatformSortName")
-    Observable<BaseEntity<List<LoansTitleEntity>>> getPlatformSortName();
+    Observable<BaseEntity<List<LoansTitleEntity>>> getPlatformSortName(@Query("source") String source);
 
     /**
      * 发现
@@ -93,50 +93,50 @@ public interface UrlService {
 
     //得到资讯
     @GET("information/getInformationList")
-    Observable<BaseEntity<List<InformationEntity>>> getInformationList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+    Observable<BaseEntity<List<InformationEntity>>> getInformationList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("source") String source);
 
     //资讯流量量
     @GET("information/cmsContentPv")
-    Observable<BaseEntity<String>> informationCount(@Query("informationId") String informationId);
+    Observable<BaseEntity<String>> informationCount(@Query("informationId") String informationId,@Query("source") String source);
 
 
     //得到论坛
     @POST("post/list")
-    Observable<BaseEntity<List<ForumEntity>>> getForumList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+    Observable<BaseEntity<List<ForumEntity>>> getForumList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("source") String source);
 
     //得到论坛全部评论
     @POST("comment/postComment")
-    Observable<BaseEntity<List<CommentBean>>> getAllComment(@Query("pid") int pId, @Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+    Observable<BaseEntity<List<CommentBean>>> getAllComment(@Query("pid") int pId, @Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("source") String source);
 
 
     //资讯栏目列表
     @GET("information/getInformationBranchList")
-    Observable<BaseEntity<List<InformationListEntity>>> getInformationBranchList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("type") int type);
+    Observable<BaseEntity<List<InformationListEntity>>> getInformationBranchList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("type") int type, @Query("source") String source);
 
     //得到论坛帖子详情
     @POST("post/getPost")
-    Observable<BaseEntity<ForumDetailsEntity>> getForumDetails(@Query("pid") int pid);
+    Observable<BaseEntity<ForumDetailsEntity>> getForumDetails(@Query("pid") int pid, @Query("source") String source);
 
     //新增帖子
     @POST("post/add")
-    Observable<BaseEntity<String>> addForum(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> addForum(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //保存评论
     @POST("comment/add")
-    Observable<BaseEntity<String>> addForumResult(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> addForumResult(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //资讯banner
     @GET("information/getInformationBannar")
-    Observable<BaseEntity<List<BannerEntity>>> getInformationBannar();
+    Observable<BaseEntity<List<BannerEntity>>> getInformationBannar(@Query("source") String source);
 
     //论坛banner
     @GET("information/getBbsBannar")
-    Observable<BaseEntity<List<BannerEntity>>> getBbsBannar();
+    Observable<BaseEntity<List<BannerEntity>>> getBbsBannar(@Query("source") String source);
 
 
     //得到我的发现列表
     @GET("information/getCustomInformationVisit")
-    Observable<BaseEntity<List<MyFindEntity>>> getCustomInformationVisit(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<List<MyFindEntity>>> getCustomInformationVisit(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //判断是否设置密码
     @POST("login/isSetPwd")
@@ -144,51 +144,51 @@ public interface UrlService {
 
     //获取申请借款的信息
     @POST("personal/getBorrowInfo")
-    Observable<BaseEntity<BorrowInfoBean>> getBorrowInfo(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<BorrowInfoBean>> getBorrowInfo(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //申请借款（保存借款信息）
     @POST("personal/saveBorrowInfo")
-    Observable<BaseEntity<String>> saveBorrowInfo(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> saveBorrowInfo(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //修改密码
     @POST("user/modifyPwd")
-    Observable<BaseEntity<LoginEntity>> modifyPwd(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<LoginEntity>> modifyPwd(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //用户信息
     @POST("user/queryUser")
-    Observable<BaseEntity<UserBean>> queryUser(@Query("token") String token);
+    Observable<BaseEntity<UserBean>> queryUser(@Query("token") String token, @Query("source") String source);
 
     //用户信息
     @POST("user/queryUser")
-    Observable<BaseEntity<String>> queryUser1(@Query("token") String token);
+    Observable<BaseEntity<String>> queryUser1(@Query("token") String token, @Query("source") String source);
 
     //找回/重置密码
     @POST("user/resetPwd")
-    Observable<BaseEntity<LoginEntity>> resetPwd(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<LoginEntity>> resetPwd(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //我要反馈
     @POST("personal/saveCustomerFeedBack")
-    Observable<BaseEntity<String>> saveCustomerFeedBack(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> saveCustomerFeedBack(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //发送验证码
     @GET("sms/sendSmsEncryption")
-    Observable<BaseEntity<String>> sendSmsEncryption(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> sendSmsEncryption(@QueryMap Map<String, Object> map,@Query("source") String source);
 
     //帮助中心
     @POST("index/getHelpCenter")
-    Observable<BaseEntity<List<HelpCenterBean>>> getHelpCenter(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<List<HelpCenterBean>>> getHelpCenter(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //密码登录
     @POST("user/login")
-    Observable<BaseEntity<LoginEntity>> login(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<LoginEntity>> login(@QueryMap Map<String, Object> map , @Query("source") String source);
 
     //验证码登录
     @POST("user/codeLogin")
-    Observable<BaseEntity<LoginEntity>> codeLogin(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<LoginEntity>> codeLogin(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //登出
     @POST("user/loginOut")
-    Observable<BaseEntity<String>> loginOut(@Query("token") String token);
+    Observable<BaseEntity<String>> loginOut(@Query("token") String token, @Query("source") String source);
 
     //获取我的足迹
     @POST("personal/getCustomerPlatformVisitInfo")
@@ -204,41 +204,41 @@ public interface UrlService {
 
     //获取借款平台详情
     @GET("platform/getPlatformDetail")
-    Observable<BaseEntity<LoansDetailsEntity>> getPlatformDetail(@Query("status") String status, @Query("platformId") String platformId);
+    Observable<BaseEntity<LoansDetailsEntity>> getPlatformDetail(@Query("status") String status, @Query("platformId") String platformId, @Query("source") String source);
 
     //获取借款平台详情
     @GET("platform/getPlatformDetail")
-    Observable<BaseEntity<LoansDetailsEntity>> getPlatformDetail(@Query("status") String status);
+    Observable<BaseEntity<LoansDetailsEntity>> getPlatformDetail(@Query("status") String status, @Query("source") String source);
 
     //删除我的发现条目
     @POST("information/deleteInformationVisit")
-    Observable<BaseEntity<String>> deleteInformationVisit(@QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> deleteInformationVisit(@QueryMap Map<String, Object> map, @Query("source") String source);
 
     //获取申请记录
     @POST("personal/getApplyListPage")
-    Observable<BaseEntity<List<ApplyRecordBean>>> getApplyRecord(@Query("token") String token,@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+    Observable<BaseEntity<List<ApplyRecordBean>>> getApplyRecord(@Query("token") String token,@Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("source") String source);
 
     /**
      * 统计
      */
     //统计我的发现
     @POST("information/insertInformationVisit")
-    Observable<BaseEntity<String>> insertInformationVisit(@Query("token") String token, @Query("visitType") int visitType, @Query("informationId") int informationId);
+    Observable<BaseEntity<String>> insertInformationVisit(@Query("token") String token, @Query("visitType") int visitType, @Query("informationId") int informationId, @Query("source") String source);
 
     //统计浏览量
     @POST("platform/visitCount")
-    Observable<BaseEntity<String>> visitCount(@Query("token") String token, @QueryMap Map<String, Object> map);
+    Observable<BaseEntity<String>> visitCount(@Query("token") String token, @QueryMap Map<String, Object> map, @Query("source") String source);
 
     //统计产品界面
     @GET("platform/clickCount")
-    Observable<BaseEntity<String>> clickCount(@Query("token") String token, @Query("platformId") String platformId);
+    Observable<BaseEntity<String>> clickCount(@Query("token") String token, @Query("platformId") String platformId, @Query("source") String source);
 
     //首页浏览量
     @GET("platform/homePage")
-    Observable<BaseEntity<String>> homePage();
+    Observable<BaseEntity<String>> homePage(@Query("source") String source);
 
     //首页浏览量
     @POST("personal/addApply")
-    Observable<BaseEntity<String>> addApply(@Query("token") String token, @Query("productId") String productId);
+    Observable<BaseEntity<String>> addApply(@Query("token") String token, @Query("productId") String productId, @Query("source") String source);
 
 }

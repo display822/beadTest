@@ -110,6 +110,7 @@ public class InformationFragment extends BaseFragment {
         informationAdapter1 = new InformationAdapter(mActivity, data, R.layout.item_information);
         if (Global.hideLoans == 0){
             layoutBinding.fragmentInfoHide.setVisibility(View.GONE);
+            layoutBinding.llDetail.setVisibility(View.GONE);
         }
         drawable = (AnimationDrawable) binding.refreshAnim.getDrawable();
         drawable.start();
@@ -147,7 +148,7 @@ public class InformationFragment extends BaseFragment {
     }
 
     private void getBanner() {
-        Api.getDefault(UrlService.class).getInformationBannar().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getInformationBannar("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<BannerEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<BannerEntity> bannerEntities) {
@@ -250,7 +251,7 @@ public class InformationFragment extends BaseFragment {
     }
 
     private void getData(int type) {
-        Api.getDefault(UrlService.class).getInformationList(pageNum, pageSize).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getInformationList(pageNum, pageSize,"android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<InformationEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<InformationEntity> informationEntities) {

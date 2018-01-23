@@ -107,7 +107,7 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
         map.clear();
         map.put("phone", StringUtil.encrypting(phone));
         map.put("smsType", 1);
-        Api.getDefault(UrlService.class).sendSmsEncryption(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).sendSmsEncryption(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {
@@ -182,10 +182,10 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
         Observable<BaseEntity<LoginEntity>> login;
         if (loginType == 1) {
             map.put("pwd", bind.etPwd.getText().toString().trim());
-            login = Api.getDefault(UrlService.class).login(map);
+            login = Api.getDefault(UrlService.class).login(map, "android");
         } else {
             map.put("code", bind.etCode.getText().toString().trim());
-            login = Api.getDefault(UrlService.class).codeLogin(map);
+            login = Api.getDefault(UrlService.class).codeLogin(map, "android");
         }
         login.compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<LoginEntity>(mActivity, true) {
@@ -216,7 +216,7 @@ public class LoginActivity extends BaseActivity implements TimeButton.OnLoadData
     }
 
     private void getUserInfo() {
-        Api.getDefault(UrlService.class).queryUser(UserInfo.loginToken).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).queryUser(UserInfo.loginToken, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<UserBean>(mActivity, false) {
                     @Override
                     public void onSuccess(UserBean userBean) {

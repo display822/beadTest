@@ -114,7 +114,7 @@ public class LoansFragment extends BaseFragment {
 
     private void initPlatformListData(int type) {
         int pageSize = 5;
-        Api.getDefault(UrlService.class).getPlatformList(pageNum, pageSize, sortInfoId).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getPlatformList(pageNum, pageSize, sortInfoId, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<LoansEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<LoansEntity> entities) {

@@ -76,7 +76,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
 
     private void loginOut() {
-        Api.getDefault(UrlService.class).loginOut(UserInfo.loginToken).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).loginOut(UserInfo.loginToken,"android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {

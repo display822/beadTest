@@ -26,7 +26,7 @@ public class StatisticsUtil {
      *  首页资讯统计
      */
     public static void homeInformationCount(String informationId){
-        Api.getDefault(UrlService.class).informationCount(informationId).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).informationCount(informationId,"android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
@@ -51,7 +51,7 @@ public class StatisticsUtil {
      */
     public static void statistics(Context context, int type, int id) {
 
-        Api.getDefault(UrlService.class).insertInformationVisit(UserInfo.loginToken, type, id).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).insertInformationVisit(UserInfo.loginToken, type, id, "android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
@@ -77,7 +77,7 @@ public class StatisticsUtil {
     public static void visitCount(Context context, String type, String id) {
         Map<String, Object> map = new HashMap<>();
         map.put(type, id);
-        Api.getDefault(UrlService.class).visitCount(UserInfo.loginToken, map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).visitCount(UserInfo.loginToken, map, "android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
@@ -100,7 +100,7 @@ public class StatisticsUtil {
      * 统计借款页面
      */
     public static void clickCount(Context context, String id) {
-        Api.getDefault(UrlService.class).clickCount(UserInfo.loginToken, id).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).clickCount(UserInfo.loginToken, id, "android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
@@ -123,7 +123,7 @@ public class StatisticsUtil {
      * 统计首页浏览量
      */
     public static void homePage(Context context) {
-        Api.getDefault(UrlService.class).homePage().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).homePage("android").compose(Api.handlerResult())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {

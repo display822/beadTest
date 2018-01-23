@@ -109,7 +109,7 @@ public class CommentDetailsActivity extends BaseActivity {
         map.put("token", UserInfo.loginToken);
         map.put("postId", csmId);
         map.put("content", content);
-        Api.getDefault(UrlService.class).addForumResult(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).addForumResult(map,"android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {
@@ -126,7 +126,7 @@ public class CommentDetailsActivity extends BaseActivity {
     }
 
     private void getDate(int type) {
-        Api.getDefault(UrlService.class).getAllComment(csmId, pageNum, pageSize).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getAllComment(csmId, pageNum, pageSize, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<CommentBean>>(mActivity) {
                     @Override
                     public void onSuccess(List<CommentBean> commentList) {

@@ -95,7 +95,7 @@ public class FindBackPasswordActivity extends BaseActivity implements View.OnCli
         map.put("phone", phone);
         map.put("pwd", password);
         map.put("code", code);
-        Api.getDefault(UrlService.class).resetPwd(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).resetPwd(map, "android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<LoginEntity>(mActivity, true) {
                     @Override
                     public void onSuccess(LoginEntity loginEntity) {
@@ -127,7 +127,7 @@ public class FindBackPasswordActivity extends BaseActivity implements View.OnCli
         map.clear();
         map.put("phone", StringUtil.encrypting(phone));
         map.put("smsType", 2);
-        Api.getDefault(UrlService.class).sendSmsEncryption(map).compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).sendSmsEncryption(map,"android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<String>(mActivity, true) {
                     @Override
                     public void onSuccess(String s) {

@@ -91,7 +91,7 @@ public class BaseLoansFragment extends BaseFragment {
     }
 
     private void getTitleTab() {
-        Api.getDefault(UrlService.class).getPlatformSortName().compose(Api.handlerResult())
+        Api.getDefault(UrlService.class).getPlatformSortName("android").compose(Api.handlerResult())
                 .subscribe(new RequestCallBack<List<LoansTitleEntity>>(mActivity) {
                     @Override
                     public void onSuccess(List<LoansTitleEntity> loansTitleEntities) {
