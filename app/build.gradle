@@ -61,7 +61,7 @@ android {
 
     productFlavors {
 //        anormal { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "normal"] }//普通
-//        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
+        zs360 { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zs360"] }//360手机助手
 //        tencent { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"] }//应用宝
 //        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }//小米应用商店
 //        huawei { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"] }//华为智汇云
@@ -80,7 +80,7 @@ android {
 //        gfan { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "gfan"] }//机锋市场
 
 //        baidu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"] }//百度手机助手
-        meizu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"] }//魅族软件中心
+//        meizu { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"] }//魅族软件中心
     }
 }
 

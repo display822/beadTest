@@ -11,6 +11,7 @@ import com.dreamwallet.R;
 import com.dreamwallet.databinding.ActivityDetailsBinding;
 import com.dreamwallet.entity.DetailsEntity;
 import com.dreamwallet.util.ShareUtil;
+import com.dreamwallet.util.StatisticsUtil;
 import com.dreamwallet.util.UrlService;
 import com.dreamwallet.util.UserInfo;
 import com.example.skn.framework.base.BaseActivity;
@@ -59,6 +60,8 @@ public class DetailsActivity extends BaseActivity {
                     public void onSuccess(DetailsEntity detailsEntity) {
                         if (detailsEntity != null) {
                             binding.setData(detailsEntity);
+                            //设置webview
+                            StatisticsUtil.setWebData(binding.content, detailsEntity.getDetail());
                         }
                     }
 

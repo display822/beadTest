@@ -2,6 +2,7 @@ package com.dreamwallet.util;
 
 import android.content.Context;
 import android.util.Log;
+import android.webkit.WebView;
 
 import com.example.skn.framework.http.Api;
 
@@ -141,4 +142,14 @@ public class StatisticsUtil {
                     }
                 });
     }
+
+    public static void setWebData(WebView wv, String msg){
+        String html = "<html><head>" +
+                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"> " +
+                "<style>img{max-width: 100%; width:auto; height:auto;}</style>" +
+                "</head><body>"+ msg + "</body></html>";
+
+        wv.loadDataWithBaseURL("file:///android_asset", html, "text/html", "UTF-8", "");
+    }
+
 }
